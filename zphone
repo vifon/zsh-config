@@ -1,0 +1,10 @@
+# vim: set ft=zsh :
+
+PHONE=1
+HISTFILE=~/.zhistory_phone
+DEF_HISTFILE=~/.zhistory_phone
+PSDIR=
+PSSEP2=
+
+bindkey -s '5' '^uncmpcpp\n'
+bindkey -s '8' '^umpcp\n'

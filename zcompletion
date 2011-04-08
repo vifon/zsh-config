@@ -1,0 +1,13 @@
+# vim: set ft=zsh :
+
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
+#zstyle ':completion:*:kill:*:jobs' list-colors "=(#b)?([0-9]#)*=$color[cyan]=$color[red]"
+zstyle ':completion:*:processes' command 'ps x -o pid,pcpu,tt,args'
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose yes
+#setopt correctall

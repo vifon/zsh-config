@@ -1,0 +1,91 @@
+# vim: ft=zsh fdm=marker :
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+#alias ack='ack-grep'
+
+# auto-config
+alias links2='links2 -anonymous'
+alias dvtm='dvtm -m '
+alias byobu='byobu -c ~/.byobu/profile'
+alias qemu='qemu -enable-kvm'
+alias emacs='emacs -nw'
+alias make='colormake'
+alias vimname='vim -c :Renamer'
+
+# shortcuts
+alias cls='clear'
+alias zhist='vim $DEF_HISTFILE'
+alias kwine='wineserver -k'
+alias fixres='xrandr -s 1680x1050'
+#alias droopy='~/Scripts/droopy.py -p "~/Obrazy/avatar.jpg" -d "/media/vifon/Droopy"'
+#alias su='sudo -i'
+alias su='sudo zsh'
+alias synergy1='synergyc 192.168.1.102'
+alias synergy2='synergys --config ~/.synergy/synergy.conf'
+#alias priv='HISTFILE=/dev/null'
+alias hvim='vim "+%!xxd"'
+alias cmd='wine cmd 2> /dev/null'
+#alias temp="cat /proc/acpi/thermal_zone/THM/temperature | awk '{print \$2}'"
+alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpn='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias von='vbetool dpms on'
+alias voff='vbetool dpms off'
+alias nethack='screen -c ~/.nscreenrc nethack'
+alias init='sudo init'
+alias curdate='date +%y.%m.%d'
+alias zshpath='PATH=$PATH'
+#alias eix='apt-cache search'
+alias eix='aptitude search'
+alias apt='aptitude show'
+alias emerge='sudo aptitude install'
+alias loic='wine =LOIC.exe 2> /dev/null'
+alias yargs='xargs -d \\n'
+alias makegen='cp ~/Programs/shell/configure/configure.zsh .'
+alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0 -sameq screencapture.avi'
+#alias ssha='if [[ "$TERM" == "linux" ]]; then; export SSH_AGENT_VFN=1; exec ssh-agent /bin/zsh -l; else; export SSH_AGENT_VFN=1; exec ssh-agent /bin/zsh; fi'
+#alias ssha='if [ -n "$SSH_MARKER" ]; then; ssh-add -D; eval `ssh-agent -k` > /dev/null; fi; if [[ "$TERM" == "linux" ]]; then; SSH_AGENT_VFN=1 exec ssh-agent /bin/zsh -l; else; SSH_AGENT_VFN=1 exec ssh-agent /bin/zsh; fi'
+#alias sshad='if [ -n "$SSH_MARKER" ]; then; ssh-add -D; eval `ssh-agent -k` > /dev/null; if [[ "$TERM" == "linux" ]]; then; SSH_AGENT_VFN= exec /bin/zsh -l; else; SSH_AGENT_VFN= exec /bin/zsh; fi; else; echo "No ssh-agent running!"; fi'
+
+#games
+alias game='gameselect'
+alias minecraft='game m &! ; exit'
+alias minecraft-xray='cd /home/vifon/gry/minecraft/xray; ./minecraft_xray.sh'
+alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
+
+#wine
+foobar2000(){local OLD="$PWD"; cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe; cd "$OLD"}
+mp3tag(){local OLD="$PWD"; cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe; cd "$OLD"}
+alias steam='wine ~/Data/Gry/Steam/Steam.exe'
+
+winevd()
+{
+	if [ -z "$2" -o -z "$3" ]; then
+		2=1024
+		3=768
+	fi
+	if [ -z "$WTITLE" ]; then
+		WTITLE=Wine
+	fi
+	wine explorer /desktop=$WTITLE,${2}x${3} "$1"
+	unset WTITLE
+}
+
+seturgent()
+{
+	print -Pn "\e]0;SET_URGENT\a"
+	sleep 0.1
+	wmctrl -r "`xprop -id $WINDOWID | perl -nle 'print $1 if /^WM_NAME.+= \"(.*)\"$/'`" -b add,demands_attention
+	sleep 0.1
+	print -Pn "\e]0;xterm\a"
+}
