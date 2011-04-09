@@ -172,6 +172,7 @@ amount()
 	if [ $? = 0 ]; then
 		echo "$BOLD$GREEN*$RESET $1 mounted"
 		zsh
+		echo "$BOLD$YELLOW*$RESET Unmounting $1..."
 		pumount "$1" 2> /dev/null
 		if [ $? = 0 ]; then
 			echo "$BOLD$GREEN*$RESET $1 unmounted"

@@ -10,17 +10,6 @@ PR_LLCORNER=${altchar[m]:--}
 PR_LRCORNER=${altchar[j]:--}
 PR_URCORNER=${altchar[k]:--}
 
-#	{{{ Colors
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 3)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-RESET=$(tput sgr0)
-BOLD=$(tput bold)
-#	}}}
 #[?17;0;127c
 #PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%B%~%b%{$reset_color%}%# "
 #PS1="%{$(tput setaf 1)%}%n%{$(tput sgr0)%}@%{$(tput setaf 2)%}%m%{$(tput sgr0)%}:%{$(tput setaf 4)%}%{$(tput bold)%}%~%{$(tput sgr0)%}%# "

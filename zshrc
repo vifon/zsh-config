@@ -1,4 +1,5 @@
 # vim: set fdm=marker :
+# {{{ before plugins
 [ -z "$PS1" ] && return
 # Lines configured by zsh-newuser-install
 unsetopt autocd beep
@@ -23,10 +24,20 @@ compinit
 if [ -f ~/.zremap.zsh ]; then
 	. ~/.zremap.zsh
 fi
-
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
-PLUGINS=(.zcompletion .zaliases .zscripts.zsh .dirmaster .ztodo .zpriv)
+# }}}
+PLUGINS=(\
+	.zplugins/zcolors\
+	.zplugins/zremap.zsh\
+	.zplugins/zcompletion\
+	.zplugins/zaliases\
+	.zplugins/zscripts.zsh\
+	.zplugins/dirmaster\
+	.zplugins/ztodo\
+	.zplugins/zpriv\
+	)
+# {{{ after plugins
 for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
 	if [ -f ~/$PLUGINS[$i] ]; then
 		. ~/$PLUGINS[$i]
@@ -144,3 +155,4 @@ fi
 if [ -f ~/.priv ]; then
 	echo `tput setaf 1`PRIVATE MODE`tput sgr0`
 fi
+# }}}
