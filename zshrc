@@ -82,6 +82,7 @@ setopt	hist_ignore_all_dups	\
 	longlistjobs				\
 	\
 	prompt_subst
+tabs -4
 # }}}
 
 
