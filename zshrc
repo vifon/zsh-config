@@ -47,10 +47,10 @@ WORDCHARS='*?_-.[]~!#$%(){}<>'
 # }}}
 PLUGINS=(\
 	.zplugins/zcolors\
-	.zplugins/zremap.zsh\
+	.zplugins/zremap\
 	.zplugins/zcompletion\
 	.zplugins/zaliases\
-	.zplugins/zscripts.zsh\
+	.zplugins/zscripts\
 	.zplugins/dirmaster\
 	.zplugins/ztodo\
 	.zplugins/zpriv\
