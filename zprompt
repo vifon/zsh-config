@@ -104,50 +104,6 @@ precmd()
 	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
 }
 
-MYKEY='1b:97:f1:43:86:01:00:58:de:85:18:d3:31:07:18:86'
-PERIOD=15
-periodic()
-{
-	if [ -n "$SSH_MARKER" ]; then
-		local SSH_LEN=8
-	else
-		local SSH_LEN=0
-	fi
-	if [ -z "$(pgrep ssh-agent)" ]; then
-		if [ -n "$SSH_AUTH_SOCK" ]; then
-			unset SSH_AUTH_SOCK
-			unset SSH_AGENT_PID
-		fi
-		FCOUNT=$(($FCOUNT + $SSH_LEN))
-		SSH_MARKER=
-	elif [ -z "$SSH_AUTH_SOCK" ]; then
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
-	elif [ -n "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]; then
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$BOLD"SSH"$RESET)"
-	else
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
-	fi
-
-	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-		
-		
-	#if [ -n "$SSH_MARKER" ]; then
-	#	local KEYSTATE=$(ssh-add -l 2> /dev/null | grep "$MYKEY")
-	#	if [ -z "$KEYSTATE" ]; then
-	#		FCOUNT=$(($FCOUNT + ${#SSH_MARKER}))
-	#		FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-	#		SSH_MARKER=
-	#	fi
-	#elif [ -n "$(pgrep ssh-agent)" -a -n "$SSH_MARKER" ]; then
-	#	FCOUNT=$(($FCOUNT + (${#SSH_MARKER} - 8)))
-	#	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-	#	SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
-	#fi
-}
-
 #{{{
 #PS1='\
 #$PSUSER\

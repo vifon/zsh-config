@@ -1,5 +1,13 @@
 # vim: set ft=zsh :
 
+typeset -A altchar
+set -A altchar ${(s..)terminfo[acsc]}
+PR_SET_CHARSET="%{$terminfo[enacs]%}"
+PR_SHIFT_IN="%{$terminfo[smacs]%}"
+PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
+PR_HBAR=${altchar[q]:--}
+PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
+
 priv()
 {
 	if [ ! "$HISTFILE" = "/dev/null" -o -n "$1" ]; then
@@ -46,3 +54,12 @@ privoff()
 }
 
 bindkey -s '^t' 'q priv; cls\n'      # tryb prywatny
+
+if [ -n "$PRIV_MARKER" ]; then
+	priv
+fi
+
+#print -Pn "\e]0;xterm\a"
+if [ -f ~/.priv ]; then
+	echo `tput setaf 1`PRIVATE MODE`tput sgr0`
+fi
