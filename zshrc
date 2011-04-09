@@ -26,6 +26,21 @@ fi
 
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
+PLUGINS=(.zcompletion .zaliases .zscripts.zsh .dirmaster .ztodo .zpriv)
+for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
+	if [ -f ~/$PLUGINS[$i] ]; then
+		. ~/$PLUGINS[$i]
+		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
+			echo "$GREEN$BOLD*$RESET $PLUGINS[$i] loaded"
+		fi
+	else
+		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
+			echo "$RED$BOLD*$RESET $PLUGINS[$i] not loaded"
+		fi
+	fi
+done
+unset i
+
 if [ $TERM = "vt100" -o $TERM = "dumb" ]; then
 	PSFILE=.zpromptlegacy.zsh
 elif [ -z "$PSFILE" ]; then
@@ -86,20 +101,6 @@ setopt	hist_ignore_all_dups	\
 
 
 
-PLUGINS=(.zcompletion .zaliases .zscripts.zsh .dirmaster .ztodo)
-for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
-	if [ -f ~/$PLUGINS[$i] ]; then
-		. ~/$PLUGINS[$i]
-		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-			echo "$GREEN$BOLD*$RESET $PLUGINS[$i] loaded"
-		fi
-	else
-		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-			echo "$RED$BOLD*$RESET $PLUGINS[$i] not loaded"
-		fi
-	fi
-done
-unset i
 
 
 # {{{ Includes

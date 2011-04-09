@@ -119,18 +119,6 @@ man2pdf()
 #}
 #alias acpi='acpi-c'
 
-priv()
-{
-	if [ ! "$HISTFILE" = "/dev/null" -o -n "$1" ]; then
-		HISTFILE=/dev/null
-		#PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%B%~%b%{$reset_color%}& "
-		export PRIV_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($RED$BOLD"PRIV"$RESET)"
-		#RPS1="%B%F{red}${PRIV_MARKER}%F{yellow}${SSH_MARKER}%b%F{reset}"
-	else
-		privoff
-	fi
-}
-
 killwatch()
 {
 	if [ -z "$2" ]; then
@@ -195,40 +183,6 @@ amount()
 	fi
 }
 
-# {{{ priv
-privon()
-{
-	if [ -e ~/.priv ]; then
-		echo "Already in priv-mode!"
-	else
-		cp -v ~/.recently-used.xbel{,1}
-		cp -v ~/.viminfo{,1}
-		cp -v ~/.vim_mru_files{,1}
-		touch ~/.priv
-		priv 1
-		echo "Priv-mode activated"
-	fi
-}
-
-privoff()
-{
-	if [ ! -e ~/.priv ]; then
-		if [ "$HISTFILE" = "$DEF_HISTFILE" ]; then
-			echo "Not in priv-mode!"
-		fi
-	else
-		mv -v ~/.recently-used.xbel{1,}
-		mv -v ~/.viminfo{1,}
-		mv -v ~/.vim_mru_files{1,}
-		rm ~/.priv
-		echo "Priv-mode deactivated"
-	fi
-	HISTFILE=$DEF_HISTFILE
-	#PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%B%~%b%{$reset_color%}%# "
-	PRIV_MARKER=
-	#RPS1="%B%F{red}${PRIV_MARKER}%F{yellow}${SSH_MARKER}%b%F{reset}"
-}
-# }}}
 # {{{ todo
 #todoadd()
 #{

@@ -4,7 +4,6 @@ bindkey '[1;5D' backward-word
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 #bindkey -s '^t' 'q cls\n'            # czyszczenie terminala
-bindkey -s '^t' 'q priv; cls\n'      # tryb prywatny
 #bindkey -s `tput kf1` 'q sudo -k\n'  # odebranie autoryzacji
 bindkey -s `tput kf1` '^uranger\n'
 bindkey -s `tput kf2` '^uacpic\n'
