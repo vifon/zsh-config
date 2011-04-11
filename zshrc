@@ -1,5 +1,4 @@
 # vim: set fdm=marker :
-# {{{ before plugins
 [ -z "$PS1" ] && return
 # Lines configured by zsh-newuser-install
 unsetopt autocd beep
@@ -44,34 +43,10 @@ SAVEHIST=2500
 # }}}
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
-# }}}
-PLUGINS_DIR=~/.zplugins
-PLUGINS=(\
-	zcolors\
-	zremap\
-	zcompletion\
-	zaliases\
-	zscripts\
-	dirmaster\
-	ztodo\
-	zpriv\
-	zSSH\
-	amount
-	)
-# {{{ after plugins
-for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
-	if [ -f $PLUGINS_DIR/$PLUGINS[$i] ]; then
-		. $PLUGINS_DIR/$PLUGINS[$i]
-		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-			echo "$GREEN$BOLD*$RESET $PLUGINS[$i] loaded"
-		fi
-	else
-		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-			echo "$RED$BOLD*$RESET $PLUGINS[$i] not loaded"
-		fi
-	fi
-done
-unset i
+
+if [ -f ~/.zloader ]; then
+	. ~/.zloader
+fi
 
 if [ $TERM = "vt100" -o $TERM = "dumb" ]; then
 	PSFILE=.zpromptlegacy.zsh
@@ -111,6 +86,4 @@ setopt	hist_ignore_all_dups	\
 	longlistjobs				\
 	\
 	prompt_subst
-# }}}
-
 # }}}
