@@ -45,21 +45,23 @@ SAVEHIST=2500
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 # }}}
+PLUGINS_DIR=~/.zplugins
 PLUGINS=(\
-	.zplugins/zcolors\
-	.zplugins/zremap\
-	.zplugins/zcompletion\
-	.zplugins/zaliases\
-	.zplugins/zscripts\
-	.zplugins/dirmaster\
-	.zplugins/ztodo\
-	.zplugins/zpriv\
-	.zplugins/zSSH\
+	zcolors\
+	zremap\
+	zcompletion\
+	zaliases\
+	zscripts\
+	dirmaster\
+	ztodo\
+	zpriv\
+	zSSH\
+	amount
 	)
 # {{{ after plugins
 for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
-	if [ -f ~/$PLUGINS[$i] ]; then
-		. ~/$PLUGINS[$i]
+	if [ -f $PLUGINS_DIR/$PLUGINS[$i] ]; then
+		. $PLUGINS_DIR/$PLUGINS[$i]
 		if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
 			echo "$GREEN$BOLD*$RESET $PLUGINS[$i] loaded"
 		fi
