@@ -1,0 +1,19 @@
+# vim: set ft=zsh :
+
+amount()
+{
+	pmount "$1" 2> /dev/null
+	if [ $? = 0 ]; then
+		echo "$BOLD$GREEN*$RESET $1 mounted"
+		zsh
+		echo "$BOLD$YELLOW*$RESET Unmounting $1..."
+		pumount "$1" 2> /dev/null
+		if [ $? = 0 ]; then
+			echo "$BOLD$GREEN*$RESET $1 unmounted"
+		else
+			echo "$BOLD$RED*$RESET Cannot unmount $1"
+		fi
+	else
+		echo "$BOLD$RED*$RESET Cannot mount $1"
+	fi
+}
