@@ -1,16 +1,16 @@
 # vim: set ft=zsh fdm=marker :
 PLUGINS_DIR=~/.zplugins
-PLUGINS=(\
-	zcolors\
-	zremap\
-	zcompletion\
-	zaliases\
-	zscripts\
-	dirmaster\
-	ztodo\
-	zpriv\
-	zSSH\
-	amount\
+PLUGINS=(
+	zcolors
+	zremap
+	zcompletion
+	zaliases
+	zscripts
+	dirmaster
+	ztodo
+	zpriv
+	zSSH
+	amount
 	)
 # {{{ loader
 for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
