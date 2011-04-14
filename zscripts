@@ -133,9 +133,9 @@ killwatch()
 listcolors()
 {
 	local COLORS
-	COLORS=(RED GREEN YELLOW BLUE MAGENTA CYAN WHITE)
-	for i in {1..7}; do
-		echo $i: `tput setaf $i`$COLORS[$i] `tput bold`$COLORS[$i]`tput sgr0`
+	COLORS=(RED GREEN YELLOW BLUE MAGENTA CYAN GREY WHITE)
+	for i in {1..$#COLORS}; do
+		echo $i: `tput setaf $i`$COLORS[$i] `tput bold`$COLORS[$i]`tput sgr0` `tput setab $i``tput setaf 0`$COLORS[$i]`tput sgr0`
 	done
 }
 
