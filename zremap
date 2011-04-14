@@ -19,7 +19,7 @@ bindkey -s '0' '()OD'
 bindkey -s '`' "\`\`OD"
 bindkey -s '1' "\'\'OD"
 # }}}
-stty -ixon
+#stty -ixon
 
 autoload edit-command-line
 zle -N edit-command-line

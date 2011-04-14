@@ -80,10 +80,10 @@ precmd()
 	if [ -n "$TMUX" ]; then
 		FCOUNT=$(($FCOUNT - 9))
 	fi
-	GIT_PROMPT=$(git branch-current 2> /dev/null)
+	GIT_PROMPT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
 	if [ -n "$GIT_PROMPT" ]; then
 		PSSEP2=":"
-		PSDIR="%{$BLUE$BOLD%}($GIT_PROMPT)%{$RESET%}"
+		PSDIR="%{$BLUE$BOLD%}$GIT_PROMPT%{$RESET%}"
 	else
 		PSSEP2=
 		PSDIR=
