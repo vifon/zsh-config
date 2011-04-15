@@ -20,7 +20,7 @@ alias dvtm='dvtm -m '
 alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
 alias emacs='emacs -nw'
-alias make='colormake'
+#alias make='colormake'
 alias vimname='vim -c :Renamer'
 
 # shortcuts
