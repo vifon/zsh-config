@@ -3,6 +3,9 @@
 # Lines configured by zsh-newuser-install
 unsetopt autocd beep
 bindkey -e
+if [ -d ~/.bin ]; then
+	export PATH=~/.bin:"${PATH}"
+fi
 
 # {{{ Optymalizacja
 # if [ "$PS1" ] ; then
@@ -20,9 +23,6 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
-if [ -f ~/.zremap.zsh ]; then
-	. ~/.zremap.zsh
-fi
 # {{{ HISTORY
 #if [ -n "$SSH_CONNECTION" ]; then
 #		HISTFILE=~/.zhistory_ssh
@@ -63,9 +63,6 @@ export EDITOR="vim"
 export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
-if [ -d ~/.bin ]; then
-	export PATH=~/.bin:"${PATH}"
-fi
 #if [ -d ~/.fpath ]; then
 #	fpath=(~/.fpath $fpath)
 #	autoload -U ~/.fpath/*(:t)
