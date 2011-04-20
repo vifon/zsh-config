@@ -60,13 +60,13 @@ alias ramclean='umount ~/ram && mount ~/ram && echo "$BOLD$GREEN*$RESET ramdisk 
 
 #games
 alias game='gameselect'
-alias minecraft='game m &! ; exit'
+alias minecraft='game m'
 alias minecraft-xray='cd /home/vifon/gry/minecraft/xray; ./minecraft_xray.sh'
 alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
 
 #wine
-foobar2000(){local OLD="$PWD"; cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe; cd "$OLD"}
-mp3tag(){local OLD="$PWD"; cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe; cd "$OLD"}
+foobar2000(){(cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe)}
+mp3tag(){(cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe)}
 alias steam='wine ~/Data/Gry/Steam/Steam.exe'
 
 winevd()
