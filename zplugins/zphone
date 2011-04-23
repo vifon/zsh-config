@@ -7,3 +7,5 @@ NETHACKOPTIONS=noDECgraphics
 
 bindkey -s '5' '^uncmpcpp\n'
 bindkey -s '8' '^umpcp\n'
+
+alias mpcp.pl='(cd ~/Programs/perl/mpcp/; ./mpcp.pl)'

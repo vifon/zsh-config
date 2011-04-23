@@ -83,7 +83,13 @@ precmd()
 	GIT_PROMPT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
 	if [ -n "$GIT_PROMPT" ]; then
 		PSSEP2=":"
-		PSDIR="%{$BLUE$BOLD%}$GIT_PROMPT%{$RESET%}"
+		local GITCOLOR
+		if git diff --quiet; then
+			GITCOLOR=$BLUE
+		else
+			GITCOLOR=$RED
+		fi
+		PSDIR="%{$GITCOLOR$BOLD%}$GIT_PROMPT%{$RESET%}"
 	else
 		PSSEP2=
 		PSDIR=
