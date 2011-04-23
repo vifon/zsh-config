@@ -80,16 +80,16 @@ precmd()
 	if [ -n "$TMUX" ]; then
 		FCOUNT=$(($FCOUNT - 9))
 	fi
-	GIT_PROMPT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
+	GIT_PROMPT=$(git branch --no-color 2> /dev/null | grep '\*')
 	if [ -n "$GIT_PROMPT" ]; then
 		PSSEP2=":"
 		local GITCOLOR
-		if git diff --quiet; then
+		if git diff-index HEAD --quiet; then
 			GITCOLOR=$BLUE
 		else
 			GITCOLOR=$RED
 		fi
-		PSDIR="%{$GITCOLOR$BOLD%}$GIT_PROMPT%{$RESET%}"
+		PSDIR="%{$GITCOLOR$BOLD%}($GIT_PROMPT[3,$])%{$RESET%}"
 	else
 		PSSEP2=
 		PSDIR=
