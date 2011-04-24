@@ -84,7 +84,7 @@ precmd()
 	if [ -n "$GIT_PROMPT" ]; then
 		PSSEP2=":"
 		local GITCOLOR
-		if git diff-index HEAD --quiet; then
+		if git diff HEAD --quiet; then
 			GITCOLOR=$BLUE
 		else
 			GITCOLOR=$RED
