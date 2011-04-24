@@ -1,6 +1,6 @@
 # vim: set ft=zsh :
 
-if command -v pmount &> /dev/null; then else
+if ! command -v pmount &> /dev/null; then
 	return 1
 fi
 

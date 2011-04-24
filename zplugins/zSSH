@@ -1,6 +1,6 @@
 # vim: set ft=zsh fdm=marker :
 
-if command -v ssh-attach.sh &> /dev/null; then else
+if ! command -v ssh-attach.sh &> /dev/null; then
 	return 1
 fi
 
@@ -87,7 +87,7 @@ sshadetach()
 	SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
 }
 
-if command -v pamusb-check &> /dev/null; then else
+if ! command -v pamusb-check &> /dev/null; then
 	return
 fi
 
