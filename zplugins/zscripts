@@ -166,6 +166,17 @@ xephyr()
 	openbox 2> /dev/null &
 }
 
+screencapture()
+{
+	if [ -z "$2" -a -z "$3" ]; then
+		2="-s"
+		3="wsxga"
+	fi
+	local FILE=$1
+	shift
+	ffmpeg -f x11grab -y -r 60 $@ -i :0.0 -async 0 -vsync 0 -sameq "$FILE"
+}
+
 # {{{ todo
 #todoadd()
 #{
