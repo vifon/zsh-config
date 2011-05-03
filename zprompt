@@ -28,7 +28,7 @@ jobcount()
 {
 	local JOBC=$(jobs | grep -v '(pwd now:' | wc -l)
 	if [[ "$JOBC" != "0" ]]; then
-		echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$JOBC$RESET)"
+		echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}%j$RESET)"
 	fi
 }
 
@@ -84,7 +84,7 @@ precmd()
 	if [ -n "$GIT_PROMPT" ]; then
 		PSSEP2=":"
 		local GITCOLOR
-		if git diff HEAD --quiet; then
+		if git diff-files --quiet; then
 			GITCOLOR=$BLUE
 		else
 			GITCOLOR=$RED
