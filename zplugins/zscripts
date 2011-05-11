@@ -177,6 +177,17 @@ screencapture()
 	ffmpeg -f x11grab -y -r 60 $@ -i :0.0 -async 0 -vsync 0 -sameq "$FILE"
 }
 
+nuke()
+{
+	local CONFIRM
+	cd ..
+	echo "Are you sure you want to delete \"$OLDPWD\"?"
+	read -s -k CONFIRM
+	if [ "$CONFIRM" = "y" ]; then
+		rm -rf $OLDPWD
+	fi
+}
+
 # {{{ todo
 #todoadd()
 #{

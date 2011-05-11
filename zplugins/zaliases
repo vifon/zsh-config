@@ -90,14 +90,3 @@ seturgent()
 	sleep 0.1
 	print -Pn "\e]0;xterm\a"
 }
-
-selfdestruct()
-{
-	local CONFIRM
-	cd ..
-	echo "Are you sure you want to delete \"$OLDPWD\"?"
-	read -s -k CONFIRM
-	if [ "$CONFIRM" = "y" ]; then
-		rm -rf $OLDPWD
-	fi
-}
