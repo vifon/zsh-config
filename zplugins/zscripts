@@ -180,11 +180,12 @@ screencapture()
 nuke()
 {
 	local CONFIRM
-	cd ..
-	echo "Are you sure you want to delete \"$OLDPWD\"?"
+	echo -n "Are you sure you want to delete \"$RED$BOLD$PWD$RESET\"?"
 	read -s -k CONFIRM
 	if [ "$CONFIRM" = "y" ]; then
-		rm -rf $OLDPWD
+		cd ..
+		echo
+		rm -rfv $OLDPWD
 	fi
 }
 
