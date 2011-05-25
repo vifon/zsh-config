@@ -160,7 +160,7 @@ xephyr()
 	if [ -z "$2" ]; then
 		2=800x600
 	fi
-	Xephyr :$1 -screen $2 2> /dev/null &
+	Xephyr :$1 -screen $2 -reset -terminate 2> /dev/null &
 	sleep 1
 	export DISPLAY=:$1
 	openbox 2> /dev/null &

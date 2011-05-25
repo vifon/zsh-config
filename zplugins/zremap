@@ -5,10 +5,12 @@ bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 #bindkey -s '^t' 'q cls\n'            # czyszczenie terminala
 #bindkey -s `tput kf1` 'q sudo -k\n'  # odebranie autoryzacji
-bindkey -s `tput kf1` '^uranger\n'
-bindkey -s `tput kf2` '^uacpic\n'
-bindkey -s `tput kf3` 'qdload\n'
-bindkey -s `tput kf4` 'qdsave\n'
+if [ ! $TERM = "eterm-color" ]; then
+	bindkey -s `tput kf1` '^uranger\n'
+	bindkey -s `tput kf2` '^uacpic\n'
+	bindkey -s `tput kf3` 'qdload\n'
+	bindkey -s `tput kf4` 'qdsave\n'
+fi
 bindkey -s 'w' '^uncmpcpp\n'          # MPD client
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'

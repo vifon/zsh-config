@@ -60,7 +60,7 @@ fi
 
 # {{{ ENV VARS AND OPTIONS
 export EDITOR="vim"
-export BROWSER="firefox"
+export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
 #if [ -d ~/.fpath ]; then

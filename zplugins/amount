@@ -9,6 +9,7 @@ amount()
 	pmount "$1" 2> /dev/null
 	if [ $? = 0 ]; then
 		echo "$BOLD$GREEN*$RESET $1 mounted"
+		cd $(echo $1 | sed 's#/dev/#/media/#')
 		zsh
 		echo "$BOLD$YELLOW*$RESET Unmounting $1..."
 		pumount "$1" 2> /dev/null
@@ -17,6 +18,7 @@ amount()
 		else
 			echo "$BOLD$RED*$RESET Cannot unmount $1"
 		fi
+		cd $OLDPWD
 	else
 		echo "$BOLD$RED*$RESET Cannot mount $1"
 	fi
