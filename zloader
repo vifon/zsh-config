@@ -11,6 +11,7 @@ PLUGINS=(
 	zpriv
 	zSSH
 	amount
+	zXephyr
 	)
 # {{{ loader
 for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do

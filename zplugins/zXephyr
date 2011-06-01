@@ -1,0 +1,20 @@
+# vim: set ft=zsh :
+
+if ! command -v Xephyr &> /dev/null; then
+	return 1
+fi
+
+xephyr()
+{
+	if [ -z "$1" ]; then
+		1=1
+	fi
+	if [ -z "$2" ]; then
+		2=800x600
+	fi
+	Xephyr :$1 -screen $2 -reset -terminate 2> /dev/null &
+	sleep 1
+	DISPLAY=:$1 openbox 2> /dev/null &
+	DISPLAY=:$1 zsh
+	pkill "openbox"
+}

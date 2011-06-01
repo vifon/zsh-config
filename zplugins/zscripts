@@ -5,7 +5,12 @@ mkcd()
 	cd "$*"
 }
 
-tree()
+ramclean()
+{
+	umount $@ ~/ram && mount ~/ram && echo "$BOLD$GREEN*$RESET ramdisk cleaned"
+}
+
+oldtree()
 {
 	ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
@@ -150,20 +155,6 @@ listargs()
 cutline()
 {
 	head -n $2 $1 | tail -n 1
-}
-
-xephyr()
-{
-	if [ -z "$1" ]; then
-		1=1
-	fi
-	if [ -z "$2" ]; then
-		2=800x600
-	fi
-	Xephyr :$1 -screen $2 -reset -terminate 2> /dev/null &
-	sleep 1
-	export DISPLAY=:$1
-	openbox 2> /dev/null &
 }
 
 screencapture()
