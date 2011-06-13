@@ -22,6 +22,7 @@ alias qemu='qemu -enable-kvm'
 alias emacs='emacs -nw'
 #alias make='colormake'
 alias vimname='vim -c :Renamer'
+alias emacsc='emacsclient'
 
 # shortcuts
 alias cls='clear'
@@ -62,6 +63,7 @@ alias game='gameselect'
 alias minecraft='game m'
 alias minecraft-xray='cd /home/vifon/gry/minecraft/xray; ./minecraft_xray.sh'
 alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
+alias xcpdf='wine ~/.wine/drive_c/Program\ Files/Tracker\ Software/PDF\ Viewer/PDFXCview.exe'
 
 #wine
 foobar2000(){(cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe)}

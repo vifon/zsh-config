@@ -3,9 +3,9 @@
 # Lines configured by zsh-newuser-install
 unsetopt autocd beep
 bindkey -e
-if [ -d ~/.bin ]; then
-	export PATH=~/.bin:"${PATH}"
-fi
+#if [ -d ~/.bin ]; then
+#	export PATH=~/.bin:"${PATH}"
+#fi
 
 # {{{ Optymalizacja
 # if [ "$PS1" ] ; then
@@ -50,6 +50,9 @@ fi
 
 if [ $TERM = "vt100" -o $TERM = "dumb" ]; then
 	PSFILE=.zpromptlegacy.zsh
+	HISTFILE=/dev/null
+elif [ $TERM = "eterm-color" ]; then
+	HISTFILE=/dev/null
 elif [ -z "$PSFILE" ]; then
 	PSFILE=.zprompt
 	#PSFILE=.exprompt.zsh
