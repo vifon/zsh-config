@@ -5,11 +5,6 @@ mkcd()
 	cd "$*"
 }
 
-ramclean()
-{
-	umount $@ ~/ram && mount ~/ram && echo "$BOLD$GREEN*$RESET ramdisk cleaned"
-}
-
 oldtree()
 {
 	ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
