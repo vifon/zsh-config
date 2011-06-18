@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'

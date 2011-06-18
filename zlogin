@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 case "$TTY" in
 	/dev/tty1)
 		if tmux has-session -t tty1; then tmux attach -t tty1; else tmux new-session -s tty1; fi

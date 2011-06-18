@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # vim: set fdm=marker ft=zsh :
 typeset -A altchar
 set -A altchar ${(s..)terminfo[acsc]}

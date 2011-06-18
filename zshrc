@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # vim: set fdm=marker :
 [ -z "$PS1" ] && return
 # Lines configured by zsh-newuser-install
@@ -56,6 +57,10 @@ elif [ -z "$PSFILE" ]; then
 fi
 if [ -f ~/$PSFILE ]; then
 	. ~/$PSFILE
+fi
+
+if [ $TERM = "eterm-color" ]; then
+	HISTFILE=/dev/null
 fi
 
 # {{{ ENV VARS AND OPTIONS

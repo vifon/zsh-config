@@ -1,4 +1,6 @@
+# -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
+
 bindkey '[1;5C' forward-word
 bindkey '[1;5D' backward-word
 bindkey '^p' history-beginning-search-backward

@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
 if ! command -v pmount &> /dev/null; then

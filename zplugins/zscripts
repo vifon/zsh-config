@@ -1,4 +1,6 @@
+# -*- mode: shell-script -*-
 # vim: set ft=zsh fdm=marker :
+
 mkcd()
 {
 	mkdir -p "$*"
