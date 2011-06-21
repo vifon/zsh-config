@@ -64,7 +64,8 @@ if [ $TERM = "eterm-color" ]; then
 fi
 
 # {{{ ENV VARS AND OPTIONS
-export EDITOR="vim"
+export EDITOR="emacsclient"
+export ALTERNATE_EDITOR="vim"
 export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
