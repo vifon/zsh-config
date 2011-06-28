@@ -23,7 +23,7 @@ alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
 #alias emacs='emacs -nw'
 alias emacs='emacsclient'
-alias emacsd='\emacs --daemon'
+#alias emacsd='\emacs --daemon'
 #alias make='colormake'
 alias vimname='vim -c :Renamer'
 
