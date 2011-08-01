@@ -4,9 +4,9 @@
 # Lines configured by zsh-newuser-install
 unsetopt autocd beep
 bindkey -e
-#if [ -d ~/.bin ]; then
-#	export PATH=~/.bin:"${PATH}"
-#fi
+if [ -d ~/.bin -a -z "`echo $PATH | grep '/home/vifon/\.bin'`" ]; then
+	export PATH=~/.bin:"${PATH}"
+fi
 
 # {{{ Optymalizacja
 # if [ "$PS1" ] ; then

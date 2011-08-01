@@ -12,21 +12,21 @@ oldtree()
 	ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
-moc() # {{{
-{
-	mocp $*
-	if [ -z $1 ]; then
-		clear
-		if [ -n "$STY" ]; then
-			screen -X title "zsh" 
-		elif [ -z "$TMUX" ]; then
-			echo -en "]2;Terminal"
-		fi
-	fi
-}
-if [ -n "$PHONE" ]; then
-	alias moc='moc --config ~/.moc/phone_config'
-fi
+#moc() # {{{
+#{
+#	mocp $*
+#	if [ -z $1 ]; then
+#		clear
+#		if [ -n "$STY" ]; then
+#			screen -X title "zsh" 
+#		elif [ -z "$TMUX" ]; then
+#			echo -en "]2;Terminal"
+#		fi
+#	fi
+#}
+#if [ -n "$PHONE" ]; then
+#	alias moc='moc --config ~/.moc/phone_config'
+#fi
 # }}}
 
 vbeep()
