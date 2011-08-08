@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
-if [ -x /usr/bin/dircolors ]; then
+if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
@@ -15,6 +15,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 #alias ack='ack-grep'
+
+alias g=git
+alias pd=perldoc
 
 # auto-config
 alias links2='links2 -anonymous'
@@ -51,6 +54,8 @@ alias curdate='date +%y.%m.%d'
 alias zshpath='PATH=$PATH'
 #alias eix='apt-cache search'
 #alias eix='aptitude search'
+alias sudo='A=`alias` sudo '
+alias pacman=pacman-color
 alias apt='aptitude show'
 alias emerge='sudo aptitude install'
 alias loic='wine =LOIC.exe 2> /dev/null'
@@ -67,6 +72,7 @@ alias minecraft-xray='cd /home/vifon/gry/minecraft/xray; ./minecraft_xray.sh'
 alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
 
 #wine
+alias pdfxchange='wine ~/.wine/drive_c/Program\ Files/Tracker\ Software/PDF\ Viewer/PDFXCview.exe'
 foobar2000(){(cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe)}
 mp3tag(){(cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe)}
 alias steam='wine ~/Data/Gry/Steam/Steam.exe'
