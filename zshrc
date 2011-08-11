@@ -64,10 +64,11 @@ if [ $TERM = "eterm-color" ]; then
 fi
 
 # {{{ ENV VARS AND OPTIONS
-export EDITOR="emacsclient"
+#export EDITOR="emacsclient"
+export EDITOR="vim"
 export ALTERNATE_EDITOR="vim"
 export BROWSER="opera"
-export PAGER="less"
+export PAGER="most"
 export DROPBOXID=139016
 #if [ -d ~/.fpath ]; then
 #	fpath=(~/.fpath $fpath)

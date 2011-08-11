@@ -3,6 +3,9 @@
 
 bindkey '[1;5C' forward-word
 bindkey '[1;5D' backward-word
+bindkey '[7~' beginning-of-line
+bindkey '[8~' end-of-line
+bindkey '[3~' delete-char
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 #bindkey -s '^t' 'q cls\n'            # czyszczenie terminala

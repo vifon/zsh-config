@@ -1,8 +1,8 @@
 # -*- mode: shell-script -*-
 case "$TTY" in
-	/dev/tty1)
-		if tmux has-session -t tty1; then tmux attach -t tty1; else tmux new-session -s tty1; fi
-		;;
+	#/dev/tty1)
+		#if tmux has-session -t tty1; then tmux attach -t tty1; else tmux new-session -s tty1; fi
+		#;;
 	#/dev/tty3)
 	#	mutt
 	#	if [ "`setleds < /dev/tty3 | sed -n -e '2s/.*NumLock \([^\.]*\).*/\1/' -e '2p'`" = "wł" ]; then
