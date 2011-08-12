@@ -11,18 +11,11 @@ PR_LLCORNER=${altchar[m]:--}
 PR_LRCORNER=${altchar[j]:--}
 PR_URCORNER=${altchar[k]:--}
 
-#[?17;0;127c
-#PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%B%~%b%{$reset_color%}%# "
-#PS1="%{$(tput setaf 1)%}%n%{$(tput sgr0)%}@%{$(tput setaf 2)%}%m%{$(tput sgr0)%}:%{$(tput setaf 4)%}%{$(tput bold)%}%~%{$(tput sgr0)%}%# "
 PSUSERCOLOR=$RED
-#PSUSER="%{${RED}%}%n%{${RESET}%}"
 PSUSER="%n"
 PSSEP1='@'
 PSHOSTCOLOR=$GREEN
-#PSHOST="%{${GREEN}%}%m%{${RESET}%}"
 PSHOST="%m"
-#PSSEP2=':'
-#PSDIR="%{${BLUE}${BOLD}%}%~%{${RESET}%}"
 PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
 
 jobcount()
@@ -66,8 +59,6 @@ $PSHOST\
 $PSSEP2\
 $PSDIR\
 %# '
-
-#RPS1='$?'
 
 RPS1='%(?..[%{$RED$BOLD%}$?%{$RESET%}])(%{$BLUE$BOLD%}%~%{$RESET%})$PR_SHIFT_IN$PR_LRCORNER$PR_SHIFT_OUT'
 
