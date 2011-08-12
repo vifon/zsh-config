@@ -86,7 +86,7 @@ zstyle ':vcs_info:*' unstagedstr   "%{$RED%}"
 zstyle ':vcs_info:*' stagedstr     "%{$GREEN%}"
                                    #<branch><changes><unstaged>
 zstyle ':vcs_info:*' formats       "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%}"
-zstyle ':vcs_info:*' actionformats "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%} (%a)"
+zstyle ':vcs_info:*' actionformats "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%} %{$BLACK$ON_YELLOW%}(%a)%{$RESET%}"
 
 
 precmd()
