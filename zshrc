@@ -45,6 +45,20 @@ SAVEHIST=2500
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 
+PLUGINS_DIR=~/.zplugins
+PLUGINS=(
+	zcolors
+	zremap
+	zcompletion
+	zaliases
+	zscripts
+	dirmaster
+	ztodo
+	zpriv
+	zSSH
+	amount
+	zXephyr
+	)
 if [ -f ~/.zloader ]; then
 	. ~/.zloader
 fi

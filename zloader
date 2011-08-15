@@ -1,35 +1,19 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh fdm=marker :
-PLUGINS_DIR=~/.zplugins
-PLUGINS=(
-	zcolors
-	zremap
-	zcompletion
-	zaliases
-	zscripts
-	dirmaster
-	ztodo
-	zpriv
-	zSSH
-	amount
-	zXephyr
-	)
-# {{{ loader
-for (( i = 1 ; i <= ${#PLUGINS[@]} ; i++ )); do
-	if [ -f $PLUGINS_DIR/$PLUGINS[$i] ]; then
-		. $PLUGINS_DIR/$PLUGINS[$i]
+for plugin in $PLUGINS; do
+	if [ -f $PLUGINS_DIR/$plugin ]; then
+		. $PLUGINS_DIR/$plugin
 		EXITCODE=$?
 		if [ "$EXITCODE" = "0" ]; then
 			if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-				echo "$GREEN$BOLD*$RESET $PLUGINS[$i] loaded"
+				echo "$GREEN$BOLD*$RESET $plugin loaded"
 			fi
 		else
-			echo "$RED$BOLD*$RESET $PLUGINS[$i] could not be loaded, error code: $EXITCODE"
+			echo "$RED$BOLD*$RESET $plugin could not be loaded, error code: $EXITCODE"
 		fi
 	else
-		echo "$RED$BOLD*$RESET $PLUGINS[$i] not loaded - no such plugin"
+		echo "$RED$BOLD*$RESET $plugin not loaded - no such plugin"
 	fi
 done
-unset i
+unset plugin
 unset EXITCODE
-# }}}
