@@ -97,9 +97,11 @@ seturgent()
 	print -Pn "\e]0;xterm\a"
 }
 
-#alias pacman=pacman-color
+alias pacman=pacman-color
 alias y="yaourt"
 alias yy='yaourt --noconfirm'
-alias vsuspend="  sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && echo mem  | tee /sys/power/state && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
-alias vhibernate="sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && echo disk | tee /sys/power/state && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
+#alias vsuspend="  sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && hibernate-ram  && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
+#alias vhibernate="sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && hibernate-disk && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
+alias vsuspend="  sudo hibernate-ram  && sudo -k &! exit"
+alias vhibernate="sudo hibernate-disk && sudo -k &! exit"
 #alias gee=geeqie
