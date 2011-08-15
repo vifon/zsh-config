@@ -105,3 +105,24 @@ alias yy='yaourt --noconfirm'
 alias vsuspend="  sudo hibernate-ram  && sudo -k &! exit"
 alias vhibernate="sudo hibernate-disk && sudo -k &! exit"
 #alias gee=geeqie
+
+
+# ACOC
+ACOC=(
+	df
+	ifconfig
+	lsmod
+	ping
+	ps
+	nmap
+	top
+	uptime
+	)
+# {{{
+{
+	local i
+	for i in $ACOC; do
+		alias $i="acoc $i"
+	done
+}
+# }}}
