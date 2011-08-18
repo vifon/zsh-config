@@ -114,9 +114,13 @@ seturgent()
 	print -Pn "\e]0;xterm\a"
 }
 
+alias apache='sudo /etc/rc.d/httpd'
+
 alias pacman=pacman-color
 alias y="yaourt"
 alias yy='yaourt --noconfirm'
+alias orphan='yaourt -Qqdt'
+alias orphan-clean='yaourt -Rsun `orphan`'
 #alias vsuspend="  sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && hibernate-ram  && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
 #alias vhibernate="sudo sh -c 'xscreensaver-command -lock &> /dev/null && sleep 1 && hibernate-disk && xscreensaver-command -deactivate &> /dev/null' && sudo -k &! exit"
 alias vsuspend="  sudo hibernate-ram  && sudo -k &! exit"
