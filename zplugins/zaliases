@@ -25,7 +25,24 @@ alias dvtm='dvtm -m '
 alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
 #alias emacs='emacs -nw'
-alias emacs='emacsclient'
+if [ "$UID" != "0" ]; then  # not root
+	alias emacs='emacsclient'
+    dired()
+    {
+        if [ -z "$1" ]; then
+            1=.
+        fi
+        emacsclient -t $1
+    }
+else    # root
+    dired()
+    {
+        if [ -z "$1" ]; then
+            1=.
+        fi
+        emacs -nw $1
+    }
+fi
 #alias emacsd='\emacs --daemon'
 #alias make='colormake'
 alias vimname='vim -c :Renamer'
