@@ -25,6 +25,31 @@ if [ -n "$SSH_CONNECTION" ]; then
 		if [ -f ~/.zphone ]; then
 			. ~/.zphone
 		fi
+	else
+		opera()
+		{
+			echo -e 'Opera is not free software.\nLaunching Emacs instead.' | cowsay -n -f rms 
+			echo -e '\n[1;31mSTALLMAN ERROR![0m\nPress Enter'
+			read
+			/usr/bin/emacs -nw
+		}
+#		PSHOSTCOLOR="$BOLD$YELLOW"
+#		PSHOST="FBI#44852"
+#		PSUSERCOLOR="$BOLD$CYAN"
+#		PSUSER="john"
+#		PS1='\
+#%{$PSUSERCOLOR%}\
+#$PSUSER\
+#%{$RESET%}\
+#$PSSEP1\
+#%{$PSHOSTCOLOR%}\
+#$PSHOST\
+#%{$RESET%}\
+#$PSSEP2\
+#:%~\
+#%# '
+#		RPS1=""
+
 	fi
 fi 
 
