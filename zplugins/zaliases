@@ -20,6 +20,7 @@ alias g=git
 alias pd=perldoc
 
 # auto-config
+alias gdb='gdb -q'
 alias links2='links2 -anonymous'
 alias dvtm='dvtm -m '
 alias byobu='byobu -c ~/.byobu/profile'
@@ -139,6 +140,7 @@ ACOC=(
 	nmap
 	top
 	uptime
+	diff
 	)
 # {{{
 {
