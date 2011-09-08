@@ -59,6 +59,7 @@ PLUGINS=(
 	zSSH
 	amount
 	zXephyr
+	zmancolor
 	)
 if [ -f ~/.zloader ]; then
 	. ~/.zloader
@@ -83,7 +84,7 @@ fi
 export EDITOR="vim"
 export ALTERNATE_EDITOR="vim"
 export BROWSER="opera"
-export PAGER="most"
+export PAGER="less"
 export DROPBOXID=139016
 #if [ -d ~/.fpath ]; then
 #	fpath=(~/.fpath $fpath)
