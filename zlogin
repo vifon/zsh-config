@@ -53,3 +53,4 @@ if [ -n "$SSH_CONNECTION" ]; then
 	fi
 fi 
 
+source ~/.profile

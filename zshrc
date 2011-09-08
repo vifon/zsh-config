@@ -7,6 +7,7 @@ bindkey -e
 if [ -d ~/.bin -a -z "`echo $PATH | grep '/home/vifon/\.bin'`" ]; then
 	export PATH=~/.bin:"${PATH}"
 fi
+#export PATH=/usr/lib/cw:"${PATH}"
 
 # {{{ Optymalizacja
 # if [ "$PS1" ] ; then

@@ -27,6 +27,7 @@ alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
 #alias emacs='emacs -nw'
 if [ "$UID" != "0" ]; then  # not root
+	alias init='sudo init'
 	alias emacs='emacsclient'
     dired()
     {
@@ -68,7 +69,6 @@ alias scpn='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias von='vbetool dpms on'
 alias voff='vbetool dpms off'
 #alias nethack='screen -c ~/.nscreenrc nethack'
-alias init='sudo init'
 alias curdate='date +%y.%m.%d'
 alias zshpath='PATH=$PATH'
 #alias eix='apt-cache search'
@@ -90,7 +90,7 @@ alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
 
 #wine
 alias pdfxchange='wine ~/.wine/drive_c/Program\ Files/Tracker\ Software/PDF\ Viewer/PDFXCview.exe'
-foobar2000(){(cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe)}
+foobar2000(){(cd ~/.wine/drive_c/Program\ Files\ \(x86\)/foobar2000; wine foobar2000.exe)}
 mp3tag(){(cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe)}
 alias steam='wine ~/Data/Gry/Steam/Steam.exe'
 

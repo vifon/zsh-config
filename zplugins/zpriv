@@ -26,7 +26,7 @@ privon()
 	if [ -e ~/.priv ]; then
 		echo "Already in priv-mode!"
 	else
-		cp -v ~/.recently-used.xbel{,1}
+		#cp -v ~/.recently-used.xbel{,1}
 		cp -v ~/.viminfo{,1}
 		cp -v ~/.vim_mru_files{,1}
 		touch ~/.priv
@@ -42,7 +42,7 @@ privoff()
 			echo "Not in priv-mode!"
 		fi
 	else
-		mv -v ~/.recently-used.xbel{1,}
+		#mv -v ~/.recently-used.xbel{1,}
 		mv -v ~/.viminfo{1,}
 		mv -v ~/.vim_mru_files{1,}
 		rm ~/.priv
