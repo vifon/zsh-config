@@ -181,6 +181,14 @@ nuke()
 	fi
 }
 
+cbuild()
+{
+	mkdir build
+	cd build
+	cmake $@ ..
+	make
+}
+
 # {{{ todo
 #todoadd()
 #{
