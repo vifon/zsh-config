@@ -3,8 +3,8 @@
 
 mkcd()
 {
-	mkdir -p "$*"
-	cd "$*"
+	mkdir -p "$@"
+	cd "$@"
 }
 
 oldtree()
@@ -183,8 +183,13 @@ nuke()
 
 cbuild()
 {
-	mkdir build
-	cd build
+	if [ -r CMakeLists.txt ]; then
+		mkdir -p build
+		cd build
+	elif [ "$(basename $PWD)" != "build" ]; then
+		echo "No CMake detected" >&2
+		return 1
+	fi
 	cmake $@ ..
 	make
 }
