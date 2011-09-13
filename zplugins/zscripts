@@ -173,7 +173,11 @@ nuke()
 	if [ "$CONFIRM" = "y" ]; then
 		cd ..
 		echo
-		rm -rfv $OLDPWD
+		if [ "$1" = "-v" ]; then
+			rm -rfv $OLDPWD
+		else
+			rm -rf $OLDPWD
+		fi
 	fi
 }
 

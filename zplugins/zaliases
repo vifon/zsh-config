@@ -4,6 +4,7 @@
 if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias lh='ls -lh'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -13,7 +14,7 @@ if command -v dircolors &> /dev/null; then
 fi
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls'
 #alias ack='ack-grep'
 
 alias g=git
@@ -28,7 +29,7 @@ alias qemu='qemu -enable-kvm'
 #alias emacs='emacs -nw'
 if [ "$UID" != "0" ]; then  # not root
 	alias init='sudo init'
-	alias emacs='emacsclient'
+	alias emacs='emacsclient -c'
     dired()
     {
         if [ -z "$1" ]; then
