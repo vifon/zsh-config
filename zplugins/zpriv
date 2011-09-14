@@ -54,8 +54,6 @@ privoff()
 	#RPS1="%B%F{red}${PRIV_MARKER}%F{yellow}${SSH_MARKER}%b%F{reset}"
 }
 
-bindkey -s '^t' 'q priv; cls\n'      # tryb prywatny
-
 if [ -n "$PRIV_MARKER" ]; then
 	priv
 fi
