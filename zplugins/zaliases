@@ -37,6 +37,10 @@ if [ "$UID" != "0" ]; then  # not root
         fi
         emacsclient -t $1
     }
+	valgrind()
+	{
+		/usr/bin/valgrind $@ 2>&1 | /home/vifon/.bin/valgrind-color
+	}
 else    # root
     dired()
     {
@@ -48,6 +52,7 @@ else    # root
 fi
 #alias emacsd='\emacs --daemon'
 #alias make='colormake'
+alias remake='make clean all'
 alias vimname='vim -c :Renamer'
 
 # shortcuts
