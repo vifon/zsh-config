@@ -11,7 +11,7 @@ bindkey '^n' history-beginning-search-forward
 #bindkey -s '^t' 'q cls\n'            # czyszczenie terminala
 #bindkey -s `tput kf1` 'q sudo -k\n'  # odebranie autoryzacji
 if [ ! $TERM = "eterm-color" ]; then
-	bindkey -s `tput kf1` '^uranger\n'
+	bindkey -s `tput kf1` '^uxset dpms force off\n'
 	bindkey -s `tput kf2` '^uacpic\n'
 	bindkey -s `tput kf3` 'qdload\n'
 	bindkey -s `tput kf4` 'qdsave\n'

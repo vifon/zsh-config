@@ -12,99 +12,6 @@ oldtree()
 	ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
-#moc() # {{{
-#{
-#	mocp $*
-#	if [ -z $1 ]; then
-#		clear
-#		if [ -n "$STY" ]; then
-#			screen -X title "zsh" 
-#		elif [ -z "$TMUX" ]; then
-#			echo -en "]2;Terminal"
-#		fi
-#	fi
-#}
-#if [ -n "$PHONE" ]; then
-#	alias moc='moc --config ~/.moc/phone_config'
-#fi
-# }}}
-
-vbeep()
-{
-	yes "$*" > /dev/audio
-}
-
-# {{{ cp_p
-#cp_p()
-#{
-#	pv -per $1 > $2
-#}
-
-#cp_p()
-#{
-#   strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
-#      | awk '{
-#        count += $NF
-#            if (count % 10 == 0) {
-#               percent = count / total_size * 100
-#               printf "%3d%% [", percent
-#               for (i=0;i<=percent;i++)
-#                  printf "="
-#               printf ">"
-#               for (i=percent;i<100;i++)
-#                  printf " "
-#               printf "]\r"
-#            }
-#         }
-#         END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
-#}
-# }}}
-
-# {{{ WIN-BOOT
-#win-boot()
-#{
-#	sudo grub-reboot "Microsoft Windows XP Professional (on /dev/sda3)"
-#	sudo init 6
-#}
-# }}}
-# {{{ connect
-#connect()
-#{
-#	wicd-cli --wireless --scan
-#	wicd-cli --wireless -n `wicd-cli --wireless --list-networks | grep -E "\bVifon's Network\b|\bKFC\b|\bWEiTI\b" | sed 's/\([0-9]*\).*/\1/'` -c
-#}
-# }}}
-
-# {{{ CPU
-#cpu()
-#{
-#	case "$1" in
-#		b)
-#			cpufreq-selector -c 0 -g powersave
-#			cpufreq-selector -c 1 -g powersave
-#			echo CPU governor set to: POWERSAVE
-#			;;
-#		d)
-#			cpufreq-selector -c 0 -g ondemand
-#			cpufreq-selector -c 1 -g ondemand
-#			echo CPU governor set to: ONDEMAND
-#			;;
-#		p)
-#			cpufreq-selector -c 0 -g performance
-#			cpufreq-selector -c 1 -g performance
-#			echo CPU governor set to: PERFORMANCE
-#			;;
-#		*)
-#			#cat /proc/cpuinfo | grep -m 1 MHz | sed 's/.*: \(.*\)\..*/\1 MHz/'
-#			echo current governor: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor | awk '{print toupper($1)}'`
-#			echo frequencies:
-#			cat /proc/cpuinfo | grep MHz | sed 's/.*: \(.*\)\..*/		\1 MHz/'
-#			;;
-#	esac
-#}
-#compctl -k "(d b p)" cpu
-# }}}
-
 wprefix()
 {
 	export WINEPREFIX="$HOME/$1/"
@@ -114,12 +21,6 @@ man2pdf()
 {
 	man -t $1 | ps2pdf - > $2
 }
-
-#acpic()
-#{
-#	acpi | sed "s#\\([0-9]\\{1,3\\}%\\)\\([^0-9]\+\\)\\([0-9]*[^:]:[0-9]\\{2\\}\\):#`tput setaf 1``tput bold`\\1`tput sgr0`\\2`tput setaf 6``tput bold`\\3`tput sgr0`:#"
-#}
-#alias acpi='acpi-c'
 
 killwatch()
 {
@@ -147,11 +48,6 @@ listargs()
 	for i in {1..$#}; do
 		echo $argv[i]
 	done
-}
-
-cutline()
-{
-	head -n $2 $1 | tail -n 1
 }
 
 screencapture()
@@ -193,22 +89,3 @@ cbuild()
 	cmake $@ ..
 	make
 }
-
-# {{{ todo
-#todoadd()
-#{
-#	cat >> ~/todo
-#	sed -i '/^$/d' ~/todo
-#	sort ~/todo -o ~/todo
-#}
-#todols()
-#{
-#	cat ~/todo
-#}
-#todorm()
-#{
-#	cat -n ~/todo
-#	echo ------------------------------
-#	sed -i "`cat`" ~/todo
-#}
-# }}}
