@@ -39,7 +39,8 @@ if [ "$UID" != "0" ]; then  # not root
     }
 	valgrind()
 	{
-		/usr/bin/valgrind $@ 2>&1 | /home/vifon/.bin/valgrind-color
+		/home/vifon/.bin/valgrind-color < /home/vifon/pipe &
+		/usr/bin/valgrind $@ 2> /home/vifon/pipe
 	}
 else    # root
     dired()
