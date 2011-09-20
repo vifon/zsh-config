@@ -89,3 +89,15 @@ cbuild()
 	cmake $@ ..
 	make
 }
+
+archrepo()
+{
+    local PKGS
+    while [ -n "$1" ]; do
+        PKGS=($PKGS $(pkgfile $1))
+        shift
+    done
+    if [ -n "$PKGS" ]; then
+	    yaourt -Si $PKGS
+    fi
+}
