@@ -150,6 +150,8 @@ ACOC=(
 	top
 	uptime
 	diff
+	dmesg
+	whereis
 	)
 # {{{
 {
