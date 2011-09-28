@@ -18,6 +18,8 @@ alias l='ls'
 #alias ack='ack-grep'
 
 alias g=git
+alias gg='git g'
+alias ggg='git gg'
 alias pd=perldoc
 
 # auto-config
