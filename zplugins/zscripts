@@ -79,14 +79,18 @@ nuke()
 
 cbuild()
 {
+	echo "${BOLD}Build: $BLUE$BOLD$1$RESET"
+	echo "----------\n"
 	if [ -r CMakeLists.txt ]; then
 		mkdir -p build
 		cd build
-	elif [ "$(basename $PWD)" != "build" ]; then
-		echo "No CMake detected" >&2
-		return 1
 	fi
-	cmake $@ ..
+	local ARG=$1
+	if [ -z "$2" ]; then
+		2=".."
+	fi
+	shift
+	cmake -D cfg=$ARG $@
 	make
 }
 
