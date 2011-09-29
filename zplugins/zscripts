@@ -79,7 +79,7 @@ nuke()
 
 cbuild()
 {
-	echo "${BOLD}Build: $BLUE$BOLD$1$RESET"
+	echo "${BOLD}Build: $BLUE$BOLD$1:u$RESET"
 	echo "----------\n"
 	if [ -r CMakeLists.txt ]; then
 		mkdir -p build
@@ -90,8 +90,7 @@ cbuild()
 		2=".."
 	fi
 	shift
-	cmake -D cfg=$ARG $@
-	make
+	cmake -D CMAKE_BUILD_TYPE=$ARG:u $@
 }
 
 archrepo()
