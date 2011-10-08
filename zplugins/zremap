@@ -17,6 +17,7 @@ if [ ! $TERM = "eterm-color" ]; then
 	bindkey -s `tput kf4` 'qdsave\n'
 fi
 bindkey -s 'w' '^uncmpcpp\n'          # MPD client
+bindkey -s 'a' '^ualsamixer\n'
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'
 # {{{ pairs
