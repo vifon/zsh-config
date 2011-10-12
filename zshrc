@@ -100,6 +100,7 @@ setopt	hist_ignore_all_dups	\
 	hist_no_functions			\
 	extended_history			\
 	hist_no_store				\
+    interactivecomments         \
 	\
 	extended_glob				\
 	braceccl					\
