@@ -20,17 +20,18 @@ PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
 
 jobcount()
 {
-	local JOBC=$(jobs | grep -v '(pwd now:' | wc -l)
-	if [[ "$JOBC" != "0" ]]; then
-		echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}%j$RESET)"
+	if [ -n "$(jobs)" ]; then
+		echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}J$RESET)"
+    else
+		echo "$PR_SHIFT_IN$PSSEPARATOR$PSSEPARATOR$PR_SHIFT_OUT"
 	fi
 }
 
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 if [ "${TTY[6,8]}" = "tty" ]; then
-	INITIAL_SUBTRACT=$((7 + ${#TTYNAME}))
+	INITIAL_SUBTRACT=$((13 + ${#TTYNAME}))
 else
-	INITIAL_SUBTRACT=$((8 + ${#TTYNAME}))
+	INITIAL_SUBTRACT=$((14 + ${#TTYNAME}))
 fi
 
 if [ -n "$TMUX" ]; then
@@ -41,9 +42,9 @@ PS1='\
 $PR_SET_CHARSET\
 $PR_SHIFT_IN$PR_ULCORNER$PSSEPARATOR$PR_SHIFT_OUT\
 ($BOLD$TTYNAME$RESET)\
-$JOBSOUTPUT\
 $TMUX_MARKER\
 $SSH_MARKER\
+$(jobcount)\
 $PRIV_MARKER\
 $FILL\
 
@@ -99,13 +100,6 @@ precmd()
 	fi
 	if [ -n "$PRIV_MARKER" ]; then
 		FCOUNT=$(($FCOUNT - 9))
-	fi
-	local JOBC=$(jobs | grep -v '(pwd now:' | wc -l)
-	if [[ "$JOBC" != "0" ]]; then
-		JOBSOUTPUT="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$JOBC$RESET)"
-		FCOUNT=$(($FCOUNT - 5 - ${#JOBC}))
-	else
-		JOBSOUTPUT=
 	fi
 	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
 }
