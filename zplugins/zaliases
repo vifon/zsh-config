@@ -148,6 +148,7 @@ ACOC=(
 	diff
 	dmesg
 	whereis
+	splint
 	)
 # {{{
 {
