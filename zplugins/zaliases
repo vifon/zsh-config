@@ -28,7 +28,7 @@ alias links2='links2 -anonymous'
 alias dvtm='dvtm -m '
 alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
-#alias emacs='emacs -nw'
+alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
 	alias init='sudo init'
 	alias emacs='emacsclient -c'
@@ -57,6 +57,7 @@ fi
 #alias make='colormake'
 alias remake='make clean all'
 alias vimname='vim -c :Renamer'
+alias m='getmail --rcfile getmailrc --rcfile official'
 
 # shortcuts
 alias debugterm='clear && sleep 10000000'
@@ -156,5 +157,6 @@ ACOC=(
 	for i in $ACOC; do
 		alias $i="acoc $i"
 	done
+	unset i
 }
 # }}}
