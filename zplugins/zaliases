@@ -62,7 +62,7 @@ alias m='getmail --rcfile getmailrc --rcfile official'
 # shortcuts
 alias debugterm='clear && sleep 10000000'
 alias cls='clear'
-alias zhist='vim $DEF_HISTFILE'
+alias zhist='vim --noplugin $DEF_HISTFILE'
 alias kwine='wineserver -k'
 alias fixres='xrandr -s 1680x1050'
 #alias droopy='~/Scripts/droopy.py -p "~/Obrazy/avatar.jpg" -d "/media/vifon/Droopy"'

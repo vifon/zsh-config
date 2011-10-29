@@ -2,25 +2,29 @@
 # vim: set ft=zsh :
 
 if ! command -v pmount &> /dev/null; then
-	return 1
+    return 1
 fi
 
 amount()
 {
-	pmount "$1" 2> /dev/null
-	if [ $? = 0 ]; then
-		echo "$BOLD$GREEN*$RESET $1 mounted"
-		cd $(echo $1 | sed 's#/dev/#/media/#')
-		zsh
-		echo "$BOLD$YELLOW*$RESET Unmounting $1..."
-		cd $OLDPWD
-		pumount "$1" 2> /dev/null
-		if [ $? = 0 ]; then
-			echo "$BOLD$GREEN*$RESET $1 unmounted"
-		else
-			echo "$BOLD$RED*$RESET Cannot unmount $1"
-		fi
-	else
-		echo "$BOLD$RED*$RESET Cannot mount $1"
-	fi
+    if [[ ! "$1" =~ '/' ]]; then
+        1="/dev/$1"
+    fi
+
+    pmount "$1" 2> /dev/null
+    if [ $? = 0 ]; then
+        echo "$BOLD$GREEN*$RESET $BOLD$1$RESET mounted"
+        cd $(echo $1 | sed 's#/dev/#/media/#')
+        zsh
+        echo "$BOLD$YELLOW*$RESET Unmounting $BOLD$1$RESET..."
+        cd $OLDPWD
+        pumount "$1" 2> /dev/null
+        if [ $? = 0 ]; then
+            echo "$BOLD$GREEN*$RESET $BOLD$1$RESET unmounted"
+        else
+            echo "$BOLD$RED*$RESET Cannot unmount $BOLD$1$RESET"
+        fi
+    else
+        echo "$BOLD$RED*$RESET Cannot mount $BOLD$1$RESET"
+    fi
 }
