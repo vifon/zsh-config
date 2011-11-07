@@ -39,11 +39,13 @@ if [ "$UID" != "0" ]; then  # not root
         fi
         emacsclient -t $1
     }
-	valgrind()
-	{
-		/home/vifon/.bin/valgrind-color < /home/vifon/pipe >&2 &
-		/usr/bin/valgrind --log-fd=3 $@ 3> /home/vifon/pipe
-	}
+    if command -v valgrind-color &> /dev/null; then
+        valgrind()
+        {
+            /home/vifon/.bin/valgrind-color < /home/vifon/pipe >&2 &
+            /usr/bin/valgrind --log-fd=3 $@ 3> /home/vifon/pipe
+        }
+    fi
 else    # root
     dired()
     {
@@ -106,57 +108,63 @@ alias steam='wine ~/Data/Gry/Steam/Steam.exe'
 
 winevd()
 {
-	if [ -z "$2" -o -z "$3" ]; then
-		2=1024
-		3=768
-	fi
-	if [ -z "$WTITLE" ]; then
-		WTITLE=Wine
-	fi
-	wine explorer /desktop=$WTITLE,${2}x${3} "$1"
-	unset WTITLE
+    if [ -z "$2" -o -z "$3" ]; then
+        2=1024
+        3=768
+    fi
+    if [ -z "$WTITLE" ]; then
+        WTITLE=Wine
+    fi
+    wine explorer /desktop=$WTITLE,${2}x${3} "$1"
+    unset WTITLE
 }
 
 seturgent()
 {
-	print -Pn "\e]0;SET_URGENT\a"
-	sleep 0.1
-	wmctrl -r "`xprop -id $WINDOWID | perl -nle 'print $1 if /^WM_NAME.+= \"(.*)\"$/'`" -b add,demands_attention
-	sleep 0.1
-	print -Pn "\e]0;xterm\a"
+    print -Pn "\e]0;SET_URGENT\a"
+    sleep 0.1
+    wmctrl -r "`xprop -id $WINDOWID | perl -nle 'print $1 if /^WM_NAME.+= \"(.*)\"$/'`" -b add,demands_attention
+    sleep 0.1
+    print -Pn "\e]0;xterm\a"
 }
 
 alias apache='sudo /etc/rc.d/httpd'
 
-alias pacman=pacman-color
-alias y="yaourt"
-alias yy='yaourt --noconfirm'
+if command -v pacman-color &> /dev/null; then
+    alias pacman=pacman-color
+fi
+if command -v yaourt &> /dev/null; then
+    alias y="yaourt"
+    alias yy='yaourt --noconfirm'
+fi
 alias orphan='yaourt -Qqdt'
 alias orphan-clean='yaourt -Rsun `orphan`'
 #alias gee=geeqie
 
 
+if command -v acoc &> /dev/null; then
 # ACOC
-ACOC=(
-	df
-	ifconfig
-	lsmod
-	ping
-	ps
-	nmap
-	top
-	uptime
-	diff
-	dmesg
-	whereis
-	splint
-	)
+    ACOC=(
+        df
+        ifconfig
+        lsmod
+        ping
+        ps
+        nmap
+        top
+        uptime
+        diff
+        dmesg
+        whereis
+        splint
+    )
 # {{{
-{
-	local i
-	for i in $ACOC; do
-		alias $i="acoc $i"
-	done
-	unset i
-}
+    {
+        local i
+        for i in $ACOC; do
+            alias $i="acoc $i"
+        done
+        unset i
+    }
+fi
 # }}}
