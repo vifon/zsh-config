@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+if ! command -v kexec &> /dev/null; then
+    return 1
+fi
+
+kexecready()
+{
+	kexec -l /boot/vmlinuz-linux --append="root=/dev/sda1 ro" --initrd=/boot/initramfs-linux.img
+	rc.d start kexec
+}
