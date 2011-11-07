@@ -2,7 +2,7 @@
 # vim: set ft=zsh :
 
 if [ -f ~/.ztodo.data ]; then
-	cat ~/.ztodo.data
+    cat ~/.ztodo.data
 fi
 
 alias todo='vim ~/.ztodo.data'

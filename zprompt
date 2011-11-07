@@ -20,22 +20,22 @@ PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
 
 jobcount()
 {
-	if [ -n "$(jobs)" ]; then
-		echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}J$RESET)"
+    if [ -n "$(jobs)" ]; then
+        echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}J$RESET)"
     else
-		echo "$PR_SHIFT_IN$PSSEPARATOR$PSSEPARATOR$PR_SHIFT_OUT"
-	fi
+        echo "$PR_SHIFT_IN$PSSEPARATOR$PSSEPARATOR$PR_SHIFT_OUT"
+    fi
 }
 
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 if [ "${TTY[6,8]}" = "tty" ]; then
-	INITIAL_SUBTRACT=$((13 + ${#TTYNAME}))
+    INITIAL_SUBTRACT=$((13 + ${#TTYNAME}))
 else
-	INITIAL_SUBTRACT=$((14 + ${#TTYNAME}))
+    INITIAL_SUBTRACT=$((14 + ${#TTYNAME}))
 fi
 
 if [ -n "$TMUX" ]; then
-	TMUX_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($GREEN$BOLD"tmux"$RESET)"
+    TMUX_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($GREEN$BOLD"tmux"$RESET)"
 fi
 
 PS1='\
@@ -83,25 +83,25 @@ zstyle ':vcs_info:*' actionformats "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%} %{$BLACK$ON
 
 precmd()
 {
-	FCOUNT=$(($COLUMNS - $INITIAL_SUBTRACT))
-	if [ -n "$TMUX" ]; then
-		FCOUNT=$(($FCOUNT - 9))
-	fi
-	vcs_info
-	if [ -n "$vcs_info_msg_0_" ]; then
-		PSSEP2=":"
-		PSDIR="$vcs_info_msg_0_"
-	else
-		PSSEP2=
-		PSDIR=
-	fi
-	if [ -n "$SSH_MARKER" ]; then
-		FCOUNT=$(($FCOUNT - 8))
-	fi
-	if [ -n "$PRIV_MARKER" ]; then
-		FCOUNT=$(($FCOUNT - 9))
-	fi
-	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
+    FCOUNT=$(($COLUMNS - $INITIAL_SUBTRACT))
+    if [ -n "$TMUX" ]; then
+        FCOUNT=$(($FCOUNT - 9))
+    fi
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+        PSSEP2=":"
+        PSDIR="$vcs_info_msg_0_"
+    else
+        PSSEP2=
+        PSDIR=
+    fi
+    if [ -n "$SSH_MARKER" ]; then
+        FCOUNT=$(($FCOUNT - 8))
+    fi
+    if [ -n "$PRIV_MARKER" ]; then
+        FCOUNT=$(($FCOUNT - 9))
+    fi
+    FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
 }
 
 #{{{
@@ -125,8 +125,8 @@ precmd()
 # {{{ shitty chpwd
 #chpwd()
 #{
-#	if [[ ${#PWD} > $(($COLUMNS - 30)) ]]; then
-#		echo "$BLUE$OLDPWD$RESET -> $BLUE$PWD$RESET"
-#	fi
+#   if [[ ${#PWD} > $(($COLUMNS - 30)) ]]; then
+#       echo "$BLUE$OLDPWD$RESET -> $BLUE$PWD$RESET"
+#   fi
 #}
 # }}}

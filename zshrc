@@ -5,7 +5,7 @@
 unsetopt autocd beep
 bindkey -e
 if [ -d ~/.bin -a -z "`echo $PATH | grep '/home/vifon/\.bin'`" ]; then
-	export PATH=~/.bin:"${PATH}"
+    export PATH=~/.bin:"${PATH}"
 fi
 #export PATH=/usr/lib/cw:"${PATH}"
 
@@ -27,10 +27,10 @@ compinit
 
 # {{{ HISTORY
 #if [ -n "$SSH_CONNECTION" ]; then
-#		HISTFILE=~/.zhistory_ssh
-#		DEF_HISTFILE=~/.zhistory_ssh
-#		PSDIR=%{$YELLOW$BOLD%}"SSH"%{$RESET%}
-#		PSSEP2=:
+#       HISTFILE=~/.zhistory_ssh
+#       DEF_HISTFILE=~/.zhistory_ssh
+#       PSDIR=%{$YELLOW$BOLD%}"SSH"%{$RESET%}
+#       PSSEP2=:
 #else
 #if [ -e ~/.priv ]; then
 #HISTFILE=/dev/null
@@ -48,35 +48,35 @@ WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 PLUGINS_DIR=~/.zplugins
 PLUGINS=(
-	zcolors
-	zremap
-	zcompletion
-	zaliases
-	zscripts
-	dirmaster
-	ztodo
-	zpriv
-	zSSH
-	amount
-	zXephyr
-	zmancolor
-	)
+    zcolors
+    zremap
+    zcompletion
+    zaliases
+    zscripts
+    dirmaster
+    ztodo
+    zpriv
+    zSSH
+    amount
+    zXephyr
+    zmancolor
+    )
 if [ -f ~/.zloader ]; then
-	. ~/.zloader
+    . ~/.zloader
 fi
 
 if [ $TERM = "vt100" -o $TERM = "dumb" ]; then
-	PSFILE=.zpromptlegacy.zsh
+    PSFILE=.zpromptlegacy.zsh
 elif [ -z "$PSFILE" ]; then
-	PSFILE=.zprompt
-	#PSFILE=.exprompt.zsh
+    PSFILE=.zprompt
+    #PSFILE=.exprompt.zsh
 fi
 if [ -f ~/$PSFILE ]; then
-	. ~/$PSFILE
+    . ~/$PSFILE
 fi
 
 if [ $TERM = "eterm-color" ]; then
-	HISTFILE=/dev/null
+    HISTFILE=/dev/null
 fi
 
 # {{{ ENV VARS AND OPTIONS
@@ -87,24 +87,24 @@ export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
 #if [ -d ~/.fpath ]; then
-#	fpath=(~/.fpath $fpath)
-#	autoload -U ~/.fpath/*(:t)
+#   fpath=(~/.fpath $fpath)
+#   autoload -U ~/.fpath/*(:t)
 #fi
 # /usr/local/share/zsh/site-functions
-setopt	hist_ignore_all_dups	\
-	hist_ignore_space			\
-	hist_reduce_blanks			\
-	append_history				\
-	share_history				\
-	inc_append_history			\
-	hist_no_functions			\
-	extended_history			\
-	hist_no_store				\
+setopt  hist_ignore_all_dups    \
+    hist_ignore_space           \
+    hist_reduce_blanks          \
+    append_history              \
+    share_history               \
+    inc_append_history          \
+    hist_no_functions           \
+    extended_history            \
+    hist_no_store               \
     interactivecomments         \
-	\
-	extended_glob				\
-	braceccl					\
-	longlistjobs				\
-	\
-	prompt_subst
+    \
+    extended_glob               \
+    braceccl                    \
+    longlistjobs                \
+    \
+    prompt_subst
 # }}}

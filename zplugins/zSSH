@@ -2,116 +2,116 @@
 # vim: set ft=zsh fdm=marker :
 
 if ! command -v ssh-attach.sh &> /dev/null; then
-	return 1
+    return 1
 fi
 
 MYKEY='1b:97:f1:43:86:01:00:58:de:85:18:d3:31:07:18:86'
 PERIOD=15
 periodic()
 {
-	if [ -n "$SSH_MARKER" ]; then
-		local SSH_LEN=8
-	else
-		local SSH_LEN=0
-	fi
-	if [ -z "$(pgrep ssh-agent)" ]; then
-		if [ -n "$SSH_AUTH_SOCK" ]; then
-			unset SSH_AUTH_SOCK
-			unset SSH_AGENT_PID
-		fi
-		FCOUNT=$(($FCOUNT + $SSH_LEN))
-		SSH_MARKER=
-	elif [ -z "$SSH_AUTH_SOCK" ]; then
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
-	elif [ -n "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]; then
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$BOLD"SSH"$RESET)"
-	else
-		FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
-	fi
+    if [ -n "$SSH_MARKER" ]; then
+        local SSH_LEN=8
+    else
+        local SSH_LEN=0
+    fi
+    if [ -z "$(pgrep ssh-agent)" ]; then
+        if [ -n "$SSH_AUTH_SOCK" ]; then
+            unset SSH_AUTH_SOCK
+            unset SSH_AGENT_PID
+        fi
+        FCOUNT=$(($FCOUNT + $SSH_LEN))
+        SSH_MARKER=
+    elif [ -z "$SSH_AUTH_SOCK" ]; then
+        FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
+        SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
+    elif [ -n "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]; then
+        FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
+        SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$BOLD"SSH"$RESET)"
+    else
+        FCOUNT=$(($FCOUNT + ($SSH_LEN - 8)))
+        SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
+    fi
 
-	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-		
-		
-	#if [ -n "$SSH_MARKER" ]; then
-	#	local KEYSTATE=$(ssh-add -l 2> /dev/null | grep "$MYKEY")
-	#	if [ -z "$KEYSTATE" ]; then
-	#		FCOUNT=$(($FCOUNT + ${#SSH_MARKER}))
-	#		FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-	#		SSH_MARKER=
-	#	fi
-	#elif [ -n "$(pgrep ssh-agent)" -a -n "$SSH_MARKER" ]; then
-	#	FCOUNT=$(($FCOUNT + (${#SSH_MARKER} - 8)))
-	#	FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
-	#	SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
-	#fi
+    FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
+
+
+    #if [ -n "$SSH_MARKER" ]; then
+    #   local KEYSTATE=$(ssh-add -l 2> /dev/null | grep "$MYKEY")
+    #   if [ -z "$KEYSTATE" ]; then
+    #       FCOUNT=$(($FCOUNT + ${#SSH_MARKER}))
+    #       FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
+    #       SSH_MARKER=
+    #   fi
+    #elif [ -n "$(pgrep ssh-agent)" -a -n "$SSH_MARKER" ]; then
+    #   FCOUNT=$(($FCOUNT + (${#SSH_MARKER} - 8)))
+    #   FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
+    #   SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
+    #fi
 }
 
 # {{{ SSH functions
 ssha()
 {
-	eval `ssh-attach.sh` > /dev/null
-	export SSH_AGENT_PID=$(pgrep ssh-agent | head -n 1)
-	SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
-	if [[ -z "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]]; then
-		ssh-add
-	fi
-	if [[ -n "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]]; then
-		SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$BOLD"SSH"$RESET)"
-	fi
+    eval `ssh-attach.sh` > /dev/null
+    export SSH_AGENT_PID=$(pgrep ssh-agent | head -n 1)
+    SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
+    if [[ -z "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]]; then
+        ssh-add
+    fi
+    if [[ -n "$(ssh-add -l 2> /dev/null | grep "$MYKEY")" ]]; then
+        SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW$BOLD"SSH"$RESET)"
+    fi
 }
 
 sshad()
 {
-	if [ -n "$SSH_AGENT_PID" ]; then
-		ssh-add -D
-		eval `ssh-agent -k` > /dev/null
-		unset SSH_AGENT_PID
-		unset SSH_AUTH_SOCK
-	else
-		if [ -z "$(pgrep ssh-agent)" ]; then
-			echo "No ssh-agent attached!"
-		else
-			ssha
-			sshad
-		fi
-	fi
-	SSH_MARKER=
+    if [ -n "$SSH_AGENT_PID" ]; then
+        ssh-add -D
+        eval `ssh-agent -k` > /dev/null
+        unset SSH_AGENT_PID
+        unset SSH_AUTH_SOCK
+    else
+        if [ -z "$(pgrep ssh-agent)" ]; then
+            echo "No ssh-agent attached!"
+        else
+            ssha
+            sshad
+        fi
+    fi
+    SSH_MARKER=
 }
 
 sshadetach()
 {
-	unset SSH_AGENT_PID
-	unset SSH_AUTH_SOCK
-	SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
+    unset SSH_AGENT_PID
+    unset SSH_AUTH_SOCK
+    SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
 }
 
 if ! command -v pamusb-check &> /dev/null; then
-	return
+    return
 fi
 
 sshauto()
 {
-	local KEYSTATE=$(ssh-add -l 2> /dev/null | grep $MYKEY)
-	if [ -z "$KEYSTATE" ]; then
-		if [ -n "$SSH_AGENT_PID" ]; then
-			sshad &> /dev/null
-		fi
-		if [ -z "$(pgrep ssh-agent)" ]; then
-			pamusb-check -q --service=ssh-agent_vfn vifon
-			if [ "$?" = "0" ]; then
-				expect <(sudo cat /root/sshattach.exp)
-				ssha
-			else
-				echo \
-					"$GREEN$BOLD*$RESET Authentication request for user \"$USER\" (ssh-agent_vfn)
+    local KEYSTATE=$(ssh-add -l 2> /dev/null | grep $MYKEY)
+    if [ -z "$KEYSTATE" ]; then
+        if [ -n "$SSH_AGENT_PID" ]; then
+            sshad &> /dev/null
+        fi
+        if [ -z "$(pgrep ssh-agent)" ]; then
+            pamusb-check -q --service=ssh-agent_vfn vifon
+            if [ "$?" = "0" ]; then
+                expect <(sudo cat /root/sshattach.exp)
+                ssha
+            else
+                echo \
+                    "$GREEN$BOLD*$RESET Authentication request for user \"$USER\" (ssh-agent_vfn)
 $RED$BOLD*$RESET Access denied."
-			fi
-		else
-			ssha
-		fi
-	fi
+            fi
+        else
+            ssha
+        fi
+    fi
 }
 # }}}

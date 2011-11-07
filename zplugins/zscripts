@@ -3,94 +3,94 @@
 
 mkcd()
 {
-	mkdir -p "$@"
-	cd "$@"
+    mkdir -p "$@"
+    cd "$@"
 }
 
 oldtree()
 {
-	ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+    ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
 wprefix()
 {
-	export WINEPREFIX="$HOME/$1/"
+    export WINEPREFIX="$HOME/$1/"
 }
 
 man2pdf()
 {
-	man -t $1 | ps2pdf - > $2
+    man -t $1 | ps2pdf - > $2
 }
 
 killwatch()
 {
-	if [ -z "$2" ]; then
-		2=5;
-	fi
-	while [ true ]; do
-		killall $1 2> /dev/null
-		sleep $2
-	done
+    if [ -z "$2" ]; then
+        2=5;
+    fi
+    while [ true ]; do
+        killall $1 2> /dev/null
+        sleep $2
+    done
 }
 
 listcolors()
 {
-	local COLORS
-	COLORS=(RED GREEN YELLOW BLUE MAGENTA CYAN GREY WHITE)
-	for i in {1..$#COLORS}; do
-		echo $i: `tput setaf $i`$COLORS[$i] `tput bold`$COLORS[$i]`tput sgr0` `tput setab $i``tput setaf 0`$COLORS[$i]`tput sgr0`
-	done
+    local COLORS
+    COLORS=(RED GREEN YELLOW BLUE MAGENTA CYAN GREY WHITE)
+    for i in {1..$#COLORS}; do
+        echo $i: `tput setaf $i`$COLORS[$i] `tput bold`$COLORS[$i]`tput sgr0` `tput setab $i``tput setaf 0`$COLORS[$i]`tput sgr0`
+    done
 }
 
 listargs()
 {
-	local i
-	for i in {1..$#}; do
-		echo $argv[i]
-	done
+    local i
+    for i in {1..$#}; do
+        echo $argv[i]
+    done
 }
 
 screencapture()
 {
-	if [ -z "$2" -a -z "$3" ]; then
-		2="-s"
-		3="wsxga"
-	fi
-	local FILE=$1
-	shift
-	ffmpeg -f x11grab -y -r 60 $@ -i :0.0 -async 0 -vsync 0 -sameq "$FILE"
+    if [ -z "$2" -a -z "$3" ]; then
+        2="-s"
+        3="wsxga"
+    fi
+    local FILE=$1
+    shift
+    ffmpeg -f x11grab -y -r 60 $@ -i :0.0 -async 0 -vsync 0 -sameq "$FILE"
 }
 
 nuke()
 {
-	local CONFIRM
-	echo -n "Are you sure you want to delete \"$RED$BOLD$PWD$RESET\"?"
-	read -s -k CONFIRM
-	if [ "$CONFIRM" = "y" ]; then
-		cd ..
-		echo
-		if [ "$1" = "-q" ]; then
-			rm -rf $OLDPWD
-		else
-			rm -rfv $OLDPWD
-		fi
-	fi
+    local CONFIRM
+    echo -n "Are you sure you want to delete \"$RED$BOLD$PWD$RESET\"?"
+    read -s -k CONFIRM
+    if [ "$CONFIRM" = "y" ]; then
+        cd ..
+        echo
+        if [ "$1" = "-q" ]; then
+            rm -rf $OLDPWD
+        else
+            rm -rfv $OLDPWD
+        fi
+    fi
 }
 
 cbuild()
 {
-	echo "${BOLD}Build: $BLUE$BOLD$1:u$RESET"
-	echo "----------\n"
-	if [ -r CMakeLists.txt ]; then
-		mkdir -p build
-		cd build
-	fi
-	local ARG=$1
-	if [ -z "$2" ]; then
-		2=".."
-	fi
-	shift
-	cmake -D CMAKE_BUILD_TYPE=$ARG:u $@
+    echo "${BOLD}Build: $BLUE$BOLD$1:u$RESET"
+    echo "----------\n"
+    if [ -r CMakeLists.txt ]; then
+        mkdir -p build
+        cd build
+    fi
+    local ARG=$1
+    if [ -z "$2" ]; then
+        2=".."
+    fi
+    shift
+    cmake -D CMAKE_BUILD_TYPE=$ARG:u $@
 }
 
 archrepo()
@@ -101,7 +101,7 @@ archrepo()
         shift
     done
     if [ -n "$PKGS" ]; then
-	    yaourt -Si $PKGS
+        yaourt -Si $PKGS
     fi
 }
 

@@ -30,8 +30,8 @@ alias byobu='byobu -c ~/.byobu/profile'
 alias qemu='qemu -enable-kvm'
 alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
-	alias init='sudo init'
-	alias emacs='emacsclient -c'
+    alias init='sudo init'
+    alias emacs='emacsclient -c'
     dired()
     {
         if [ -z "$1" ]; then

@@ -1,19 +1,19 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh fdm=marker :
 for plugin in $PLUGINS; do
-	if [ -f $PLUGINS_DIR/$plugin ]; then
-		. $PLUGINS_DIR/$plugin
-		EXITCODE=$?
-		if [ "$EXITCODE" = "0" ]; then
-			if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
-				echo "$GREEN$BOLD*$RESET $plugin loaded"
-			fi
-		else
-			echo "$RED$BOLD*$RESET $plugin could not be loaded, error code: $EXITCODE"
-		fi
-	else
-		echo "$RED$BOLD*$RESET $plugin not loaded - no such plugin"
-	fi
+    if [ -f $PLUGINS_DIR/$plugin ]; then
+        . $PLUGINS_DIR/$plugin
+        EXITCODE=$?
+        if [ "$EXITCODE" = "0" ]; then
+            if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
+                echo "$GREEN$BOLD*$RESET $plugin loaded"
+            fi
+        else
+            echo "$RED$BOLD*$RESET $plugin could not be loaded, error code: $EXITCODE"
+        fi
+    else
+        echo "$RED$BOLD*$RESET $plugin not loaded - no such plugin"
+    fi
 done
 unset plugin
 unset EXITCODE
