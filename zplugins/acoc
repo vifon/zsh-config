@@ -1,0 +1,30 @@
+# -*- mode: shell-script -*-
+# vim: ft=zsh fdm=marker :
+
+if ! command -v acoc &> /dev/null; then
+    return 1;
+fi
+
+ACOC=(
+    df
+    ifconfig
+    lsmod
+    ping
+    ps
+    nmap
+    top
+    uptime
+    diff
+    dmesg
+    whereis
+    splint
+)
+# {{{
+{
+    local i
+    for i in $ACOC; do
+        alias $i="acoc $i"
+    done
+    unset i
+}
+# }}}

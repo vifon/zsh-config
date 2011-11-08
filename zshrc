@@ -60,6 +60,7 @@ PLUGINS=(
     amount
     zXephyr
     zmancolor
+    acoc
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader

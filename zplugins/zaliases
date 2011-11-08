@@ -140,31 +140,3 @@ fi
 alias orphan='yaourt -Qqdt'
 alias orphan-clean='yaourt -Rsun `orphan`'
 #alias gee=geeqie
-
-
-if command -v acoc &> /dev/null; then
-# ACOC
-    ACOC=(
-        df
-        ifconfig
-        lsmod
-        ping
-        ps
-        nmap
-        top
-        uptime
-        diff
-        dmesg
-        whereis
-        splint
-    )
-# {{{
-    {
-        local i
-        for i in $ACOC; do
-            alias $i="acoc $i"
-        done
-        unset i
-    }
-fi
-# }}}
