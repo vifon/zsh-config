@@ -15,7 +15,7 @@ amount()
     if [ $? = 0 ]; then
         echo "$BOLD$GREEN*$RESET $BOLD$1$RESET mounted"
         cd $(echo $1 | sed 's#/dev/#/media/#')
-        zsh
+        AMOUNT_DRIVE=$1 zsh
         echo "$BOLD$YELLOW*$RESET Unmounting $BOLD$1$RESET..."
         cd $OLDPWD
         pumount "$1" 2> /dev/null
