@@ -18,7 +18,7 @@ alias l='ls'
 #alias ack='ack-grep'
 
 alias g=git
-alias gg='git g'
+alias gg='git g | head -n 30'
 alias ggg='git gg'
 alias pd=perldoc
 
