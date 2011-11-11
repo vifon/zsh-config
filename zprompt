@@ -99,7 +99,7 @@ precmd()
         FCOUNT=$(($FCOUNT - 8))
     fi
     if [ -n "$PRIV_MARKER" ]; then
-        FCOUNT=$(($FCOUNT - 9))
+        FCOUNT=$(($FCOUNT - 7))
     fi
     FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
 }

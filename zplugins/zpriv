@@ -7,11 +7,10 @@ PR_SET_CHARSET="%{$terminfo[enacs]%}"
 PR_SHIFT_IN="%{$terminfo[smacs]%}"
 PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
 PR_HBAR=${altchar[q]:--}
-PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
 
 priv()
 {
-    export PRIV_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($RED$BOLD"PRIV"$RESET)"
+    export PRIV_MARKER="$PR_SHIFT_IN$PR_HBAR($RED$BOLD"PRIV"$RESET)"
     zsh
     unset PRIV_MARKER
 }
