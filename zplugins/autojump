@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+if [ ! -f /etc/profile.d/autojump.zsh ]; then
+    return 1
+fi
+
+if [ -n "$PRIV_MARKER" ]; then
+    return
+fi
+
+source /etc/profile.d/autojump.zsh

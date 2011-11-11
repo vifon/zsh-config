@@ -63,6 +63,7 @@ PLUGINS=(
     zXephyr
     zmancolor
     acoc
+    autojump
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
