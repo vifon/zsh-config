@@ -26,6 +26,7 @@ compinit
 # End of lines added by compinstall
 
 # {{{ HISTORY
+
 #if [ -n "$SSH_CONNECTION" ]; then
 #       HISTFILE=~/.zhistory_ssh
 #       DEF_HISTFILE=~/.zhistory_ssh
@@ -42,6 +43,7 @@ DEF_HISTFILE=~/.zhistory
 #fi
 HISTSIZE=2500
 SAVEHIST=2500
+
 # }}}
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
@@ -77,7 +79,7 @@ if [ -f ~/$PSFILE ]; then
 fi
 
 if [ $TERM = "eterm-color" ]; then
-    HISTFILE=/dev/null
+    unset HISTFILE
 fi
 
 # {{{ ENV VARS AND OPTIONS
