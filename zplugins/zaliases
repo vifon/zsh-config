@@ -39,13 +39,6 @@ if [ "$UID" != "0" ]; then  # not root
         fi
         emacsclient -t $1
     }
-    if command -v valgrind-color &> /dev/null; then
-        valgrind()
-        {
-            /home/vifon/.bin/valgrind-color < /home/vifon/pipe >&2 &
-            /usr/bin/valgrind --log-fd=3 $@ 3> /home/vifon/pipe
-        }
-    fi
 else    # root
     dired()
     {
