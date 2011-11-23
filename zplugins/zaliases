@@ -112,7 +112,14 @@ winevd()
     unset WTITLE
 }
 
-alias urgent='echo -en "\a"'
+seturgent()
+{
+    print -Pn "\e]0;SET_URGENT\a"
+    sleep 0.1
+    wmctrl -r "`xprop -id $WINDOWID | perl -nle 'print $1 if /^WM_NAME.+= \"(.*)\"$/'`" -b add,demands_attention
+    sleep 0.1
+    print -Pn "\e]0;xterm\a"
+}
 
 alias apache='sudo /etc/rc.d/httpd'
 
