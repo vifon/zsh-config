@@ -25,6 +25,8 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
+autoload zmv
+
 # {{{ HISTORY
 
 #if [ -n "$SSH_CONNECTION" ]; then
