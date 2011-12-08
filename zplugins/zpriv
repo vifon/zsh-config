@@ -17,4 +17,5 @@ priv()
 
 if [ -n "$PRIV_MARKER" ]; then
     unset HISTFILE
+    fc -R ~/.zhistory
 fi
