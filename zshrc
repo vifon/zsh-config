@@ -67,6 +67,7 @@ PLUGINS=(
     acoc
     autojump
     valgrind-color
+    ignore
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader

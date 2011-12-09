@@ -1,0 +1,14 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+zshaddhistory()
+{
+    [[                        \
+        $1 != "g "*        && \
+        $1 != "emacs"*     && \
+        $1 != "run-help "* && \
+        $1 != "cd "*       && \
+        $1 != "ls "*       && \
+        $1 != "j "*           \
+        ]]
+}
