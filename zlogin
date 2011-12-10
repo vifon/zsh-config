@@ -28,10 +28,17 @@ if [ -n "$SSH_CONNECTION" ]; then
     else
         opera()
         {
-            echo -e 'Opera is not free software.\nLaunching Emacs instead.' | cowsay -n -f rms
+            cowsay -n -f rms <<EOF
+Opera is not free software.
+Launching Emacs instead.
+EOF
             echo -e '\n[1;31mSTALLMAN ERROR![0m\nPress Enter'
             read
             /usr/bin/emacs -nw
+        }
+        chromium()
+        {
+            ishygddt "`date +%Y`" 'using Google Chrome'
         }
 #       PSHOSTCOLOR="$BOLD$YELLOW"
 #       PSHOST="FBI#44852"
