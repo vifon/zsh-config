@@ -52,7 +52,9 @@ fi
 #alias make='colormake'
 alias remake='make clean all'
 alias vimname='vim -c :Renamer'
-alias m='getmail --rcfile getmailrc --rcfile official'
+#alias m='getmail --rcfile getmailrc --rcfile official'
+alias m='vgetmail --rcfile getmailrc --rcfile official'
+alias mr='wmiir rm /rbar/1mail 2> /dev/null'
 
 # shortcuts
 alias debugterm='clear && sleep 10000000'
