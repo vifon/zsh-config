@@ -39,6 +39,7 @@ if [ "$UID" != "0" ]; then  # not root
         fi
         emacsclient -t $1
     }
+    alias sudo='sudo '
 else    # root
     dired()
     {
