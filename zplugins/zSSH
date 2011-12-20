@@ -115,3 +115,7 @@ $RED$BOLD*$RESET Access denied."
     fi
 }
 # }}}
+
+if [ -n "$(pgrep ssh-agent)" -a -z "$SSH_AUTH_SOCK" ]; then
+    eval `ssh-attach.sh` > /dev/null
+fi
