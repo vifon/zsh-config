@@ -88,6 +88,8 @@ alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vs
 alias   ..='cd ../'
 alias  ...='cd ../../'
 alias ....='cd ../../../'
+alias cdp='pushd'
+alias pop='popd'
 
 #games
 alias game='gameselect'

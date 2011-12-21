@@ -114,5 +114,8 @@ setopt  hist_ignore_all_dups    \
     braceccl                    \
     longlistjobs                \
     \
-    prompt_subst
+    prompt_subst                \
+    \
+    pushd_to_home
+
 # }}}
