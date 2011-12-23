@@ -108,6 +108,7 @@ sshauto()
                 echo \
                     "$GREEN$BOLD*$RESET Authentication request for user \"$USER\" (ssh-agent_vfn)
 $RED$BOLD*$RESET Access denied."
+                return 1;
             fi
         else
             ssha
