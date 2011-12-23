@@ -91,6 +91,7 @@ fi
 #export EDITOR="emacsclient"
 export EDITOR="vim"
 export ALTERNATE_EDITOR="vim"
+export SUDO_EDITOR="emacsclient -c -a vim"
 export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
