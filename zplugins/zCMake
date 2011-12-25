@@ -1,0 +1,63 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh fdm=marker :
+
+if ! command -v cmake &> /dev/null; then
+    return 1
+fi
+
+cbuild()
+{
+    echo "${BOLD}Build: $BLUE$BOLD$1:u$RESET"
+    echo "----------\n"
+    if [ -r CMakeLists.txt ]; then
+        mkdir -p build
+        cd build
+    fi
+    local ARG=$1
+    if [ -z "$2" ]; then
+        2=".."
+    fi
+    shift
+    cmake -D CMAKE_BUILD_TYPE=$ARG:u $@
+}
+
+cselect()
+{
+    case "$#" in
+        1)
+            case "$1" in
+                gcc)
+                    export CC=gcc
+                    export CXX=g++
+                    ;;
+                clang)
+                    export CC=clang
+                    export CXX=clang++
+                    ;;
+                static)
+                    export CC=ccc-analyzer
+                    export CXX=c++-analyzer
+                    ;;
+                -)
+                    unset CC
+                    unset CXX
+                    ;;
+                *)
+                    echo "$RED${BOLD}Unknown compiler$RESET" 1>&2
+                    return 1
+                    ;;
+            esac
+            ;;
+        2)
+            export CC=$1
+            export CXX=$2
+            ;;
+    esac
+
+    echo "CC  = $BLUE$BOLD$CC$RESET"
+    echo "CXX = $BLUE$BOLD$CXX$RESET"
+    if [ -f "./CMakeCache.txt" ]; then
+        rm ./CMakeCache.txt
+        echo "$MAGENTA${BOLD}Rerun CMake$RESET" 1>&2
+    fi
+}

@@ -68,6 +68,7 @@ PLUGINS=(
     autojump
     valgrind-color
     ignore
+    zCMake
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
