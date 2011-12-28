@@ -61,3 +61,5 @@ cselect()
         echo "$MAGENTA${BOLD}Rerun CMake$RESET" 1>&2
     fi
 }
+
+alias cdoc='cmake --help-command'
