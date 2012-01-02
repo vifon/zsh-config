@@ -101,7 +101,6 @@ alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
 alias pdfxchange='wine ~/.wine/drive_c/Program\ Files/Tracker\ Software/PDF\ Viewer/PDFXCview.exe'
 foobar2000(){(cd ~/.wine/drive_c/Program\ Files\ \(x86\)/foobar2000; wine foobar2000.exe)}
 mp3tag(){(cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe)}
-alias steam='wine ~/Data/Gry/Steam/Steam.exe'
 
 winevd()
 {
