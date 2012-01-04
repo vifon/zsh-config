@@ -11,6 +11,6 @@ zshaddhistory()
         $1 != "cdp "*      && \
         $1 != "ls "*       && \
         $1 != "j "*        && \
-        $1 != "scan-build "*  \
+        $1 != "scan-view "*   \
         ]]
 }
