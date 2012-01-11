@@ -21,6 +21,7 @@ alias g=git
 alias gg='git g | head -n 30'
 alias ggg='git gg'
 alias pd=perldoc
+alias man2='MANPAGER=most man'
 
 # auto-config
 alias gdb='gdb -q'
