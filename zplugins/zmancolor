@@ -22,3 +22,18 @@ perldoc() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             perldoc "$@"
 }
+
+if ! command -v emacs &> /dev/null; then
+    return 0;
+fi
+
+woman() {
+    emacsclient -c -e "(woman-find-file \"$1\")"
+}
+
+womanperl() {
+    if pod2man "$1" -o /tmp/perldoc; then
+        emacsclient -c -e "(woman-find-file \"/tmp/perldoc\")"
+        rm /tmp/perldoc
+    fi
+}
