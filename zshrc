@@ -69,6 +69,7 @@ PLUGINS=(
     valgrind-color
     ignore
     zCMake
+    humble
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
