@@ -97,6 +97,7 @@ export SUDO_EDITOR="emacsclient -c -a vim"
 export BROWSER="opera"
 export PAGER="less"
 export DROPBOXID=139016
+export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.lib/acronyms"
 #if [ -d ~/.fpath ]; then
 #   fpath=(~/.fpath $fpath)
 #   autoload -U ~/.fpath/*(:t)
