@@ -34,8 +34,8 @@ else
     INITIAL_SUBTRACT=$((14 + ${#TTYNAME}))
 fi
 
-if [ -n "$AMOUNT_DRIVE" ]; then
-    AMOUNT_DRIVE_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($GREEN$BOLD"$AMOUNT_DRIVE"$RESET)"
+if [ -n "$AMOUNT_DEVICE" ]; then
+    AMOUNT_DEVICE_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($GREEN$BOLD"$AMOUNT_DEVICE"$RESET)"
 fi
 
 PS1='\
@@ -43,7 +43,7 @@ $PR_SET_CHARSET\
 $PR_SHIFT_IN$PR_ULCORNER$PSSEPARATOR$PR_SHIFT_OUT\
 ($BOLD$TTYNAME$RESET)\
 $SSH_MARKER\
-$AMOUNT_DRIVE_MARKER\
+$AMOUNT_DEVICE_MARKER\
 $(jobcount)\
 $PRIV_MARKER\
 $FILL\
@@ -84,7 +84,7 @@ zstyle ':vcs_info:*' actionformats "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%} %{$BLACK$ON
 precmd()
 {
     FCOUNT=$(($COLUMNS - $INITIAL_SUBTRACT))
-    if [ -n "$AMOUNT_DRIVE" ]; then
+    if [ -n "$AMOUNT_DEVICE" ]; then
         FCOUNT=$(($FCOUNT - 14))
     fi
     vcs_info

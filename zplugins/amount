@@ -8,23 +8,29 @@ fi
 amount()
 {
     if [[ ! "$1" =~ '/' ]]; then
-        1="/dev/$1"
+        DEV="/dev/$1"
+    else
+        DEV="$1"
     fi
 
-    pmount "$1" 2> /dev/null
+    if [ ! -b "$DEV" ]; then
+        echo "$BOLD$RED*$RESET $BOLD$DEV$RESET is not a block device" 1>&2
+    fi
+
+    pmount "$DEV" 2> /dev/null
     if [ $? = 0 ]; then
-        echo "$BOLD$GREEN*$RESET $BOLD$1$RESET mounted"
-        cd $(echo $1 | sed 's#/dev/#/media/#')
-        AMOUNT_DRIVE=$1 zsh
-        echo "$BOLD$YELLOW*$RESET Unmounting $BOLD$1$RESET..."
+        echo "$BOLD$GREEN*$RESET $BOLD$DEV$RESET mounted"
+        cd ${DEV/\/dev\//\/media\/} # /dev/sda1 -> /media/sda1 etc.
+        AMOUNT_DEVICE=$DEV $SHELL
+        echo "$BOLD$YELLOW*$RESET Unmounting $BOLD$DEV$RESET..."
         cd $OLDPWD
-        pumount "$1" 2> /dev/null
+        pumount "$DEV" 2> /dev/null
         if [ $? = 0 ]; then
-            echo "$BOLD$GREEN*$RESET $BOLD$1$RESET unmounted"
+            echo "$BOLD$GREEN*$RESET $BOLD$DEV$RESET unmounted"
         else
-            echo "$BOLD$RED*$RESET Cannot unmount $BOLD$1$RESET"
+            echo "$BOLD$RED*$RESET Cannot unmount $BOLD$DEV$RESET"
         fi
     else
-        echo "$BOLD$RED*$RESET Cannot mount $BOLD$1$RESET"
+        echo "$BOLD$RED*$RESET Cannot mount $BOLD$DEV$RESET"
     fi
 }
