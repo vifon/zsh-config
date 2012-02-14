@@ -112,7 +112,7 @@ steam()
     local WINEPREFIX=$HOME/.steam
     local WINEARCH=win32
     export WINEPREFIX
-    export WINEPREFIX
+    export WINEARCH
     cd "$WINEPREFIX/drive_c/Program Files/Steam/"
     wine Steam.exe
 }
