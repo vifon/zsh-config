@@ -94,7 +94,7 @@ fi
 export EDITOR="vim"
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="emacsclient -c -a vim"
-export BROWSER="opera"
+export BROWSER="luakit -n"
 export PAGER="less"
 export DROPBOXID=139016
 export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.lib/acronyms"
