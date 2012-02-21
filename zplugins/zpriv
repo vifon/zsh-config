@@ -16,6 +16,7 @@ priv()
 }
 
 if [ -n "$PRIV_MARKER" ]; then
+    export PRIV_MARKER="$PR_SHIFT_IN$PR_HBAR($RED$BOLD"PRIV"$RESET)"
     unset HISTFILE
     fc -R ~/.zhistory
 fi
