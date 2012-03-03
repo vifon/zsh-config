@@ -11,13 +11,13 @@ bindkey '^n' history-beginning-search-forward
 #bindkey -s '^t' 'q cls\n'            # czyszczenie terminala
 #bindkey -s `tput kf1` 'q sudo -k\n'  # odebranie autoryzacji
 if [ ! $TERM = "eterm-color" ]; then
-    bindkey -s `tput kf1` '^uxset dpms force off\n'
-    bindkey -s `tput kf2` '^uacpic\n'
-    bindkey -s `tput kf3` 'qdload\n'
-    bindkey -s `tput kf4` 'qdsave\n'
+    bindkey -s `tput kf1` '^u xset dpms force off\n'
+    bindkey -s `tput kf2` '^u acpic\n'
+    bindkey -s `tput kf3` 'q dload\n'
+    bindkey -s `tput kf4` 'q dsave\n'
 fi
-bindkey -s 'w' '^uncmpcpp\n'          # MPD client
-bindkey -s 'a' '^ualsamixer\n'
+bindkey -s 'w' '^u ncmpcpp\n'          # MPD client
+bindkey -s 'a' '^u alsamixer\n'
 bindkey -s 'l' 'q echo\n^l'
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'
