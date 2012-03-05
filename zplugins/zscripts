@@ -95,18 +95,6 @@ archrepo()
     fi
 }
 
-vsuspend()
-{
-    sudo sh -c 'echo [1mSuspending in 3 seconds...[0m && sleep 3 && hibernate-ram' && sudo -k
-    exit
-}
-
-vhibernate()
-{
-    sudo sh -c 'echo [1mHibernating in 3 seconds...[0m && sleep 3 && hibernate-disk' && sudo -k
-    exit
-}
-
 steam()
 {
     local WINEPREFIX=$HOME/.steam

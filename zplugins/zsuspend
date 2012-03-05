@@ -1,0 +1,41 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh fdm=marker :
+
+if ! command -v nvdisp &> /dev/null; then
+    return 1
+fi
+
+vsuspend()
+{
+    while [ -n "$1" ]; do
+        case "$1" in
+            1)
+                nvdisp one
+                ;;
+            l)
+                LOCK=1
+                ;;
+            r)
+                RESTORE=1
+                ;;
+        esac
+        shift
+    done
+
+    sudo sh -c 'echo [1mSuspending in 3 seconds...[0m &&
+                sync                                      &&
+                sleep 3                                   &&
+                if [ -n "'"$LOCK"'" ]; then
+                    sudo -u vifon xscreensaver-command -lock
+                else
+                    sudo -u vifon xscreensaver-command -activate
+                fi                                        &&
+                sleep 1                                   &&
+                echo -n mem > /sys/power/state' && sudo -k &!
+
+    if [ "$?" = "0" -a -n "$RESTORE" ]; then
+        nvdisp two || nvdisp one
+    fi
+    xscreensaver-command -deactivate
+    exit
+}
