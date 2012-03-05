@@ -3,8 +3,8 @@ mkdir $HOME/.zplugins
 for f in zplugins/*; do
     ln -s "`readlink -e "$f"`" "$HOME/.zplugins"
 done
-ln -s zlogin  $HOME/.zlogin
-ln -s zlogout $HOME/.zlogout
-ln -s zloader $HOME/.zloader
-ln -s zprompt $HOME/.zprompt
-ln -s zshrc   $HOME/.zshrc
+ln -s "`readlink -e zlogin`"  $HOME/.zlogin
+ln -s "`readlink -e zlogout`" $HOME/.zlogout
+ln -s "`readlink -e zloader`" $HOME/.zloader
+ln -s "`readlink -e zprompt`" $HOME/.zprompt
+ln -s "`readlink -e zshrc`"   $HOME/.zshrc
