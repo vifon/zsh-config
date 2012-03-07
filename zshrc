@@ -66,7 +66,6 @@ PLUGINS=(
     zmancolor
     acoc
     autojump
-    valgrind-color
     ignore
     zCMake
     humble
