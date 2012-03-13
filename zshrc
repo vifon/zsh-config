@@ -91,7 +91,7 @@ fi
 
 # {{{ ENV VARS AND OPTIONS
 #export EDITOR="emacsclient"
-export EDITOR="vim"
+export EDITOR="emacsclient -c -a vim"
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="emacsclient -c -a vim"
 export BROWSER="luakit -n"
