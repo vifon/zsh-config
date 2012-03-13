@@ -13,8 +13,6 @@ bindkey '^n' history-beginning-search-forward
 if [ ! $TERM = "eterm-color" ]; then
     bindkey -s `tput kf1` '^u ramclean\n'
     bindkey -s `tput kf2` '^u ramrearm\n'
-    bindkey -s `tput kf3` 'q dload\n'
-    bindkey -s `tput kf4` 'q dsave\n'
 fi
 bindkey -s 'w' '^u ncmpcpp\n'          # MPD client
 bindkey -s 'a' '^u alsamixer\n'

@@ -10,10 +10,12 @@ fi
 #export PATH=/usr/lib/cw:"${PATH}"
 
 # {{{ Optymalizacja
+
 # if [ "$PS1" ] ; then
 # mkdir -m 0700 /dev/cgroup/cpu/user/$$
 # echo $$ > /dev/cgroup/cpu/user/$$/tasks
 # fi
+
 # }}}
 
 # End of lines configured by zsh-newuser-install
@@ -57,7 +59,6 @@ PLUGINS=(
     zcompletion
     zaliases
     zscripts
-    dirmaster
     ztodo
     zpriv
     zSSH
