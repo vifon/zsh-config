@@ -1,3 +1,4 @@
+
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
@@ -18,7 +19,14 @@ alias l='ls'
 #alias ack='ack-grep'
 
 alias g=git
-alias gg='git g | head -n 30'
+gg()
+{
+    local HEIGHT=30
+    if [[ $LINES < 33 ]]; then
+        HEIGHT=$[$LINES-3]
+    fi
+    git g | head -n $HEIGHT
+}
 alias ggg='git gg'
 alias pd=perldoc
 alias man2='MANPAGER=most man'
