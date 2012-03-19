@@ -70,6 +70,7 @@ PLUGINS=(
     ignore
     zCMake
     humble
+    extract
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
