@@ -7,6 +7,6 @@ fi
 
 kexecready()
 {
-	kexec -l /boot/vmlinuz-linux --append="root=/dev/sda1 ro $1" --initrd=/boot/initramfs-linux.img
+	kexec -l /boot/vmlinuz-linux --append="root=/dev/sda1 ro resume=/dev/sda5 $1" --initrd=/boot/initramfs-linux.img
 	rc.d start kexec
 }
