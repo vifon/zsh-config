@@ -6,8 +6,7 @@ if ! command -v ssh-attach.sh &> /dev/null; then
 fi
 
 MYKEY='1b:97:f1:43:86:01:00:58:de:85:18:d3:31:07:18:86'
-PERIOD=15
-periodic()
+ssh_prompt()
 {
     if [ -n "$SSH_MARKER" ]; then
         local SSH_LEN=8
@@ -32,7 +31,7 @@ periodic()
         SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($MAGENTA$BOLD"SSH"$RESET)"
     fi
 
-    FILL=$PR_SHIFT_IN${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
+    FILL=${FILLING[1,$FCOUNT]}$PR_URCORNER$PR_SHIFT_OUT
 
 
     #if [ -n "$SSH_MARKER" ]; then
@@ -48,6 +47,7 @@ periodic()
     #   SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
     #fi
 }
+periodic_functions=($periodic_functions ssh_prompt)
 
 # {{{ SSH functions
 ssha()
