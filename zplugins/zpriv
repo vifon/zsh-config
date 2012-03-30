@@ -1,13 +1,6 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-typeset -A altchar
-set -A altchar ${(s..)terminfo[acsc]}
-PR_SET_CHARSET="%{$terminfo[enacs]%}"
-PR_SHIFT_IN="%{$terminfo[smacs]%}"
-PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
-PR_HBAR=${altchar[q]:--}
-
 priv()
 {
     export PRIV_MARKER="$PR_SHIFT_IN$PR_HBAR($RED$BOLD"PRIV"$RESET)"
