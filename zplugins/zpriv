@@ -1,15 +1,9 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-priv()
-{
-    export PRIV_MARKER="$PR_SHIFT_IN$PR_HBAR($RED$BOLD"PRIV"$RESET)"
-    zsh
-    unset PRIV_MARKER
-}
+alias priv='PRIV=1 zsh'
 
-if [ -n "$PRIV_MARKER" ]; then
-    export PRIV_MARKER="$PR_SHIFT_IN$PR_HBAR($RED$BOLD"PRIV"$RESET)"
+if [ -n "$PRIV" ]; then
     unset HISTFILE
     fc -R ~/.zhistory
 fi
