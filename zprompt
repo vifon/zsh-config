@@ -99,32 +99,3 @@ precmd()
 }
 
 ssh_prompt
-
-#{{{
-#PS1='\
-#$PSUSER\
-#$PSSEP1\
-#$PSHOST\
-#$PSSEP2\
-#$PSDIR\
-#%# '
-
-
-#RPS1='\
-#%{${BOLD}${RED}%}\
-#${PRIV_MARKER}\
-#%{${YELLOW}%}\
-#${SSH_MARKER}\
-#%{${RESET}%}'
-#}}}
-
-# {{{ shitty chpwd
-
-#chpwd()
-#{
-#   if [[ ${#PWD} > $(($COLUMNS - 30)) ]]; then
-#       echo "$BLUE$OLDPWD$RESET -> $BLUE$PWD$RESET"
-#   fi
-#}
-
-# }}}
