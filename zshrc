@@ -62,7 +62,6 @@ PLUGINS=(
     ztodo
     zpriv
     zSSH
-    amount
     zXephyr
     zmancolor
     acoc
