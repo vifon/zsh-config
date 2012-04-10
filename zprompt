@@ -98,4 +98,4 @@ precmd()
     fi
 }
 
-ssh_prompt
+command -v ssh_prompt &> /dev/null && ssh_prompt
