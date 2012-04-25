@@ -71,6 +71,7 @@ PLUGINS=(
     humble
     extract
     syntaxhighlight
+    scm_breeze
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
