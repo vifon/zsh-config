@@ -17,6 +17,7 @@ fi
 bindkey -s 'w' '^u ncmpcpp\n'          # MPD client
 bindkey -s 'a' '^u alsamixer\n'
 bindkey -s 'l' 'q clear\n'
+bindkey -s '^Xa' ' echo \"\\a\"\n'
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'
 # {{{ pairs
