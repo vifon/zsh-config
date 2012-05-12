@@ -41,6 +41,7 @@ alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
     alias emacs='emacsclient -c'
+    alias E='sudoedit'
     dired()
     {
         if [ -z "$1" ]; then
@@ -144,7 +145,6 @@ if command -v yaourt &> /dev/null; then
 fi
 alias orphan='yaourt -Qqdt'
 alias orphan-clean='yaourt -Rsun `orphan`'
-#alias gee=geeqie
 
 
 
