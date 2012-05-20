@@ -70,6 +70,7 @@ PLUGINS=(
     zCMake
     humble
     extract
+    filehandlers
     syntaxhighlight
     scm_breeze
     )

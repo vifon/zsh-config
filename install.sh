@@ -1,10 +1,12 @@
 #!/bin/sh
-mkdir $HOME/.zplugins
+mkdir -p $HOME/.zplugins
 for f in zplugins/*; do
-    ln -v -s "`readlink -e "$f"`" "$HOME/.zplugins"
+    ln -s "`readlink -e "$f"`" "$HOME/.zplugins" 2> /dev/null &&
+    echo "[32;1m$f[0m" 1>&2 ||
+    echo "[31;1m$f[0m" 1>&2
 done
-ln -v -s "`readlink -e zlogin`"  $HOME/.zlogin
-ln -v -s "`readlink -e zlogout`" $HOME/.zlogout
-ln -v -s "`readlink -e zloader`" $HOME/.zloader
-ln -v -s "`readlink -e zprompt`" $HOME/.zprompt
-ln -v -s "`readlink -e zshrc`"   $HOME/.zshrc
+for f in zlogin zlogout zloader zprompt zshrc; do
+    ln -s "`readlink -e "$f"`" "$HOME/.$f" 2> /dev/null &&
+    echo "[32;1m$f[0m" 1>&2 ||
+    echo "[31;1m$f[0m" 1>&2
+done

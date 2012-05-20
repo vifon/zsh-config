@@ -1,0 +1,9 @@
+# -*- mode: shell-script -*-
+# vim: ft=zsh fdm=marker :
+
+alias -s png=sxiv
+alias -s jpg=sxiv
+alias -s jpeg=sxiv
+alias -s gif=sxiv
+
+alias -s pdf=zathura
