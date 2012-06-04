@@ -9,8 +9,17 @@ mkcd()
 
 mkmv()
 {
-    mkdir "$1"
-    mv *~"$1" "$1"
+    if [ -z "$1" ]; then
+        return 1
+    fi
+    local DIR="$1"
+    shift
+    mkdir "$DIR"
+    if [ -z "$1" ]; then
+        mv *~"$DIR" "$DIR"
+    else
+        mv $* "$DIR"
+    fi
 }
 
 oldtree()
