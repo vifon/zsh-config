@@ -25,6 +25,8 @@ EOF
             ishygddt "`date +%Y`" 'using Google Chrome'
         }
     fi
+    setopt no_hist_accept_space \
+              hist_ignore_space
 fi
 
 source ~/.profile

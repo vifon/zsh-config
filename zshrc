@@ -66,7 +66,6 @@ PLUGINS=(
     zmancolor
     acoc
     autojump
-    ignore
     zCMake
     humble
     extract
@@ -107,7 +106,7 @@ export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.
 #fi
 # /usr/local/share/zsh/site-functions
 setopt  hist_ignore_all_dups    \
-    hist_ignore_space           \
+    hist_accept_space           \
     hist_reduce_blanks          \
     append_history              \
     share_history               \
