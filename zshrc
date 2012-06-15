@@ -24,6 +24,33 @@ SAVEHIST=2500
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 
+export EDITOR="emacsclient -c -a vim"
+export ALTERNATE_EDITOR="vim"
+export SUDO_EDITOR="emacsclient -c -a vim"
+export BROWSER="luakit -n"
+export PAGER="less"
+export DROPBOXID=139016
+export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.lib/acronyms"
+setopt  hist_ignore_all_dups    \
+    hist_accept_space           \
+    hist_reduce_blanks          \
+    append_history              \
+    share_history               \
+    inc_append_history          \
+    hist_no_functions           \
+    extended_history            \
+    hist_no_store               \
+    interactivecomments         \
+    \
+    extended_glob               \
+    braceccl                    \
+    longlistjobs                \
+    \
+    prompt_subst                \
+    \
+    pushd_to_home
+
+
 PLUGINS_DIR=~/.zplugins
 PLUGINS=(
     zcolors
@@ -61,29 +88,3 @@ fi
 if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
 fi
-
-export EDITOR="emacsclient -c -a vim"
-export ALTERNATE_EDITOR="vim"
-export SUDO_EDITOR="emacsclient -c -a vim"
-export BROWSER="luakit -n"
-export PAGER="less"
-export DROPBOXID=139016
-export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.lib/acronyms"
-setopt  hist_ignore_all_dups    \
-    hist_accept_space           \
-    hist_reduce_blanks          \
-    append_history              \
-    share_history               \
-    inc_append_history          \
-    hist_no_functions           \
-    extended_history            \
-    hist_no_store               \
-    interactivecomments         \
-    \
-    extended_glob               \
-    braceccl                    \
-    longlistjobs                \
-    \
-    prompt_subst                \
-    \
-    pushd_to_home
