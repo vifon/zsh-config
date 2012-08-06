@@ -136,7 +136,7 @@ seturgent()
     print -Pn "\e]0;xterm\a"
 }
 
-alias apache='sudo /etc/init.d/httpd'
+alias apache='sudo /etc/rc.d/httpd'
 
 if command -v pacman-color &> /dev/null; then
     alias pacman=pacman-color

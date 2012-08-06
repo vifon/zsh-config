@@ -26,7 +26,7 @@ WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 export EDITOR="emacsclient -c -a vim"
 export ALTERNATE_EDITOR="vim"
-export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
+export SUDO_EDITOR="emacsclient -c -a vim"
 export BROWSER="luakit -n"
 export PAGER="less"
 export DROPBOXID=139016
@@ -63,6 +63,7 @@ PLUGINS=(
     zSSH
     zXephyr
     zmancolor
+    acoc
     autojump
     zCMake
     humble
