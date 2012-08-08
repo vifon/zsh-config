@@ -63,6 +63,10 @@ sshadetach()
     SSH_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($YELLOW"ssh"$RESET)"
 }
 
+if [ -n "$(pgrep ssh-agent)" -a -z "$SSH_AUTH_SOCK" ]; then
+    eval `ssh-attach.sh` > /dev/null
+fi
+
 if ! command -v pamusb-check &> /dev/null; then
     return
 fi
@@ -92,6 +96,3 @@ $RED$BOLD*$RESET Access denied."
 }
 # }}}
 
-if [ -n "$(pgrep ssh-agent)" -a -z "$SSH_AUTH_SOCK" ]; then
-    eval `ssh-attach.sh` > /dev/null
-fi

@@ -1,22 +1,15 @@
-
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
 if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    alias lh='ls -lh'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
+alias lh='ls -lh'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls'
-#alias ack='ack-grep'
 
 alias g=git
 gg()
@@ -31,13 +24,8 @@ alias ggg='git gg'
 alias pd=perldoc
 alias man2='MANPAGER=most man'
 
-# auto-config
 alias gdb='gdb -q'
-alias links2='links2 -anonymous'
-alias dvtm='dvtm -m '
-alias byobu='byobu -c ~/.byobu/profile'
-alias qemu='qemu -enable-kvm'
-alias cal='cal -m'
+# alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
     alias emacs='emacsclient -c'
@@ -60,40 +48,20 @@ else    # root
         emacs -nw $1
     }
 fi
-#alias emacsd='\emacs --daemon'
-#alias make='colormake'
 alias remake='make clean all'
-alias vimname='vim -c :Renamer'
 alias m='getmail --rcfile getmailrc --rcfile official'
 
 # shortcuts
 alias debugterm='clear && sleep 10000000'
-alias cls='clear'
 alias zhist='vim --noplugin $DEF_HISTFILE'
 alias kwine='wineserver -k'
 alias fixres='xrandr -s 1680x1050'
 alias monitorauto='xrandr --output LVDS-0 --auto --output VGA-0 --auto --right-of LVDS-0 --primary'
 alias monitorsingle='xrandr --output LVDS-0 --auto --primary --output VGA-0 --off'
-#alias droopy='~/Scripts/droopy.py -p "~/Obrazy/avatar.jpg" -d "/media/vifon/Droopy"'
-#alias su='sudo -i'
-#alias su='sudo zsh'
 alias synergy1='synergyc 192.168.1.102'
 alias synergy2='synergys --config ~/.synergy/synergy.conf'
-#alias priv='HISTFILE=/dev/null'
-alias hvim='vim "+%!xxd"'
 alias cmd='wine cmd 2> /dev/null'
-#alias temp="cat /proc/acpi/thermal_zone/THM/temperature | awk '{print \$2}'"
-alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias scpn='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias von='vbetool dpms on'
-alias voff='vbetool dpms off'
-#alias nethack='screen -c ~/.nscreenrc nethack'
 alias curdate='date +%y.%m.%d'
-#alias eix='apt-cache search'
-#alias eix='aptitude search'
-alias apt='aptitude show'
-# alias emerge='sudo aptitude install'
-alias loic='wine =LOIC.exe 2> /dev/null'
 alias yargs='xargs -d \\n'
 alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0 -sameq screencapture.avi'
 
@@ -103,16 +71,7 @@ alias ....='cd ../../../'
 alias cdp='pushd'
 alias pop='popd'
 
-#games
-alias game='gameselect'
-#alias minecraft='game m'
-alias minecraft-xray='cd /home/vifon/gry/minecraft/xray; ./minecraft_xray.sh'
-alias treasurechest='/home/vifon/gry/minecraft/treasurechest/treasurechest'
-
-#wine
-alias pdfxchange='wine ~/.wine/drive_c/Program\ Files/Tracker\ Software/PDF\ Viewer/PDFXCview.exe'
 foobar2000(){(cd ~/.wine/drive_c/Program\ Files\ \(x86\)/foobar2000; wine foobar2000.exe)}
-mp3tag(){(cd ~/.wine/drive_c/Program\ Files/Mp3tag; wine Mp3tag.exe)}
 
 winevd()
 {
@@ -144,11 +103,9 @@ fi
 if command -v yaourt &> /dev/null; then
     alias y="yaourt"
     alias yy='yaourt --noconfirm'
+    alias orphan='yaourt -Qqdt'
+    alias orphan-clean='yaourt -Rsun `orphan`'
 fi
-alias orphan='yaourt -Qqdt'
-alias orphan-clean='yaourt -Rsun `orphan`'
-
-
 
 # {{{ trolling
 if [ "$UID" != "0" ]; then  # not root
