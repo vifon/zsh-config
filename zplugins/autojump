@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-if [ ! -f /etc/profile.d/autojump.zsh ]; then
+if [ ! -f /usr/share/autojump/autojump.sh ]; then
     return 1
 fi
 
@@ -9,4 +9,4 @@ if [ -n "$PRIV" ]; then
     return
 fi
 
-source /etc/profile.d/autojump.zsh
+source /usr/share/autojump/autojump.sh
