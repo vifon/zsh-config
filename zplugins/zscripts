@@ -22,6 +22,11 @@ mkmv()
     fi
 }
 
+mvln()
+{
+    mv "$1" "$2" && ln -s "`readlink -f "$2"`" "$1"
+}
+
 oldtree()
 {
     ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
