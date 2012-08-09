@@ -1,51 +1,40 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker ft=zsh :
-typeset -A altchar
-set -A altchar ${(s..)terminfo[acsc]}
-PR_SET_CHARSET="$terminfo[enacs]"
-PR_SHIFT_IN="$terminfo[smacs]"
-PR_SHIFT_OUT="$terminfo[rmacs]"
-PR_HBAR=${altchar[q]:--}
-PR_ULCORNER=${altchar[l]:--}
-PR_LLCORNER=${altchar[m]:--}
-PR_LRCORNER=${altchar[j]:--}
-PR_URCORNER=${altchar[k]:--}
 
 PSUSERCOLOR=$RED
 PSUSER="%n"
 PSSEP1='@'
 PSHOSTCOLOR=$GREEN
 PSHOST="%m"
-PSSEPARATOR="$PR_HBAR$PR_HBAR$PR_HBAR"
 
 jobcount()
 {
     if [ -n "$(jobs)" ]; then
-        echo "$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT(${YELLOW}J$RESET)"
+        echo "───(${YELLOW}J$RESET)"
     fi
 }
 
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 
 if [ -n "$AMOUNT_DEVICE" ]; then
-    AMOUNT_DEVICE_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($GREEN$BOLD"$AMOUNT_DEVICE"$RESET)"
+    AMOUNT_DEVICE_MARKER="───($GREEN$BOLD"$AMOUNT_DEVICE"$RESET)"
 fi
 
 if [ -n "$PRIV" ]; then
-    PRIV_MARKER="$PR_SHIFT_IN$PSSEPARATOR$PR_SHIFT_OUT($RED$BOLD"PRIV"$RESET)"
+    PRIV_MARKER="───($RED$BOLD"PRIV"$RESET)"
 fi
 
-PS1='%{$PR_SET_CHARSET%}\
-%{$PR_SHIFT_IN%}$PR_ULCORNER$PSSEPARATOR%{$PR_SHIFT_OUT%}\
+PS1='\
+┌───\
 %{($BOLD$TTYNAME$RESET)%}\
 $SSH_MARKER\
 $AMOUNT_DEVICE_MARKER\
 $(jobcount)\
 $PRIV_MARKER\
-%{$PR_SHIFT_IN%}$PSSEPARATOR%{$PR_SHIFT_OUT%}\
+───\
 (%{$BLUE$BOLD%}%~%{$RESET%})\
 
-%{$PR_SHIFT_IN%}$PR_LLCORNER%{${PR_SHIFT_OUT}%}(\
+└(\
 \
 %{$PSUSERCOLOR%}\
 $PSUSER\
