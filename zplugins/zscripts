@@ -27,11 +27,6 @@ mvln()
     mv "$1" "$2" && ln -s "`readlink -f "$2"`" "$1"
 }
 
-oldtree()
-{
-    ls -R $* | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-}
-
 wprefix()
 {
     export WINEPREFIX="$HOME/$1/"
@@ -50,15 +45,6 @@ killwatch()
     while [ true ]; do
         killall $1 2> /dev/null
         sleep $2
-    done
-}
-
-listcolors()
-{
-    local COLORS
-    COLORS=(RED GREEN YELLOW BLUE MAGENTA CYAN GREY WHITE)
-    for i in {1..$#COLORS}; do
-        echo $i: `tput setaf $i`$COLORS[$i] `tput bold`$COLORS[$i]`tput sgr0` `tput setab $i``tput setaf 0`$COLORS[$i]`tput sgr0`
     done
 }
 
@@ -95,26 +81,4 @@ nuke()
             rm -rfv $OLDPWD
         fi
     fi
-}
-
-archrepo()
-{
-    local PKGS
-    while [ -n "$1" ]; do
-        PKGS=($PKGS $(pkgfile $1))
-        shift
-    done
-    if [ -n "$PKGS" ]; then
-        yaourt -Si $PKGS
-    fi
-}
-
-steam()
-{
-    local WINEPREFIX=$HOME/.steam
-    local WINEARCH=win32
-    export WINEPREFIX
-    export WINEARCH
-    cd "$WINEPREFIX/drive_c/Program Files/Steam/"
-    wine Steam.exe
 }
