@@ -3,9 +3,6 @@
 [ -z "$PS1" ] && return
 unsetopt autocd beep
 bindkey -e
-if [ -d ~/.bin -a -z "`echo $PATH | grep '/home/vifon/\.bin'`" ]; then
-    export PATH=~/.bin:"${PATH}"
-fi
 
 zstyle :compinstall filename '~/.zshrc'
 
@@ -29,9 +26,7 @@ export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
 export BROWSER="luakit -n"
 export PAGER="less"
-export DROPBOXID=139016
-export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/.lib/acronyms"
-setopt  hist_ignore_all_dups    \
+setopt hist_ignore_all_dups     \
     hist_accept_space           \
     hist_reduce_blanks          \
     append_history              \

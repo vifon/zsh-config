@@ -28,5 +28,3 @@ EOF
     setopt no_hist_accept_space \
               hist_ignore_space
 fi
-
-source ~/.profile
