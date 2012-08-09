@@ -51,7 +51,7 @@ RPS1='%(?..[%{$RED$BOLD%}$?%{$RESET%}])'
 
 # git stuff
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
 # %u if there are unstaged changes
 zstyle ':vcs_info:*' unstagedstr   "%{$RED%}"
