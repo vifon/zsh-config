@@ -22,16 +22,6 @@ mkmv()
     fi
 }
 
-mvln()
-{
-    mv "$1" "$2" &&
-    if [ -d "$2" ]; then
-        ln -s "`realpath -s "$2/$1"`" "$1"
-    else
-        ln -s "`realpath -s "$2"`" "$1"
-    fi
-}
-
 wprefix()
 {
     export WINEPREFIX="$HOME/$1/"
