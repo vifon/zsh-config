@@ -24,7 +24,7 @@ WORDCHARS='*?_-.[]~!#$%(){}<>'
 export EDITOR="emacsclient -c -a vim"
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
-export BROWSER="luakit -n"
+export BROWSER="chromium --incognito"
 export PAGER="less"
 setopt hist_ignore_all_dups     \
     hist_accept_space           \
