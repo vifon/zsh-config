@@ -17,7 +17,6 @@ fi
 bindkey -s 'w' '^uncmpcpp\n'          # MPD client
 bindkey -s 'a' '^ualsamixer\n'
 bindkey -s 'l' 'qclear\n'
-bindkey -s '^Xa' 'echo \"\\a\"\n'
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'
 # {{{ pairs
@@ -32,3 +31,10 @@ bindkey -s '1' "\'\'OD"
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+send-alarm ()
+{
+    echo -ne "\a"
+}
+zle -N send-alarm
+bindkey '^Xa' send-alarm
