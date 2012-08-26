@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-if ! command -v kexec &> /dev/null; then
+if ! (( $+commands[kexec] )); then
     return 1
 fi
 

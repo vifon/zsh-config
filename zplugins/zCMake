@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh fdm=marker :
 
-if ! command -v cmake &> /dev/null; then
+if ! (( $+commands[cmake] )); then
     return 1
 fi
 

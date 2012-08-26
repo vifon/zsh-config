@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
-if ! command -v acoc &> /dev/null; then
+if ! (( $+commands[acoc] )); then
     return 1;
 fi
 

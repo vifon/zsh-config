@@ -34,7 +34,7 @@ pydoc() {
             pydoc "$@"
 }
 
-if ! command -v emacs &> /dev/null; then
+if ! (( $+commands[emacs] )); then
     return 0;
 fi
 
