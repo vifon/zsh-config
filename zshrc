@@ -65,6 +65,7 @@ PLUGINS=(
     filehandlers
     syntaxhighlight
     scm_breeze
+    zaw
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader

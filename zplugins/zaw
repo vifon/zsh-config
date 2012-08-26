@@ -1,0 +1,8 @@
+# -*- mode: shell-script -*-
+# vim: ft=zsh fdm=marker :
+
+if [ ! -f ~/.zaw/zaw.zsh ]; then
+    return 1;
+fi
+
+source ~/.zaw/zaw.zsh
