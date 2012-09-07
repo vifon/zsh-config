@@ -38,3 +38,5 @@ send-alarm ()
 }
 zle -N send-alarm
 bindkey '^Xa' send-alarm
+
+bindkey -s '^Z' 'qbg && disown\n'
