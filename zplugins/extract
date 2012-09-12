@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
-# stolen by mariom
+# stolen by and then from mariom
 ext () {
     while [ -n "$1" ]; do
         if [ -f "$1" ]; then
