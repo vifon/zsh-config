@@ -82,3 +82,5 @@ fi
 if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
 fi
+
+clear
