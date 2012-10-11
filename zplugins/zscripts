@@ -14,7 +14,7 @@ mkmv()
     fi
     local DIR="$1"
     shift
-    mkdir "$DIR"
+    mkdir -p "$DIR"
     if [ -z "$1" ]; then
         mv *~"$DIR" "$DIR"
     else
