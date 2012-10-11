@@ -7,3 +7,7 @@ alias -s jpeg=sxiv
 alias -s gif=sxiv
 
 alias -s pdf=zathura
+
+alias -s doc=libreoffice
+alias -s docx=libreoffice
+alias -s odt=libreoffice
