@@ -13,7 +13,10 @@ xephyr()
     if [ -z "$2" ]; then
         2=800x600
     fi
+    local PID
     Xephyr $1 -screen $2 -reset 2> /dev/null &
+    PID=$!
     sleep 1
     DISPLAY=$1 zsh
+    kill $PID
 }
