@@ -83,9 +83,7 @@ if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
 fi
 
-case $- in
-    *l*)
-        ;;
-    *)
-        clear ;;
-esac
+if [ -n "$CLEARONSTART" ]; then
+    clear
+    unset CLEARONSTART
+fi
