@@ -40,3 +40,21 @@ zle -N send-alarm
 bindkey '^Xa' send-alarm
 
 bindkey -s '^Z' 'qbg && disown\n'
+
+
+last-arg()
+{
+    echo $argv[-1]
+}
+without-last-arg()
+{
+    if (($ARGC > 1)); then
+        echo $argv[1,-2]" "
+    fi
+}
+expand-path()
+{
+    LBUFFER="$(eval without-last-arg $LBUFFER)$(readlink -f "$(eval last-arg $LBUFFER)")"
+}
+zle -N expand-path
+bindkey '^Xp' expand-path
