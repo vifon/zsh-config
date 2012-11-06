@@ -64,7 +64,6 @@ PLUGINS=(
     extract
     filehandlers
     syntaxhighlight
-    zaw
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
