@@ -1,0 +1,140 @@
+# -*- mode: shell-script -*-
+# vim: ft=zsh fdm=marker :
+
+typeset -gA _dwim_data_regex
+typeset -gA _dwim_data_sed
+
+_dwim_sed() {
+  BUFFER=$(echo $BUFFER | sed -re "$1")
+}
+
+_dwim_add_transform(){
+  _dwim_data_regex[$(($#_dwim_data_regex+1))]=$1
+  _dwim_data_sed[$(($#_dwim_data_sed+1))]=$2
+
+  return
+}
+
+_dwim_build_data() {
+
+    _dwim_add_transform '^one (s|i)' \
+        '_dwim_sed "s/^one (s|i)/one/"'
+
+  ## scp -> mv
+    _dwim_add_transform '^scp .+:' \
+        '_dwim_sed "s/^scp /mv /"; _dwim_sed "s/ [A-Za-z0-9@\-\.]+:.*//"'
+
+  ## tar ft -> tar fx
+    _dwim_add_transform '^tar (ft|tf)' \
+        '_dwim_sed "s/^tar (ft|tf)/tar fx/"'
+
+  ## tar xf -> cd # using tarball contents
+    _dwim_add_transform '^tar [A-Za-z0-9\-]*x[A-Za-z0-9]* ' \
+        'local tarball
+    _dwim_sed "s/^tar [A-Za-z]+ //"
+    tarball=$BUFFER
+    tarball=${(Q)tarball}
+    if [[ -e "$tarball" ]]; then
+      local newpath
+      newpath=$(tar ft $tarball | head -1)
+      BUFFER="cd $newpath"
+    fi'
+
+    _dwim_add_transform '^ext .*tar.gz' \
+        'local tarball
+    _dwim_sed "s/^ext //"
+    tarball=$BUFFER
+    tarball=${(Q)tarball}
+    if [[ -e "$tarball" ]]; then
+      local newpath
+      newpath=$(tar ft $tarball | head -1)
+      BUFFER="cd $newpath"
+    fi'
+
+  ## service <> stop -> service <> start
+    _dwim_add_transform '^sudo (service |\/etc\/init.d\/)[a-zA-Z0-9]+ stop' \
+        '_dwim_sed "s/stop/start/"'
+
+  ## service <> start -> service <> stop
+    _dwim_add_transform '^sudo (service |\/etc\/init.d\/)[a-zA-Z0-9]+ start' \
+        '_dwim_sed "s/start/stop/"'
+
+  ## mkdir -> cd
+    _dwim_add_transform '^mkdir ' \
+        '_dwim_sed "s/^mkdir /cd /"'
+
+  ## mount -> umount
+    _dwim_add_transform '^sudo mount' \
+        '_dwim_sed "s/^sudo mount/sudo umount/"'
+
+  ## umount -> mount
+    _dwim_add_transform '^sudo umount' \
+        '_dwim_sed "s/^sudo umount/sudo mount/"'
+
+  ## TODO: ls matches not very accurate
+  ## ls -<flags> <dir> -> cd <dir>
+    _dwim_add_transform '^ls -[A-Za-z0-9]+ .+' \
+        'local filename
+    _dwim_sed "s/^ls -[A-Za-z0-9]+ //"
+    filename=$BUFFER
+    filename=${(Q)filename}
+    if [[ -d "$filename" ]]; then
+      BUFFER="cd $filename"
+    fi'
+
+  ## ls <dir> -> cd <dir>
+    _dwim_add_transform '^ls [^-].*' \
+        'local filename
+    _dwim_sed "s/^ls //"
+    filename=$BUFFER
+    filename=${(Q)filename}
+    if [[ -d "$filename" ]]; then
+      BUFFER="cd $filename"
+    fi'
+
+}
+
+_dwim_build_data
+
+_dwim_transform() {
+  local regex
+  local oldbuffer
+  oldbuffer=$BUFFER
+
+  for i in {1..${#_dwim_data_regex}}; do
+    if [[ "$BUFFER" =~ "$_dwim_data_regex[$i]" ]]; then
+      eval "$_dwim_data_sed[$i]"
+    fi
+
+    if [[ "$oldbuffer" != "$BUFFER" ]]; then
+      return
+    fi
+  done
+
+  ## TODO: rework dwim hash to eliminate this special case
+  if [[ $BUFFER =~ '^sudo ' ]]; then
+    _dwim_sed "s/^sudo //"
+  else
+    BUFFER="sudo $BUFFER"
+  fi
+
+  return
+}
+
+dwim() {
+  local ORIGINAL_BUFFER
+
+  if [[ ! -n $BUFFER ]]; then
+    (( HISTNO -= 1 ))
+  fi
+
+  ORIGINAL_BUFFER=$BUFFER
+
+  #BUFFER=$($HOME/.zprezto/modules/dwim/dwim.pl "$BUFFER")
+  _dwim_transform
+
+  CURSOR=$#BUFFER
+}
+
+zle -N dwim
+bindkey "e" dwim
