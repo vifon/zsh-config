@@ -16,4 +16,4 @@ export CPLUS_INCLUDE_PATH="$HOME/local-my/include:$CPLUS_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/local-my/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
 
-export ACRONYMDB="$HOME/.lib/acronyms"
+export ACRONYMDB="$HOME/.resources/acronyms"
