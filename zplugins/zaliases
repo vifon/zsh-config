@@ -64,6 +64,7 @@ alias cmd='wine cmd 2> /dev/null'
 alias curdate='date +%y.%m.%d'
 alias yargs='xargs -d \\n'
 alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0 -sameq screencapture.avi'
+alias json-format='python -mjson.tool'
 
 alias   ..='cd ../'
 alias  ...='cd ../../'
