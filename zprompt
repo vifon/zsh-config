@@ -107,6 +107,9 @@ precmd()
         PSSEP2=
         PSDIR=
     fi
+
+    # bell on prompt display BUT not when just starting the terminal
+    [ "$HAS_STARTED" = 1 ] && echo -n "\a" || HAS_STARTED=1
 }
 
 command -v ssh_prompt &> /dev/null && ssh_prompt
