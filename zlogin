@@ -19,6 +19,4 @@ start()
 if [ -n "$SSH_CONNECTION" ]; then
     HISTFILE=~/.zhistory_ssh
     DEF_HISTFILE=~/.zhistory_ssh
-    setopt no_hist_accept_space \
-              hist_ignore_space
 fi
