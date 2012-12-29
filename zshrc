@@ -63,7 +63,6 @@ PLUGINS=(
     humble
     extract
     filehandlers
-    syntaxhighlight
     dwim
     )
 if [ -f ~/.zloader ]; then
