@@ -11,6 +11,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls'
 
+alias r=ranger
 alias g=git
 gg()
 {
