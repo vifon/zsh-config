@@ -27,7 +27,7 @@ export EDITOR="emacsclient -c -a vim"
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
 export BROWSER="luakit"
-export PAGER="less"
+export PAGER="most"
 setopt hist_ignore_all_dups     \
     hist_accept_space           \
     hist_reduce_blanks          \
