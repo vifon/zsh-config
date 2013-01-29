@@ -7,9 +7,11 @@ if command -v dircolors &> /dev/null; then
     alias grep='grep --color=auto'
 fi
 alias lh='ls -lh'
-alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls'
+
+alias xo='xclip -o'
+alias xi='xclip -i'
 
 alias r=ranger
 alias g=git
@@ -26,10 +28,13 @@ alias pd=perldoc
 alias man2='MANPAGER=most man'
 
 alias gdb='gdb -q'
+alias octave='octave -q'
 # alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
-    alias emacs='emacsclient -c'
+    if ! command -v e &> /dev/null; then
+        alias e='emacsclient -c'
+    fi
     alias E='sudoedit'
     dired()
     {
@@ -55,16 +60,12 @@ alias m='getmail --rcfile getmailrc --rcfile official'
 # shortcuts
 alias debugterm='clear && sleep 10000000'
 alias zhist='vim --noplugin $DEF_HISTFILE'
-alias kwine='wineserver -k'
-alias fixres='xrandr -s 1680x1050'
-alias monitorauto='xrandr --output LVDS-0 --auto --output VGA-0 --auto --right-of LVDS-0 --primary'
-alias monitorsingle='xrandr --output LVDS-0 --auto --primary --output VGA-0 --off'
 alias synergy1='synergyc 192.168.1.102'
 alias synergy2='synergys --config ~/.synergy/synergy.conf'
 alias cmd='wine cmd 2> /dev/null'
 alias curdate='date +%y.%m.%d'
 alias yargs='xargs -d \\n'
-alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0 -sameq screencapture.avi'
+alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0 -sameq' # usage: recordscreen FILE.avi
 alias json-format='python -mjson.tool'
 
 alias   ..='cd ../'
@@ -96,8 +97,6 @@ seturgent()
     sleep 0.1
     print -Pn "\e]0;xterm\a"
 }
-
-alias apache='sudo /etc/init.d/httpd'
 
 if command -v pacman-color &> /dev/null; then
     alias pacman=pacman-color
