@@ -2,6 +2,10 @@
 # vim: set fdm=marker :
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/local/bin:$PATH"
+export PATH="/sbin:$PATH"
+export PATH="/usr/sbin:$PATH"
+
+export PATH="$HOME/.local/share/Steam/debian_bin:$PATH"
 
 [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] && source "$HOME/perl5/perlbrew/etc/bashrc"
 export PERL_MB_OPT="--install_base $HOME/.perl5"
