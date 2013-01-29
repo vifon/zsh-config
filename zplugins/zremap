@@ -14,8 +14,6 @@ if [ ! $TERM = "eterm-color" ]; then
     bindkey -s `tput kf1` '^uramclean\n'
     bindkey -s `tput kf2` '^uramrearm\n'
 fi
-bindkey -s 'w' '^uncmpcpp\n'          # MPD client
-bindkey -s 'a' '^ualsamixer\n'
 bindkey -s 'l' 'qclear\n'
 #bindkey -s 'v' 'q bindkey -v\n'    # tryb vi
 #bindkey -s '' 'tmux attach'
