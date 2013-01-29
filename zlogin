@@ -13,7 +13,7 @@ unset SPLASH
 
 start()
 {
-    exec startx &> /dev/null
+    exec startx "$@" &> /dev/null
 }
 
 if [ -n "$SSH_CONNECTION" ]; then
