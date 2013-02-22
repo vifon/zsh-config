@@ -29,6 +29,7 @@ alias man2='MANPAGER=less man'
 
 alias gdb='gdb -q'
 alias octave='octave -q'
+alias sbcl='rlwrap sbcl'
 # alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
