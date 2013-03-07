@@ -1,0 +1,11 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+if [ ! -d "$HOME/.zplugins/functional.d" ]; then
+    return 1
+fi
+
+cd "$HOME/.zplugins/functional.d"
+source functional.plugin.zsh
+cd "$OLDPWD"
+OLDPWD=$PWD

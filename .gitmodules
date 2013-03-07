@@ -1,0 +1,3 @@
+[submodule "zplugins/functional.d"]
+	path = zplugins/functional.d
+	url = https://github.com/Tarrasch/zsh-functional

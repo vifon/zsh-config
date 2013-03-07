@@ -66,6 +66,7 @@ PLUGINS=(
     extract
     filehandlers
     dwim
+    functional
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
