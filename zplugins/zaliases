@@ -31,6 +31,10 @@ gg()
 alias ggg='git gg'
 alias pd=perldoc
 alias man2='MANPAGER=less man'
+pdfman()
+{
+    zathura =(man -t $* | ps2pdf - -)
+}
 
 alias gdb='gdb -q'
 alias octave='octave -q'
