@@ -21,3 +21,18 @@ export LIBRARY_PATH="$HOME/local-my/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
 
 export ACRONYMDB="$HOME/.resources/acronyms"
+
+ssh_connection_to_urxvt() {
+        # don't propagate information to urxvt if ssh is used non-interactive
+    [ -t 0 ] || [ -t 1 ] || return
+
+    local update="\0033]777;cwd-spawn;ssh;$1\0007"
+
+    case $TERM in
+        screen*)
+        # pass through to parent terminal emulator
+            update="\0033P$update\0033\\";;
+    esac
+
+    echo -ne "$update"
+}
