@@ -1,16 +1,5 @@
 # -*- mode: shell-script -*-
 
-if command -v toilet &> /dev/null; then
-    SPLASH="toilet -t -F metal:border -f slant.flf"
-fi
-
-if [ -n "$SPLASH" ]; then
-    eval $SPLASH <<EOF
-Powered by Debian $(uname --operating-system)
-EOF
-fi
-unset SPLASH
-
 start()
 {
     exec startx "$@" &> /dev/null
