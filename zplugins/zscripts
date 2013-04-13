@@ -77,3 +77,12 @@ nuke()
         fi
     fi
 }
+
+if (( $+commands[journalctl] )); then
+    readlog()
+    {
+        local service=$1
+        shift
+        journalctl _SYSTEMD_UNIT="$service.service" "$@"
+    }
+fi
