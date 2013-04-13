@@ -11,7 +11,7 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
-eval `lesspipe`
+eval `lesspipe.sh`
 
 autoload zmv
 

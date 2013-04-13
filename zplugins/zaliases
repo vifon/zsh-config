@@ -119,9 +119,9 @@ if command -v yaourt &> /dev/null; then
 fi
 
 # {{{ trolling
-if [ "$UID" != "0" ]; then  # not root
-    alias mcedit='/home/vifon/.bin/ishygddt "`date +%Y`" "using mcedit"'
-    alias halt='/home/vifon/.bin/ishygddt "`date +%Y`" "not using init 0"'
-    alias bash='/home/vifon/.bin/ishygddt "`date +%Y`" "not using zsh"'
-fi
+# if [ "$UID" != "0" ]; then  # not root
+#     alias mcedit='/home/vifon/.bin/ishygddt "`date +%Y`" "using mcedit"'
+#     alias halt='/home/vifon/.bin/ishygddt "`date +%Y`" "not using init 0"'
+#     alias bash='/home/vifon/.bin/ishygddt "`date +%Y`" "not using zsh"'
+# fi
 # }}}
