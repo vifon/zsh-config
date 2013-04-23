@@ -59,4 +59,4 @@ zle -N expand-path
 bindkey '^Xp' expand-path
 
 
-bindkey -s 'w' "^udvtm -m '\^a' ; clear\n"
+bindkey -s 'w' "^utask\n"
