@@ -5,8 +5,6 @@ export PATH="$HOME/local/bin:$PATH"
 export PATH="/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
 
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/local/steam/lib"
-
 [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] && source "$HOME/perl5/perlbrew/etc/bashrc"
 export PERL_MB_OPT="--install_base $HOME/.perl5"
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
