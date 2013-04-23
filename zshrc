@@ -17,8 +17,8 @@ autoload zmv
 
 HISTFILE=~/.zhistory
 DEF_HISTFILE=~/.zhistory
-HISTSIZE=2500
-SAVEHIST=2500
+HISTSIZE=10000
+SAVEHIST=10000
 
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
@@ -29,7 +29,7 @@ export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
 export BROWSER="luakit"
 export PAGER="most"
 setopt hist_ignore_all_dups     \
-    hist_accept_space           \
+    hist_ignore_space           \
     hist_reduce_blanks          \
     append_history              \
     share_history               \

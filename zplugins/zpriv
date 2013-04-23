@@ -6,5 +6,4 @@ alias priv='PRIV=1 zsh'
 if [ -n "$PRIV" ]; then
     unset HISTFILE
     fc -R ~/.zhistory
-    setopt no_hist_accept_space
 fi
