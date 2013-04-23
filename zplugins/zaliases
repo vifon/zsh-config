@@ -39,7 +39,9 @@ pdfman()
 
 alias gdb='gdb -q'
 alias octave='octave -q'
-alias sbcl='rlwrap sbcl'
+for c in sbcl guile; do
+    alias $c="rlwrap $c"
+done
 # alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
