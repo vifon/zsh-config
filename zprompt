@@ -7,13 +7,6 @@ PSSEP1='@'
 PSHOSTCOLOR=$GREEN
 PSHOST="%m"
 
-jobcount()
-{
-    if [ -n "$(jobs)" ]; then
-        echo "───(${YELLOW}J$RESET)"
-    fi
-}
-
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 
 if [ -n "$AMOUNT_DEVICE" ]; then
@@ -63,7 +56,7 @@ PS1='\
 %{($BOLD$TTYNAME$RESET)%}\
 $SSH_MARKER\
 $AMOUNT_DEVICE_MARKER\
-$(jobcount)\
+%(1j.───(${YELLOW}%j$RESET).)\
 $PRIV_MARKER\
 ───\
 (%{$BLUE$BOLD%}%{$(truncated_pwd 3)%}%{$RESET%})\
