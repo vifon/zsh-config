@@ -37,6 +37,7 @@ pdfman()
     zathura =(man -t $* | ps2pdf - -)
 }
 
+alias diff='colordiff'
 alias gdb='gdb -q'
 alias octave='octave -q'
 for c in sbcl guile; do
