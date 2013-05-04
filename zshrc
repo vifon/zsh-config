@@ -45,7 +45,8 @@ setopt hist_ignore_all_dups     \
     \
     prompt_subst                \
     \
-    pushd_to_home
+    pushd_to_home               \
+    local_options
 
 
 PLUGINS_DIR=~/.zplugins

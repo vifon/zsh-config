@@ -60,3 +60,37 @@ bindkey '^Xp' expand-path
 
 
 bindkey -s 'w' "^utask\n"
+
+file-selector()
+{
+    local FILES=$(zenity --file-selection --multiple)
+    if [ -n "$FILES" ]; then
+        LBUFFER="${LBUFFER%% #} $FILES"
+    fi
+}
+zle -N file-selector
+bindkey '^X^F' file-selector
+
+image-selector()
+{
+    setopt nullglob
+    local DIR
+    DIR=$PWD
+    local NEWBUFFER=$LBUFFER
+    if [ "$LBUFFER[-1]" != " " ]; then
+        DIR="$(eval last-arg $LBUFFER)"
+        if [ ! -d "$DIR" ]; then
+            DIR=$PWD
+        fi
+        NEWBUFFER="$(eval without-last-arg $LBUFFER)"
+    fi
+    local FILES
+    FILES=(${DIR%%/#}/*(.))
+    [ -z "$FILES" ] && return
+    FILES=($(sxiv -t $FILES 2> /dev/null | sort | uniq))
+    if [ -n "$FILES" ]; then
+        LBUFFER="$NEWBUFFER$FILES"
+    fi
+}
+zle -N image-selector
+bindkey '^X^I' image-selector
