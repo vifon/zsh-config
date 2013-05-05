@@ -53,8 +53,8 @@ PLUGINS_DIR=~/.zplugins
 PLUGINS=(
     zcolors
     zremap
-    zcompletion
     zaliases
+    zcompletion
     zscripts
     ztodo
     zpriv

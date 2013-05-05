@@ -3,7 +3,6 @@
 
 if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    LS_COLORS="*.cpp=93:*.c=93:*.hpp=33:*.h=33:*CMakeLists.txt=30;106:*Makefile=30;106:$LS_COLORS"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
 fi
