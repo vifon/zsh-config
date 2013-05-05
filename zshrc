@@ -69,6 +69,7 @@ PLUGINS=(
     dwim
     functional
     urxvt_cwd-spawn
+    term-title
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
