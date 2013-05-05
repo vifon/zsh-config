@@ -10,7 +10,7 @@ if ! (( $+commands[urxvt] )); then
 fi
 
 cwd_to_urxvt() {
-    local update="\0033]777;cwd-spawn;path;$PWD\0007"
+    local update="\0033]777;cwd-spawn;path;$PWD\0007\0033]777;cwd-spawn;clear;\0007"
 
     case $TERM in
         screen*)
