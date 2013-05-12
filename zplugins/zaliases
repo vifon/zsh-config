@@ -54,7 +54,7 @@ if [ "$UID" != "0" ]; then  # not root
         if [ -z "$1" ]; then
             1=.
         fi
-        emacsclient -t $1
+        TERM=xterm emacsclient -t $1
     }
     alias sudo='sudo '
     alias root='sudo su'
