@@ -1,6 +1,10 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
+if [ "$TERM" = "linux" ]; then
+    return 0;
+fi
+
 set-term-title()
 {
     local TITLE="%~"

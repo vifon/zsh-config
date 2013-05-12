@@ -11,6 +11,10 @@
 #     return 1;
 # fi
 
+if [ "$TERM" = "linux" ]; then
+    return 0;
+fi
+
 cwd_to_urxvt() {
     local update="\0033]777;cwd-spawn;path;$PWD\0007\0033]777;cwd-spawn;clear;\0007"
 
