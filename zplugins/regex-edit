@@ -1,0 +1,21 @@
+# -*- mode: shell-script -*-
+# vim: ft=zsh fdm=marker :
+
+# modified version of this http://zshwiki.org/home/zle/new_widget
+
+autoload -U read-from-minibuffer
+
+regex-edit () {
+   local REPLY words
+   local NEW
+   words=(${=BUFFER})
+   read-from-minibuffer "Regexp: "
+   (( $? == 1 )) && return
+   if [ -n $REPLY ]; then
+      NEW="$words[1] $(echo $words[2,${#words}] | perl -pe ${REPLY} 2> /dev/null)"
+      (( $? != 0 )) && return
+      BUFFER=$NEW
+   fi
+}
+zle -N regex-edit
+bindkey "%" regex-edit

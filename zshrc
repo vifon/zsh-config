@@ -71,6 +71,7 @@ PLUGINS=(
     urxvt_cwd-spawn
     term-title
     file-selector
+    regex-edit
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
