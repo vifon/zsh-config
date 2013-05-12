@@ -88,6 +88,8 @@ fi
 
 if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
+    eval "$(dircolors -b)"
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
 if [ -n "$CLEARONSTART" ]; then
