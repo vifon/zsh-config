@@ -45,7 +45,11 @@ if (( $+commands[sxiv] )); then
         FILES=($(sxiv -t $FILES 2> /dev/null | sort | uniq))
         [ -z "$FILES" ] && return
 
-        modify-current-argument '$FILES'
+        if [ -n "$ARG" ]; then
+            modify-current-argument '$FILES'
+        else
+            LBUFFER="${LBUFFER%% #} $FILES"
+        fi
     }
     zle -N image-selector
     bindkey '^X^I' image-selector
