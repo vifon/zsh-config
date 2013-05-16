@@ -7,8 +7,8 @@ fi
 
 set-term-title()
 {
-    local TITLE="%~"
-    print -Pn "\e]2;urxvt: $TITLE$1\a"
+    local TITLE="`print -Pn %~`"
+    print -n "\e]2;urxvt: $TITLE$1\a"
 }
 
 set-term-title-cmd()
@@ -18,7 +18,7 @@ set-term-title-cmd()
         $1 != "cd "* && \
         $1 != "ls"   && \
         $1 != "ls "*    \
-    ]] && set-term-title "    %% $1"
+    ]] && set-term-title "    % $1"
 }
 
 set-term-title                  # set the title on start
