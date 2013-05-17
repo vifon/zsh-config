@@ -66,7 +66,6 @@ PLUGINS=(
     humble
     extract
     filehandlers
-    dwim
     functional
     urxvt_cwd-spawn
     term-title
