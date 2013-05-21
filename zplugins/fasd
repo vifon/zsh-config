@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+if ! (( $+commands[fasd] )); then
+    return 1
+fi
+
+if [ -n "$PRIV" ]; then
+    return
+fi
+
+eval "$(fasd --init auto)"

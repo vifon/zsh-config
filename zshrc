@@ -61,7 +61,6 @@ PLUGINS=(
     zSSH
     zXephyr
     zmancolor
-    autojump
     zCMake
     humble
     extract
@@ -71,6 +70,7 @@ PLUGINS=(
     term-title
     file-selector
     regex-edit
+    fasd
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
