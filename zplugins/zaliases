@@ -9,6 +9,12 @@ fi
 alias lh='ls -lh'
 alias la='ls -A'
 alias l='ls'
+if command -v colout &> /dev/null; then
+    lhc()
+    {
+        lh --color "$@" | colout '^(.)([-rwx]{3})([-rwx]{3})([-rwx]{3})' blue,red,yellow,green
+    }
+fi
 
 alias xo='xclip -o'
 alias xi='xclip -i'
