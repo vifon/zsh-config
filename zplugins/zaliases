@@ -55,6 +55,10 @@ if [ "$UID" != "0" ]; then  # not root
     if ! command -v e &> /dev/null; then
         alias e='emacsclient -c'
     fi
+    ee()
+    {
+        e -n "$@" && unset HAS_STARTED # do not print \a in the next prompt
+    }
     alias E='sudoedit'
     dired()
     {
