@@ -35,6 +35,7 @@ gg()
     git g | head -n $HEIGHT
 }
 alias ggg='git gg'
+alias annex='git annex'
 alias pd=perldoc
 alias man2='MANPAGER=less man'
 pdfman()
