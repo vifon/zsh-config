@@ -5,17 +5,16 @@
 
 autoload -U read-from-minibuffer
 
-regex-edit () {
+perl-edit () {
    local REPLY words
    local NEW
-   words=(${=BUFFER})
-   read-from-minibuffer "Regexp: "
+   read-from-minibuffer "Perl: "
    (( $? == 1 )) && return
-   if [ -n $REPLY ]; then
-      NEW="$words[1] $(echo $words[2,${#words}] | perl -pe ${REPLY} 2> /dev/null)"
+   if [ -n "$REPLY" ]; then
+      NEW="$(echo $CUTBUFFER | perl -pe "$REPLY" 2> /dev/null)"
       (( $? != 0 )) && return
-      BUFFER=$NEW
+      CUTBUFFER=$NEW
    fi
 }
-zle -N regex-edit
-bindkey "%" regex-edit
+zle -N perl-edit
+bindkey "%" perl-edit

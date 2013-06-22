@@ -69,7 +69,7 @@ PLUGINS=(
     urxvt_cwd-spawn
     term-title
     file-selector
-    regex-edit
+    perl-edit
     fasd
     )
 if [ -f ~/.zloader ]; then
