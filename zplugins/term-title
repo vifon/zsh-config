@@ -5,22 +5,10 @@ if [ "$TERM" = "linux" ]; then
     return 0;
 fi
 
-set-term-title()
+set-term-title-dir()
 {
-    local TITLE="`print -Pn %~`"
-    print -n "\e]2;urxvt: $TITLE$1\a"
+    print -n "\e]2;urxvt: `print -Pn %~`\a"
 }
 
-set-term-title-cmd()
-{
-    1="${1## #}"
-    [[                  \
-        $1 != "cd "* && \
-        $1 != "ls"   && \
-        $1 != "ls "*    \
-    ]] && set-term-title "    % $1"
-}
-
-set-term-title                  # set the title on start
-preexec_functions=(${preexec_functions} set-term-title-cmd) # add the current command...
-precmd_functions=(${precmd_functions} set-term-title)       # ...and remove it after it finishes
+set-term-title-dir               # set the title on start
+chpwd_functions=(${chpwd_functions} set-term-title-dir)
