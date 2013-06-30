@@ -58,7 +58,6 @@ PLUGINS=(
     zscripts
     ztodo
     zpriv
-    zSSH
     zXephyr
     zmancolor
     zCMake
