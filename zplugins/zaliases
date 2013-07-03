@@ -47,7 +47,7 @@ alias diff='colordiff'
 alias gdb='gdb -q'
 alias octave='octave -q'
 alias youtube-extract-audio='youtube-dl -x --audio-format mp3 --audio-quality 0'
-for c in sbcl guile; do
+for c in sbcl guile racket; do
     alias $c="rlwrap $c"
 done
 # alias cal='cal -m'
