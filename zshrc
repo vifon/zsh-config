@@ -56,13 +56,11 @@ PLUGINS=(
     zaliases
     zcompletion
     zscripts
-    ztodo
     zpriv
     zXephyr
     zmancolor
     zCMake
     humble
-    extract
     filehandlers
     functional
     urxvt_cwd-spawn

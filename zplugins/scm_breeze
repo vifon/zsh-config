@@ -1,8 +1,0 @@
-# -*- mode: shell-script -*-
-# vim: ft=zsh fdm=marker :
-
-if [ ! -d "$HOME/.scm_breeze" ]; then
-    return 1;
-fi
-
-source "$HOME/.scm_breeze/scm_breeze.sh"
