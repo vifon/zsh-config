@@ -51,3 +51,11 @@ bindkey '^Xp' expand-path
 
 
 bindkey -s 'w' "^utask\n"
+
+
+exec-emacs-here()
+{
+    exec emacsclient -c -n .
+}
+zle -N exec-emacs-here
+bindkey '^Xd' exec-emacs-here
