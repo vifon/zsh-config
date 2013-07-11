@@ -26,7 +26,7 @@ if (( $+commands[sxiv] )); then
         local reply REPLY REPLY2
 
         local ARG
-        local DIR
+        local PREFIX
 
         ((--CURSOR))
         split-shell-arguments
@@ -34,12 +34,15 @@ if (( $+commands[sxiv] )); then
 
         ARG=$(eval echo $reply[$REPLY]) # evaluate tilde etc.
 
-        # read the working directory
-        DIR=$PWD
-        [ -d "$ARG" ] && DIR=$ARG
+        # read the file prefix
+        PREFIX=$PWD
+        [ -n "$ARG" ] && PREFIX=$ARG
+
+        # if it is a directory, use its contents
+        [ -d "$PREFIX" ] && PREFIX=${PREFIX}/
 
         local FILES
-        FILES=(${DIR%%/#}/*(.))
+        FILES=(${PREFIX}*(.))
         [ -z "$FILES" ] && return
 
         FILES=($(sxiv -t $FILES 2> /dev/null | sort | uniq))
