@@ -74,6 +74,7 @@ if [ "$UID" != "0" ]; then  # not root
     }
     alias sudo='sudo '
     alias root='sudo su'
+    alias exec='exec '
 else    # root
     dired()
     {
