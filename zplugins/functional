@@ -8,4 +8,4 @@ fi
 cd "$HOME/.zplugins/functional.d"
 source functional.plugin.zsh
 cd "$OLDPWD"
-OLDPWD=$PWD
+cd .                            # OLDPWD cleanup
