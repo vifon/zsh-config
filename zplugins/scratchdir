@@ -1,0 +1,14 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+# inspired by http://ku1ik.com/2012/05/04/scratch-dir.html
+
+scratch()
+{
+    local name
+    local dir=$HOME/tmp
+    name=scratch-$(date '+%s')
+    mkdir -p $dir/$name
+    ln -sfn $dir/$name ~/scratch
+    cd $dir/$name
+}

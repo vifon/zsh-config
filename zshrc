@@ -68,6 +68,7 @@ PLUGINS=(
     file-selector
     perl-edit
     fasd
+    scratchdir
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
