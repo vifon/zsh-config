@@ -65,7 +65,7 @@ PLUGINS=(
     functional
     urxvt_cwd-spawn
     term-title
-    file-selector
+    image-selector
     perl-edit
     fasd
     scratchdir
