@@ -20,7 +20,6 @@ if (( $+commands[sxiv] )); then
     {
         autoload -U modify-current-argument
         autoload -U split-shell-arguments
-        setopt nullglob
 
         # local variables for split-shell-arguments
         local reply REPLY REPLY2
@@ -42,7 +41,7 @@ if (( $+commands[sxiv] )); then
         [ -d "$PREFIX" ] && PREFIX=${PREFIX}/
 
         local FILES
-        FILES=(${PREFIX}*(.))
+        FILES=(${PREFIX}*(.N))
         [ -z "$FILES" ] && return
 
         FILES=($(sxiv -t $FILES 2> /dev/null | sort | uniq))
