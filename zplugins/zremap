@@ -59,3 +59,11 @@ exec-emacs-here()
 }
 zle -N exec-emacs-here
 bindkey '^Xd' exec-emacs-here
+
+
+
+autoload predict-on
+zle -N predict-on
+bindkey '^X-' predict-on
+zle -N predict-off
+bindkey '^X=' predict-off
