@@ -56,7 +56,6 @@ PS1='\
 %{($BOLD$TTYNAME$RESET)%}\
 ───\
 (%{$YELLOW%}%T%{$RESET%})\
-$SSH_MARKER\
 $AMOUNT_DEVICE_MARKER\
 %(1j.───(${YELLOW}%j$RESET).)\
 $PRIV_MARKER\
