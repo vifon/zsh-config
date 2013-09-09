@@ -62,8 +62,18 @@ bindkey '^Xd' exec-emacs-here
 
 
 
-autoload predict-on
-zle -N predict-on
-bindkey '^X-' predict-on
-zle -N predict-off
-bindkey '^X=' predict-off
+autoload predict-on predict-off
+my-predict-on()
+{
+    zstyle ':completion:*' completer _expand _complete _ignored
+    predict-on
+}
+my-predict-off()
+{
+    zstyle ':completion:*' completer _expand _complete _ignored _approximate
+    predict-off
+}
+zle -N my-predict-on
+bindkey '^X-' my-predict-on
+zle -N my-predict-off
+bindkey '^X=' my-predict-off
