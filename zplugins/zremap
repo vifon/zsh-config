@@ -77,3 +77,16 @@ zle -N my-predict-on
 bindkey '^X-' my-predict-on
 zle -N my-predict-off
 bindkey '^X=' my-predict-off
+
+
+my-create-generic-completion()
+{
+    autoload -U split-shell-arguments
+    local reply REPLY REPLY2
+
+    split-shell-arguments
+
+    compdef _gnu_generic $reply[2]
+}
+zle -N my-create-generic-completion
+bindkey '^X^H' my-create-generic-completion
