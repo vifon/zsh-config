@@ -70,11 +70,23 @@ nuke()
     if [ "$CONFIRM" = "y" ]; then
         cd ..
         echo
-        if [ "$1" = "-q" ]; then
-            rm -rf $OLDPWD
-        else
-            rm -rfv $OLDPWD
-        fi
+
+        local ARG VERBOSE
+        VERBOSE=1
+        while getopts "qf" ARG; do
+            case "$ARG" in
+                q)
+                    VERBOSE=
+                    ;;
+                f)
+                    chmod -R 777 $OLDPWD
+                    ;;
+                ?)
+                    ;;
+            esac
+        done
+
+        rm -rf ${VERBOSE:+-v} $OLDPWD
     fi
 }
 
