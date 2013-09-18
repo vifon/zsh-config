@@ -6,6 +6,7 @@ PSUSER="%n"
 PSSEP1='@'
 PSHOSTCOLOR=$GREEN
 PSHOST="%m"
+TTYCOLOR=$BOLD
 
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 
@@ -15,6 +16,10 @@ fi
 
 if [ -n "$PRIV" ]; then
     PRIV_MARKER="───($RED$BOLD"PRIV"$RESET)"
+fi
+
+if [ -n "$RANGER_LEVEL" ]; then
+    TTYCOLOR=$GREEN$BOLD
 fi
 
 # stolen from /r/zsh
@@ -53,12 +58,13 @@ function truncated_pwd() {
 
 PS1='\
 ┌───\
-%{($BOLD$TTYNAME$RESET)%}\
+%{($TTYCOLOR$TTYNAME$RESET)%}\
 ───\
 (%{$YELLOW%}%T%{$RESET%})\
 $AMOUNT_DEVICE_MARKER\
 %(1j.───(${YELLOW}%j$RESET).)\
 $PRIV_MARKER\
+$RANGER_MARKER\
 ───\
 (%{$BLUE$BOLD%}%{$(truncated_pwd 3)%}%{$RESET%})\
 

@@ -52,6 +52,8 @@ bindkey '^Xp' expand-path
 
 bindkey -s 'w' "^utask\n"
 
+bindkey -s 'r' "^u . ranger\n"
+
 
 exec-emacs-here()
 {
