@@ -11,11 +11,11 @@ TTYCOLOR=$BOLD
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 
 if [ -n "$AMOUNT_DEVICE" ]; then
-    AMOUNT_DEVICE_MARKER="───($GREEN$BOLD"$AMOUNT_DEVICE"$RESET)"
+    AMOUNT_DEVICE_MARKER="───(%{$GREEN$BOLD%}"$AMOUNT_DEVICE"%{$RESET%})"
 fi
 
 if [ -n "$PRIV" ]; then
-    PRIV_MARKER="───($RED$BOLD"PRIV"$RESET)"
+    PRIV_MARKER="───(%{$RED$BOLD%}"PRIV"%{$RESET%})"
 fi
 
 if [ -n "$RANGER_LEVEL" ]; then
@@ -58,11 +58,11 @@ function truncated_pwd() {
 
 PS1='\
 ┌───\
-%{($TTYCOLOR$TTYNAME$RESET)%}\
+(%{$TTYCOLOR%}$TTYNAME%{$RESET%})\
 ───\
 (%{$YELLOW%}%T%{$RESET%})\
 $AMOUNT_DEVICE_MARKER\
-%(1j.───(${YELLOW}%j$RESET).)\
+%(1j.───(%{${YELLOW}%}%j%{$RESET%}).)\
 $PRIV_MARKER\
 $RANGER_MARKER\
 ───\
