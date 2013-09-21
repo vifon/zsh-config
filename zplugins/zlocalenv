@@ -1,0 +1,27 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+zlocalenv-enter()
+{
+    if [ -f "./.zlocalenv-clean" ]; then
+        ZLOCAL_CLEAN_ACTIVE="$MAGENTA"
+    else
+        ZLOCAL_CLEAN_ACTIVE=""
+    fi
+
+    if [ -f "./.zlocalenv" ]; then
+        source "./.zlocalenv"
+        ZLOCAL_ACTIVE="[%{$BLUE$ZLOCAL_CLEAN_ACTIVE%}local%{$RESET%}]"
+    else
+        ZLOCAL_ACTIVE=""
+    fi
+}
+
+zlocalenv-leave()
+{
+    if [ -f "$OLDPWD/.zlocalenv-clean" ]; then
+        source "$OLDPWD/.zlocalenv-clean"
+    fi
+}
+
+chpwd_functions+=(zlocalenv-enter zlocalenv-leave)

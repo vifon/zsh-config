@@ -79,7 +79,7 @@ $PSHOST\
 %{$RESET%}\
 $PSSEP2\
 $PSDIR\
-%# '
+%#$ZLOCAL_ACTIVE '
 
 RPS1='%(?..[%{$RED$BOLD%}$?%{$RESET%}])'
 
