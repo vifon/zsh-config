@@ -50,14 +50,7 @@ zle -N expand-path
 bindkey '^Xp' expand-path
 
 
-task-status()
-{
-    echo -ne "[s\n"
-    task
-    echo -n "[u"
-}
-zle -N task-status
-bindkey 'w' task-status
+bindkey -s 'w' "^utask\n"
 
 bindkey -s 'r' "^u . ranger\n"
 
