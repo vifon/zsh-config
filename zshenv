@@ -16,6 +16,8 @@ export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
 
 export ACRONYMDB="$HOME/.resources/acronyms"
 
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 ssh_connection_to_urxvt() {
         # don't propagate information to urxvt if ssh is used non-interactive
     [ -t 0 ] || [ -t 1 ] || return
