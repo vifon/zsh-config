@@ -18,6 +18,7 @@ fi
 
 alias xo='xclip -o'
 alias xi='xclip -i'
+alias hilight='highlight -O ansi'
 
 alias -g '^'='2>'               # fish-like stderr redirection
 alias -g '00'='/dev/null'
