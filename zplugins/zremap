@@ -88,7 +88,16 @@ my-create-generic-completion()
 
     split-shell-arguments
 
-    compdef _gnu_generic $reply[2]
+    local i
+    for ((i = $#reply-1; i > 0; --i)); do
+        case $reply[i] in
+            ';'|'|'|'||'|'&'|'&&'|'sudo')
+                break
+                ;;
+        esac
+    done
+
+    compdef _gnu_generic $reply[i+2]
 }
 zle -N my-create-generic-completion
 bindkey '^X^H' my-create-generic-completion
