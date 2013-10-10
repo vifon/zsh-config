@@ -13,7 +13,7 @@ compinit
 
 (( $+commands[lesspipe.sh] )) && eval `lesspipe.sh`
 
-autoload zmv
+autoload zmv zed
 
 HISTFILE=~/.zhistory
 DEF_HISTFILE=~/.zhistory
