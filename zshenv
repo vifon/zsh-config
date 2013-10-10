@@ -1,9 +1,9 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker :
-export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/local/bin:$PATH"
 export PATH="/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 export PATH="$HOME/.cabal/bin:$PATH"
 
