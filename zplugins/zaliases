@@ -15,6 +15,12 @@ if command -v colout &> /dev/null; then
         lh --color "$@" | colout '^(.)([-rwx]{3})([-rwx]{3})([-rwx]{3})' blue,red,yellow,green
     }
 fi
+if command -v color-paths &> /dev/null; then
+    locate()
+    {
+        command locate "$@" | color-paths
+    }
+fi
 
 alias xo='xclip -o'
 alias xi='xclip -i'
