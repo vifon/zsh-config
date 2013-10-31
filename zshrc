@@ -14,6 +14,7 @@ compinit
 (( $+commands[lesspipe.sh] )) && eval `lesspipe.sh`
 
 autoload zmv zed
+autoload -U insert-files && zle -N insert-files && bindkey '^X^F' insert-files
 
 HISTFILE=~/.zhistory
 DEF_HISTFILE=~/.zhistory
