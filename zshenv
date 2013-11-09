@@ -20,6 +20,7 @@ export LIBRARY_PATH="$HOME/local-my/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
 
 export ACRONYMDB="$HOME/.resources/acronyms"
+export RLWRAP_HOME="$HOME/.rlwrap"
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
