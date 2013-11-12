@@ -20,3 +20,6 @@ zstyle ':completion:*' list-dirs-first true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} # stolen from Diabelko
 
 zstyle ':completion:*' ignore-parents parent pwd
+
+zstyle ':completion:*:manuals.*'    insert-sections   true
+zstyle ':completion:*:manuals'      separate-sections true
