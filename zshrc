@@ -67,7 +67,7 @@ PLUGINS=(
     functional
     urxvt_cwd-spawn
     term-title
-    image-selector
+    zsh-image-extension
     perl-edit
     fasd
     scratchdir
