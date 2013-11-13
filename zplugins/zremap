@@ -44,7 +44,7 @@ bindkey -s '^Z' 'qbg && disown\n'
 expand-path()
 {
     autoload -U modify-current-argument
-    modify-current-argument '$(readlink -f $ARG)'
+    modify-current-argument '$ARG:Q:A:q'
 }
 zle -N expand-path
 bindkey '^Xp' expand-path
