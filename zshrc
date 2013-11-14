@@ -54,7 +54,7 @@ setopt hist_ignore_all_dups     \
 PLUGINS_DIR=~/.zplugins
 PLUGINS=(
     zcolors
-    zremap
+    zle-config
     zaliases
     zcompletion
     zscripts
