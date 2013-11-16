@@ -96,5 +96,3 @@ if [ -n "$CLEARONSTART" ]; then
     clear
     unset CLEARONSTART
 fi
-
-trap 'exec zsh' USR1

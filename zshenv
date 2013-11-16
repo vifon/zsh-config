@@ -38,3 +38,5 @@ ssh_connection_to_urxvt() {
 
     echo -ne "$update"
 }
+
+trap 'exec zsh' USR1
