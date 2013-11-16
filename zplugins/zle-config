@@ -36,6 +36,8 @@ bindkey '^Xa' send-alarm
 
 bindkey -s '^Z' 'qbg && disown\n'
 
+bindkey 'j' vi-find-next-char
+
 
 expand-path()
 {
