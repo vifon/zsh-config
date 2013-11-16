@@ -12,3 +12,5 @@ alias -s pdf=zathura
 alias -s doc=libreoffice
 alias -s docx=libreoffice
 alias -s odt=libreoffice
+
+alias -s gba=vbam
