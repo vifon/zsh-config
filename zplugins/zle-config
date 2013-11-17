@@ -110,6 +110,14 @@ if (( $+commands[fzf] )); then
     zle     -N    fzf-cd
     bindkey '\ec' fzf-cd
 
+    fzf-fasd-cd() {
+        cd "${$(d -l | fzf):-.}"
+        zle reset-prompt
+    }
+    zle     -N      fzf-fasd-cd
+    bindkey '^X\ec' fzf-fasd-cd
+
+
     fzf-file-widget() {
         local FILES
         local IFS="
