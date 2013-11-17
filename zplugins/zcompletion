@@ -23,3 +23,12 @@ zstyle ':completion:*' ignore-parents parent pwd
 
 zstyle ':completion:*:manuals.*'    insert-sections   true
 zstyle ':completion:*:manuals'      separate-sections true
+
+
+# Source: http://chneukirchen.org/blog/archive/2011/02/10-more-zsh-tricks-you-may-not-know.html
+# Force file name completion on Shift-TAB.
+zle -C complete-files menu-complete _generic
+zstyle ':completion:complete-files:*' completer _files
+bindkey '[Z' complete-files
+zmodload zsh/complist
+bindkey -M menuselect -s '[Z' '^I'
