@@ -1,9 +1,11 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
+alias cd=' cd'
+
 if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --group-directories-first'
+    alias ls=' ls --color=auto --group-directories-first'
     alias grep='grep --color=auto'
 fi
 alias lh='ls -lh'
@@ -31,8 +33,8 @@ alias -g '00'='/dev/null'
 alias -g '@'='| sudo tee'
 alias -g '@@'='| sudo tee -a'
 
-alias r=ranger
-alias g=git
+alias r=' ranger'
+alias g=' git'
 gg()
 {
     local HEIGHT=30
@@ -41,8 +43,9 @@ gg()
     fi
     git g | head -n $HEIGHT
 }
-alias ggg='git gg'
-alias annex='git annex'
+alias gg=' gg'
+alias ggg=' git gg'
+alias annex=' git annex'
 alias pd=perldoc
 alias man2='MANPAGER=less man'
 pdfman()
@@ -140,8 +143,8 @@ if command -v pacman-color &> /dev/null; then
     alias pacman=pacman-color
 fi
 if command -v yaourt &> /dev/null; then
-    alias y="yaourt"
-    alias yy='yaourt --noconfirm'
+    alias y=" yaourt"
+    alias yy='y --noconfirm'
     alias orphan='yaourt -Qqdt'
     alias orphan-clean='yaourt -Rsun `orphan`'
 fi
