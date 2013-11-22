@@ -53,6 +53,14 @@ bindkey -s 'w' "^utask\n"
 bindkey -s 'r' "^u . ranger\n"
 
 
+prepend-space()
+{
+    LBUFFER=" ${LBUFFER## #}"
+}
+zle -N prepend-space
+bindkey ' ' prepend-space
+
+
 exec-emacs-here()
 {
     exec emacsclient -c -n .
