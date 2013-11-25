@@ -14,22 +14,26 @@ if [ ! $TERM = "eterm-color" ]; then
 fi
 bindkey -s 'l' 'qclear\n'
 
-for i in '""' '``' '()' '{}' '[]'; do
+
+for i in '``' '()' '{}' '[]'; do
     eval "function zle-paired-input-'$i'()
     {
         LBUFFER="'$LBUFFER'"'$i[1]'
         RBUFFER='$i[2]'"'$RBUFFER'"
     }"
-    zle -N zle-paired-input-$i
-    bindkey $i[1] zle-paired-input-$i
+    zle -N zle-paired-input-"$i"
+    bindkey "$i[1]" zle-paired-input-"$i"
+    bindkey "$i[1]$i[2]" zle-paired-input-"$i"
 done
-function zle-paired-input-"''"()
-{
-    LBUFFER=$LBUFFER"'"
-    RBUFFER="'"$RBUFFER
-}
-zle -N zle-paired-input-"''"
-bindkey "'" zle-paired-input-"''"
+for i in \" \'; do
+    eval "function zle-paired-input-\\$i()
+    {
+        LBUFFER="'$LBUFFER'"\\$i
+        RBUFFER=\\$i"'$RBUFFER'"
+    }"
+    zle -N zle-paired-input-"$i"
+    bindkey "$i$i" zle-paired-input-"$i"
+done
 
 
 autoload edit-command-line
