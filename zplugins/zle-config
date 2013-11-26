@@ -41,6 +41,13 @@ zle -N edit-command-line
 bindkey '^Xe'  edit-command-line
 bindkey '^X^E' edit-command-line
 
+last-arg-basename-widget()
+{
+    LBUFFER+=$_:t
+}
+zle -N last-arg-basename-widget
+bindkey '>' last-arg-basename-widget
+
 send-alarm()
 {
     echo -ne "\a"
