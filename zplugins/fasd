@@ -10,3 +10,4 @@ if [ -n "$PRIV" ]; then
 fi
 
 eval "$(fasd --init auto)"
+alias z=" $aliases[z]"
