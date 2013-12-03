@@ -6,8 +6,28 @@ bindkey '[1;5D' backward-word
 bindkey '[7~' beginning-of-line
 bindkey '[8~' end-of-line
 bindkey '[3~' delete-char
-bindkey '^p' history-beginning-search-backward
-bindkey '^n' history-beginning-search-forward
+
+my-history-beginning-search-backward()
+{
+    local SPACES
+    SPACES="${LBUFFER%%[^ ]#}"
+    LBUFFER="${LBUFFER## #}"
+    zle history-beginning-search-backward
+    LBUFFER="${SPACES}${LBUFFER}"
+}
+my-history-beginning-search-forward()
+{
+    local SPACES
+    SPACES="${LBUFFER%%[^ ]#}"
+    LBUFFER="${LBUFFER## #}"
+    zle history-beginning-search-forward
+    LBUFFER="${SPACES}${LBUFFER}"
+}
+zle -N my-history-beginning-search-backward
+zle -N my-history-beginning-search-forward
+bindkey '^p' my-history-beginning-search-backward
+bindkey '^n' my-history-beginning-search-forward
+
 if [ ! $TERM = "eterm-color" ]; then
     bindkey -s `tput kf1` '^uramclean\n'
     bindkey -s `tput kf2` '^uramrearm\n'
