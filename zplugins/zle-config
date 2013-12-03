@@ -164,3 +164,25 @@ if (( $+commands[fzf] )); then
     zle     -N   fzf-file-widget
     bindkey '^X^T' fzf-file-widget
 fi
+
+
+# copied from Valodim's config
+# just type '...' to get '../..'
+function rationalise-dot() {
+  local MATCH dir
+  if [[ $LBUFFER =~ '(^|/| |    |'$'\n''|\||;|&)\.\.$' ]]; then
+    LBUFFER+=/
+    zle self-insert
+    zle self-insert
+    dir=${${(z)LBUFFER}[-1]}
+    [[ -e $dir ]] && zle -M $dir(:a)
+  elif [[ $LBUFFER[-1] == '.' ]]; then
+    zle self-insert
+    dir=${${(z)LBUFFER}[-1]}
+    [[ -e $dir ]] && zle -M $dir(:a)
+  else
+    zle self-insert
+  fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
