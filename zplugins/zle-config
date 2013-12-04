@@ -43,7 +43,6 @@ for i in '``' '()' '{}' '[]'; do
     }"
     zle -N zle-paired-input-"$i"
     bindkey "$i[1]" zle-paired-input-"$i"
-    bindkey "$i[1]$i[2]" zle-paired-input-"$i"
 done
 for i in \" \'; do
     eval "function zle-paired-input-\\$i()
@@ -52,7 +51,7 @@ for i in \" \'; do
         RBUFFER=\\$i"'$RBUFFER'"
     }"
     zle -N zle-paired-input-"$i"
-    bindkey "$i$i" zle-paired-input-"$i"
+    bindkey "$i" zle-paired-input-"$i"
 done
 
 
