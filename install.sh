@@ -1,19 +1,31 @@
-#!/bin/sh
+#!/bin/zsh
 
 LN="ln"
 
-if [ "$1" = "--overwrite" ]; then
-    LN="ln -f"
-fi
+while getopts "f" ARG; do
+    case "$ARG" in
+        f)
+            LN="ln -f" ;;
+        ?)
+            ;;
+    esac
+done
+shift $[$OPTIND-1]
 
 mkdir -p $HOME/.zplugins
 for f in zplugins/*; do
-    $LN -s "`readlink -e "$f"`" "$HOME/.zplugins" 2> /dev/null &&
-    echo "[32;1m$f[0m" 1>&2 ||
-    echo "[31;1m$f[0m" 1>&2
+    OUTPUT=$($=LN -sv $f:A $HOME/.zplugins 2>&1)
+    if [ "$?" = "0" ]; then
+        echo "[32;1m$OUTPUT[0m" 1>&2
+    else
+        echo "[31;1m$OUTPUT[0m" 1>&2
+    fi
 done
 for f in zlogin zlogout zloader zprompt zshrc zshenv; do
-    $LN -s "`readlink -e "$f"`" "$HOME/.$f" 2> /dev/null &&
-    echo "[32;1m$f[0m" 1>&2 ||
-    echo "[31;1m$f[0m" 1>&2
+    OUTPUT=$($=LN -sv $f:A $HOME/.$f 2>&1)
+    if [ "$?" = "0" ]; then
+        echo "[32;1m$OUTPUT[0m" 1>&2
+    else
+        echo "[31;1m$OUTPUT[0m" 1>&2
+    fi
 done
