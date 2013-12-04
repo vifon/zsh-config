@@ -40,6 +40,7 @@ setopt hist_ignore_all_dups     \
     extended_history            \
     hist_no_store               \
     interactivecomments         \
+    auto_cd                     \
     \
     extended_glob               \
     braceccl                    \
