@@ -58,7 +58,6 @@ done
 
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^Xe'  edit-command-line
 bindkey '^X^E' edit-command-line
 
 last-arg-basename-widget()
@@ -67,13 +66,6 @@ last-arg-basename-widget()
 }
 zle -N last-arg-basename-widget
 bindkey '>' last-arg-basename-widget
-
-send-alarm()
-{
-    echo -ne "\a"
-}
-zle -N send-alarm
-bindkey '^Xa' send-alarm
 
 bindkey -s '^Z' 'qbg && disown\n'
 

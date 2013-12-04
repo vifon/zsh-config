@@ -112,8 +112,6 @@ alias json-format='python -mjson.tool'
 alias cdp='pushd'
 alias pop='popd'
 
-foobar2000(){(cd ~/.wine/drive_c/Program\ Files/foobar2000; wine foobar2000.exe)}
-
 winevd()
 {
     if [ -z "$2" -o -z "$3" ]; then
