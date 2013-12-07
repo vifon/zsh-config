@@ -9,17 +9,8 @@ mkcd()
 
 mkmv()
 {
-    if [ -z "$1" ]; then
-        return 1
-    fi
-    local DIR="$1"
-    shift
-    mkdir -p "$DIR"
-    if [ -z "$1" ]; then
-        mv *~"$DIR" "$DIR"
-    else
-        mv $* "$DIR"
-    fi
+    mkdir -p $argv[-1]
+    mv $argv[0,-2] -t $argv[-1]
 }
 
 wprefix()
