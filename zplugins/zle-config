@@ -9,17 +9,19 @@ bindkey '[3~' delete-char
 
 my-history-beginning-search-backward()
 {
-    local SPACES
-    SPACES="${LBUFFER%%[^ ]#}"
-    LBUFFER="${LBUFFER## #}"
+    local SPACES TMP
+    TMP="${LBUFFER## #}"
+    SPACES="${LBUFFER/$TMP/}"
+    LBUFFER=$TMP
     zle history-beginning-search-backward
-    LBUFFER="${SPACES}${LBUFFER}"
+    LBUFFER="${SPACES}${TMP}"
 }
 my-history-beginning-search-forward()
 {
-    local SPACES
-    SPACES="${LBUFFER%%[^ ]#}"
-    LBUFFER="${LBUFFER## #}"
+    local SPACES TMP
+    TMP="${LBUFFER## #}"
+    SPACES="${LBUFFER/$TMP/}"
+    LBUFFER=$TMP
     zle history-beginning-search-forward
     LBUFFER="${SPACES}${LBUFFER}"
 }
