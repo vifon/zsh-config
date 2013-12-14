@@ -144,14 +144,14 @@ bindkey '^X^H' my-create-generic-completion
 if (( $+commands[fzf] )); then
     fzf-cd() {
         cd "${$(find * -path '*/\.*' -prune \
-                -o -type d -print 2> /dev/null | fzf):-.}"
+                -o -type d -print 2> /dev/null | fzf -x):-.}"
         zle reset-prompt
     }
     zle     -N    fzf-cd
     bindkey '\ec' fzf-cd
 
     fzf-fasd-cd() {
-        cd "${$(d -l | fzf):-.}"
+        cd "${$(d -l | fzf -x):-.}"
         zle reset-prompt
     }
     zle     -N      fzf-fasd-cd
@@ -165,7 +165,7 @@ if (( $+commands[fzf] )); then
         FILES=($(
             find * -path '*/\.*' -prune \
                 -o -type f -print \
-                -o -type l -print 2> /dev/null | fzf -m))
+                -o -type l -print 2> /dev/null | fzf -m -x))
         unset IFS
         FILES=$FILES:q
 
