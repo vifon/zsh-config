@@ -24,4 +24,4 @@ zlocalenv-leave()
     fi
 }
 
-chpwd_functions+=(zlocalenv-enter zlocalenv-leave)
+chpwd_functions+=(zlocalenv-leave zlocalenv-enter)
