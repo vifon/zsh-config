@@ -1,6 +1,10 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
+hash -d music=$HOME/music
+hash -d annex=$HOME/annex
+
+
 alias cd=' cd'
 
 if command -v dircolors &> /dev/null; then
