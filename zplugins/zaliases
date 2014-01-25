@@ -56,6 +56,16 @@ gg()
 alias gg=' gg'
 alias ggg=' git gg'
 alias annex=' git annex'
+
+alias wow='g status --short'
+such()
+{
+    g commit -m "$*"
+}
+alias such=' noglob such'
+alias much=g
+alias so=g
+
 alias pd=perldoc
 alias man2='MANPAGER=less man'
 pdfman()
