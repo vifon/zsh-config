@@ -44,6 +44,7 @@ setopt hist_ignore_all_dups     \
     \
     extended_glob               \
     braceccl                    \
+    magicequalsubst             \
     longlistjobs                \
     \
     prompt_subst                \
