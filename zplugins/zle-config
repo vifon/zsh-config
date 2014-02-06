@@ -82,8 +82,6 @@ zle -N expand-path
 bindkey '^Xp' expand-path
 
 
-bindkey -s 'w' "^utask\n"
-
 bindkey -s 'r' "^u . ranger\n"
 
 
@@ -175,7 +173,17 @@ if (( $+commands[fzf] )); then
         zle redisplay
     }
     zle     -N   fzf-file-widget
-    bindkey '^X^T' fzf-file-widget
+    bindkey '^X^W' fzf-file-widget
+
+    fzf-crawler() {
+        local REPLY
+        while print -l *(/) .. | fzf -x +s | read; do
+            cd $REPLY
+        done
+        zle reset-prompt
+    }
+    zle -N fzf-crawler
+    bindkey '\ew' fzf-crawler
 fi
 
 
