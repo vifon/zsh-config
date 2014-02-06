@@ -12,6 +12,10 @@ mkmv()
     mkdir -p $argv[-1]
     mv $argv[0,-2] -t $argv[-1]
 }
+mkdump()
+{
+    mkmv * $1/`curdate`-dump
+}
 
 wprefix()
 {
