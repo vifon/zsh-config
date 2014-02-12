@@ -22,14 +22,11 @@ if [ -n "$RANGER_LEVEL" ]; then
     TTYCOLOR=$GREEN$BOLD
 fi
 
-# stolen from /r/zsh
+# stolen from /r/zsh and improved
 # {{{
-function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
-}
 function truncated_pwd() {
     n=$1 # n = number of directories to show in full (n = 3, /a/b/c/dee/ee/eff)
-    path=`collapse_pwd`
+    path=`print -P %~`
 
     # split our path on /
     dirs=("${(s:/:)path}")
