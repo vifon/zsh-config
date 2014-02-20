@@ -1,3 +1,6 @@
 [submodule "zplugins/functional.d"]
 	path = zplugins/functional.d
 	url = https://github.com/Tarrasch/zsh-functional
+[submodule "zplugins/fasd.d"]
+	path = zplugins/fasd.d
+	url = https://github.com/clvv/fasd
