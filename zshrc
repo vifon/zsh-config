@@ -11,7 +11,7 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
-(( $+commands[lesspipe.sh] )) && eval `lesspipe.sh`
+(( $+commands[lesspipe] )) && eval `lesspipe`
 
 autoload zmv zed
 autoload -U insert-files && zle -N insert-files && bindkey '^X^F' insert-files
