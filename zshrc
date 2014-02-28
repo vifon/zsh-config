@@ -16,8 +16,6 @@ compinit
 autoload zmv zed
 autoload -U insert-files && zle -N insert-files && bindkey '^X^F' insert-files
 
-autoload run-help
-HELPDIR=$HOME/.zsh-help
 alias run-help=' run-help'
 
 HISTFILE=~/.zhistory
