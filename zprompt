@@ -1,25 +1,25 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker ft=zsh :
 
-PSUSERCOLOR=$RED
+PSUSERCOLOR='%F{red}'
 PSUSER="%n"
 PSSEP1='@'
-PSHOSTCOLOR=$GREEN
+PSHOSTCOLOR='%F{green}'
 PSHOST="%m"
-TTYCOLOR=$BOLD
+TTYCOLOR='%B'
 
 TTYNAME=`tty | sed "s#/[^/]*/##"`
 
 if [ -n "$AMOUNT_DEVICE" ]; then
-    AMOUNT_DEVICE_MARKER="───(%{$GREEN$BOLD%}"$AMOUNT_DEVICE"%{$RESET%})"
+    AMOUNT_DEVICE_MARKER="───(%F{green}%B"$AMOUNT_DEVICE"%b%f)"
 fi
 
 if [ -n "$PRIV" ]; then
-    PRIV_MARKER="───(%{$RED$BOLD%}"PRIV"%{$RESET%})"
+    PRIV_MARKER="───(%F{red}%B"PRIV"%b%f)"
 fi
 
 if [ -n "$RANGER_LEVEL" ]; then
-    TTYCOLOR=$GREEN$BOLD
+    TTYCOLOR='%F{green}%B'
 fi
 
 # stolen from /r/zsh and improved
@@ -55,42 +55,42 @@ function truncated_pwd() {
 
 PS1='\
 ┌───\
-(%{$TTYCOLOR%}$TTYNAME%{$RESET%})\
+($TTYCOLOR$TTYNAME%b%f)\
 ───\
-(%{$YELLOW%}%T%{$RESET%})\
+(%F{yellow}%T%f)\
 $AMOUNT_DEVICE_MARKER\
-%(1j.───(%{${YELLOW}%}%j%{$RESET%}).)\
+%(1j.───(%F{yellow}%j%f).)\
 $PRIV_MARKER\
 $RANGER_MARKER\
 ───\
-(%{$BLUE$BOLD%}%{$(truncated_pwd 3)%}%{$RESET%})\
+(%F{blue}%B%{$(truncated_pwd 3)%}%b%f)\
 
 └(\
 \
-%{$PSUSERCOLOR%}\
+$PSUSERCOLOR\
 $PSUSER\
-%{$RESET%}\
+%b%f\
 $PSSEP1\
-%{$PSHOSTCOLOR%}\
+$PSHOSTCOLOR\
 $PSHOST\
-%{$RESET%}\
+%b%f\
 $PSSEP2\
 $PSDIR\
 %#$ZLOCAL_ACTIVE '
 
-RPS1='%(?..[%{$RED$BOLD%}$?%{$RESET%}])'
+RPS1='%(?..[%F{red}%B$?%b%f])'
 
 # git stuff
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
 # %u if there are unstaged changes
-zstyle ':vcs_info:*' unstagedstr   "%{$RED%}"
+zstyle ':vcs_info:*' unstagedstr   "%F{red}"
 # %c if there are staged changes
-zstyle ':vcs_info:*' stagedstr     "%{$GREEN%}"
+zstyle ':vcs_info:*' stagedstr     "%F{green}"
                                    #<branch><changes><unstaged>
-zstyle ':vcs_info:*' formats       "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%}"
-zstyle ':vcs_info:*' actionformats "%{$BLUE$BOLD%}%c%u(%b)%{$RESET%} %{$BLACK$ON_YELLOW%}(%a)%{$RESET%}"
+zstyle ':vcs_info:*' formats       "%F{blue}%B%c%u(%b)%%b%f"
+zstyle ':vcs_info:*' actionformats "%F{blue}%B%c%u(%b)%%b%f %F{black}%K{yellow}(%a)%%b%f"
 
 PERIOD=15
 
