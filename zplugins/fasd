@@ -1,13 +1,9 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-if ! (( $+commands[fasd] )); then
-    return 1
-fi
-
 if [ -n "$PRIV" ]; then
     return
 fi
 
-eval "$(fasd --init auto)"
+eval "$($HOME/.zplugins/fasd.d/fasd --init auto)"
 alias z=" $aliases[z]"
