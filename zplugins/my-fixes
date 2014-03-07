@@ -1,0 +1,38 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+insert-files()
+{
+    emulate -L zsh
+    setopt nobadpattern
+
+    local key str files
+
+    files=( *(N) )
+    if (( $#files )); then
+        zle -R "files: ${str}_" "$files[@]"
+    else
+        zle -R "files: ${str}_ (failed)"
+    fi
+    read -k key
+    while [[ '#key' -ne '#\\r' && '#key' -ne '#\\n' &&
+            '#key' -ne '#\\C-g' ]]; do
+        if [[ '#key' -eq '#\\C-h' || '#key' -eq '#\\C-?' ]]; then
+            [[ -n "$str" ]] && str="$str[1,-2]"
+        else
+            str="$str$key"
+        fi
+        eval "files=( \${~str}*(N) )"
+        if (( $#files )); then
+            zle -R "files: ${str}_" "$files[@]"
+        else
+            zle -R "files: ${str}_ (failed)"
+        fi
+        read -k key
+    done
+    zle -Rc
+    if [[ '#key' -ne '#\\C-g' && $#files -gt 0 ]]; then
+        [[ "$LBUFFER[-1]" = ' ' ]] || files=('' "$files[@]")
+        LBUFFER+=$files:q
+    fi
+}
