@@ -83,5 +83,3 @@ precmd-bell()
     [ "$HAS_STARTED" = 1 ] && echo -n "\a" || HAS_STARTED=1
 }
 add-zsh-hook precmd precmd-bell
-
-command -v ssh_prompt &> /dev/null && ssh_prompt
