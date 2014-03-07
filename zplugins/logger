@@ -1,0 +1,11 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+function //()
+{
+    local LOGFILE=/tmp/zsh-$$.log
+    $argv | tee $LOGFILE
+    LAST="`< $LOGFILE`"
+    rm -f $LOGFILE
+    LAST=
+}

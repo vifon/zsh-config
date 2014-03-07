@@ -78,6 +78,7 @@ PLUGINS=(
     scratchdir
     zlocalenv
     my-fixes
+    logger
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
