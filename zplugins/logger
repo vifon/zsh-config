@@ -1,11 +1,8 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-function //()
+function //_worker()
 {
-    local LOGFILE=/tmp/zsh-$$.log
-    $argv | tee $LOGFILE
-    LAST="`< $LOGFILE`"
-    rm -f $LOGFILE
-    LAST=
+    LAST="`tee /dev/tty`"
 }
+alias -g //='| //_worker'
