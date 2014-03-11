@@ -64,6 +64,8 @@ zstyle ':vcs_info:*' actionformats "%F{blue}%B%c%u(%b)%%b%f %F{black}%K{yellow}(
 
 PERIOD=15
 
+autoload -U add-zsh-hook
+
 precmd-git()
 {
     vcs_info
