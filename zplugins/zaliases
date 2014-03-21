@@ -94,7 +94,11 @@ if [ "$UID" != "0" ]; then  # not root
     {
         e -n "$@" && unset HAS_STARTED # do not print \a in the next prompt
     }
-    alias eee='exec ee'
+    eee()
+    {
+        ee "$@" &!
+        exit
+    }
     alias E='sudoedit'
     dired()
     {
