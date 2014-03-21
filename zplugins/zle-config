@@ -63,7 +63,7 @@ bindkey '^X^E' edit-command-line
 
 last-arg-basename-widget()
 {
-    LBUFFER+=$_:t
+    LBUFFER+=$_:t:q
 }
 zle -N last-arg-basename-widget
 bindkey '>' last-arg-basename-widget
