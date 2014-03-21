@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-alias priv='PRIV=1 zsh'
+alias priv=' PRIV=1 zsh'
 
 if [ -n "$PRIV" ]; then
     unset HISTFILE
