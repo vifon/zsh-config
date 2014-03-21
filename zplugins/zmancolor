@@ -23,6 +23,9 @@ man() {
                 man "$@"
     fi
 }
+
+alias man_local='man -M ~/local/share/man'
+
 perldoc() {
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
