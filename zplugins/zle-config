@@ -68,6 +68,8 @@ last-arg-basename-widget()
 zle -N last-arg-basename-widget
 bindkey '>' last-arg-basename-widget
 
+autoload -U smart-insert-last-word && zle -N smart-insert-last-word insert-last-word
+
 bindkey -s '^Z' 'qbg && disown\n'
 
 bindkey 'j' vi-find-next-char
