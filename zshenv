@@ -14,12 +14,12 @@ export PATH="$HOME/.perl5/bin:$PATH"
 
 export PYTHONPATH="$HOME/local-my/lib/python:$HOME/local/lib/python2.7/site-packages:$PYTHONPATH"
 
-typeset -U PATH
-
 export C_INCLUDE_PATH="$HOME/local-my/include:$C_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="$HOME/local-my/include:$CPLUS_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/local-my/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
+
+typeset -U PATH PYTHONPATH PERL5LIB C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH
 
 export ACRONYMDB="$HOME/.resources/acronyms"
 export RLWRAP_HOME="$HOME/.rlwrap"
