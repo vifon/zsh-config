@@ -6,4 +6,5 @@ alias priv=' PRIV=1 zsh'
 if [ -n "$PRIV" ]; then
     unset HISTFILE
     fc -R ~/.zhistory
+    bindkey -s 'r' "^u ranger -c\n"
 fi

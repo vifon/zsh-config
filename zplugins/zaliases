@@ -47,7 +47,6 @@ col()
     awk "{print \$$1}"
 }
 
-alias r=' ranger'
 alias g=' git'
 gg()
 {
