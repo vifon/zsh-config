@@ -12,7 +12,7 @@ export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
 export PERL5LIB="$HOME/.perl5/lib/perl5/x86_64-linux-thread-multi:$HOME/.perl5/lib/perl5:$PERL5LIB"
 export PATH="$HOME/.perl5/bin:$PATH"
 
-export PYTHONPATH="$HOME/local-my/lib/python:$HOME/local/lib/python2.7/site-packages:$PYTHONPATH"
+export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$HOME/local-my/lib/python:$HOME/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 export C_INCLUDE_PATH="$HOME/local-my/include:$C_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="$HOME/local-my/include:$CPLUS_INCLUDE_PATH"
