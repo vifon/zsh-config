@@ -32,3 +32,10 @@ zstyle ':completion:complete-files:*' completer _files
 bindkey '[Z' complete-files
 zmodload zsh/complist
 bindkey -M menuselect -s '[Z' '^I'
+
+
+GENERIC_COMPLETED=(stow)
+for i in $GENERIC_COMPLETED; do
+    compdef _gnu_generic $i
+done
+unset i
