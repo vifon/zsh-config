@@ -2,7 +2,7 @@
 # vim: set ft=zsh :
 
 if [ -n "$PRIV" ]; then
-    return
+    export _FASD_RO=yes
 fi
 
 eval "$($HOME/.zplugins/fasd.d/fasd --init auto)"
