@@ -1,54 +1,23 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker ft=zsh :
 
-PSUSERCOLOR='%F{red}'
-PSUSER="%n"
-PSSEP1='@'
-PSHOSTCOLOR='%F{green}'
-PSHOST="%m"
-TTYCOLOR='%B'
-
-TTYNAME=`tty | sed "s#/[^/]*/##"`
-
-if [ -n "$AMOUNT_DEVICE" ]; then
-    AMOUNT_DEVICE_MARKER="───(%F{green}%B"$AMOUNT_DEVICE"%b%f)"
-fi
-
-if [ -n "$PRIV" ]; then
-    PRIV_MARKER="───(%F{red}%B"PRIV"%b%f)"
-fi
-
-if [ -n "$RANGER_LEVEL" ]; then
-    TTYCOLOR='%F{green}%B'
-fi
-
+PSUSER="%F{green}%n%b%f"
+PSSEP='@'
+PSHOSTCOLOR='%F{yellow}'
+PSHOST="%F{yellow}%m%f"
+PSDIR="%F{cyan}%B%~%b%f"
 
 PS1='\
-┌───\
-($TTYCOLOR$TTYNAME%b%f)\
-───\
-(%F{yellow}%T%f)\
-$AMOUNT_DEVICE_MARKER\
-%(1j.───(%F{yellow}%j%f).)\
-$PRIV_MARKER\
-$RANGER_MARKER\
-───\
-(%F{blue}%B%~%b%f)\
-
-└(\
-\
-$PSUSERCOLOR\
+${PRIV+%F{red\}%B"PRIV"%b%f }\
 $PSUSER\
-%b%f\
-$PSSEP1\
-$PSHOSTCOLOR\
+$PSSEP\
 $PSHOST\
-%b%f\
-$PSSEP2\
-$PSDIR\
-%#$ZLOCAL_ACTIVE '
+\
+${AMOUNT_DEVICE:+ %F{green\}%B$AMOUNT_DEVICE%b%f}\
+ $PSDIR\
+%(#.#. %F{blue}%Bλ%b%f)$ZLOCAL_ACTIVE '
 
-RPS1='%(?..[%F{red}%B$?%b%f])'
+RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}'
 
 # git stuff
 autoload -Uz vcs_info
@@ -59,25 +28,13 @@ zstyle ':vcs_info:*' unstagedstr   "%F{red}"
 # %c if there are staged changes
 zstyle ':vcs_info:*' stagedstr     "%F{green}"
                                    #<branch><changes><unstaged>
-zstyle ':vcs_info:*' formats       "%F{blue}%B%c%u(%b)%%b%f"
-zstyle ':vcs_info:*' actionformats "%F{blue}%B%c%u(%b)%%b%f %F{black}%K{yellow}(%a)%%b%f"
+zstyle ':vcs_info:*' formats       "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f"
+zstyle ':vcs_info:*' actionformats "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f %F{black}%K{yellow}(%a)%%b%f"
 
-PERIOD=15
 
 autoload -U add-zsh-hook
 
-precmd-git()
-{
-    vcs_info
-    if [ -n "$vcs_info_msg_0_" ]; then
-        PSSEP2=":"
-        PSDIR="$vcs_info_msg_0_"
-    else
-        PSSEP2=
-        PSDIR=
-    fi
-}
-add-zsh-hook precmd precmd-git
+add-zsh-hook precmd vcs_info
 
 precmd-bell()
 {
