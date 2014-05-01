@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker ft=zsh :
 
-PSUSER="%F{green}%n%b%f"
+PSUSER="%(#.%F{red}.%F{green})%n%f"
 PSSEP='@'
 PSHOSTCOLOR='%F{yellow}'
 PSHOST="%F{yellow}%m%f"
@@ -15,7 +15,7 @@ $PSHOST\
 \
 ${AMOUNT_DEVICE:+ %F{green\}%B$AMOUNT_DEVICE%b%f}\
  $PSDIR\
-%(#.#. %F{blue}%Bλ%b%f)$ZLOCAL_ACTIVE '
+%(#. %F{red}%BΩ%b%f. %F{blue}%Bλ%b%f)$ZLOCAL_ACTIVE '
 
 RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}'
 
