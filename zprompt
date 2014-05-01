@@ -15,7 +15,8 @@ $PSHOST\
 \
 ${AMOUNT_DEVICE:+ %F{green\}%B$AMOUNT_DEVICE%b%f}\
  $PSDIR\
-%(#. %F{red}%BΩ%b%f. %F{blue}%Bλ%b%f)$ZLOCAL_ACTIVE '
+${ZLOCAL:+ $ZLOCAL}\
+%(#. %F{red}%BΩ%b%f. %F{blue}%Bλ%b%f) '
 
 RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}'
 
