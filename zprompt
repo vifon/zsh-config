@@ -5,7 +5,7 @@ PSUSER="%F{green}%n%b%f"
 PSSEP='@'
 PSHOSTCOLOR='%F{yellow}'
 PSHOST="%F{yellow}%m%f"
-PSDIR="%F{cyan}%B%~%b%f"
+PSDIR="%F{cyan}%B%(3~:../%3~:%~)%b%f"
 
 PS1='\
 ${PRIV+%F{red\}%B"PRIV"%b%f }\
