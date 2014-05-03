@@ -27,6 +27,7 @@ SAVEHIST=10000
 
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\n\ncpu\t%P\ntotal\t%*E'
 
 export EDITOR="emacsclient -c -a vim"
 export ALTERNATE_EDITOR="vim"
