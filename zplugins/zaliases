@@ -61,6 +61,15 @@ alias ggg=' git gg'
 alias annex=' git annex'
 alias 'annex-list'='annex-list --allrepos'
 
+alias 'annex-cleanmeta'='git branch -D `git branch | grep views/`'
+annex-broadcast()
+{
+    local REPO
+    for REPO in .git/refs/remotes/*(:t); do
+        git annex copy --to $REPO "$@"
+    done
+}
+
 alias wow='g status --short'
 such()
 {
