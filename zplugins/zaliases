@@ -144,6 +144,7 @@ alias curdate='date +%y.%m.%d'
 alias timestamp='date +%y.%m.%d-%H:%M'
 alias yargs='xargs -d \\n'
 alias recordscreen='ffmpeg -f x11grab -y -r 60 -s 1680x1050 -i :0.0 -async 0 -vsync 0' # usage: recordscreen FILE.mp4
+alias wgetn='wget --no-use-server-timestamps'
 alias json-format='python -mjson.tool'
 serve()
 {
