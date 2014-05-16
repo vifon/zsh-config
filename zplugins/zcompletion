@@ -25,6 +25,8 @@ zstyle ':completion:*:manuals.*'    insert-sections   true
 zstyle ':completion:*:manuals'      separate-sections true
 
 
+compdef '_wanted devices expl devices compadd -- /dev/sd*(%N)' amount
+
 # Source: http://chneukirchen.org/blog/archive/2011/02/10-more-zsh-tricks-you-may-not-know.html
 # Force file name completion on Shift-TAB.
 zle -C complete-files menu-complete _generic
