@@ -104,3 +104,7 @@ if [ -n "$CLEARONSTART" ]; then
     clear
     unset CLEARONSTART
 fi
+
+if [ -n "$RANGER_LEVEL" ]; then
+    trap "pwd > /tmp/rangershelldir" EXIT
+fi
