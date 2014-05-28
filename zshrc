@@ -80,6 +80,7 @@ PLUGINS=(
     zlocalenv
     my-fixes
     logger
+    ignore
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
