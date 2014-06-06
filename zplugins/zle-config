@@ -7,6 +7,8 @@ bindkey '[7~' beginning-of-line
 bindkey '[8~' end-of-line
 bindkey '[3~' delete-char
 
+######################################################################
+
 my-history-beginning-search-backward()
 {
     local SPACES TMP
@@ -36,6 +38,7 @@ if [ ! $TERM = "eterm-color" ]; then
 fi
 bindkey -s 'l' 'qclear\n'
 
+######################################################################
 
 for i in '``' '()' '{}' '[]'; do
     eval "function zle-paired-input-'$i'()
@@ -56,10 +59,13 @@ for i in \" \'; do
     bindkey "$i" zle-paired-input-"$i"
 done
 
+######################################################################
 
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
+
+######################################################################
 
 last-arg-basename-widget()
 {
@@ -68,12 +74,15 @@ last-arg-basename-widget()
 zle -N last-arg-basename-widget
 bindkey '>' last-arg-basename-widget
 
+######################################################################
+
 autoload -U smart-insert-last-word && zle -N smart-insert-last-word insert-last-word
 
 bindkey -s '^Z' 'qbg && disown\n'
 
 bindkey 'j' vi-find-next-char
 
+######################################################################
 
 expand-path()
 {
@@ -83,9 +92,11 @@ expand-path()
 zle -N expand-path
 bindkey '^Xp' expand-path
 
+######################################################################
 
 bindkey -s 'r' "^u . ranger\n"
 
+######################################################################
 
 prepend-space()
 {
@@ -94,6 +105,7 @@ prepend-space()
 zle -N prepend-space
 bindkey ' ' prepend-space
 
+######################################################################
 
 exec-emacs-here()
 {
@@ -102,7 +114,7 @@ exec-emacs-here()
 zle -N exec-emacs-here
 bindkey '^Xd' exec-emacs-here
 
-
+######################################################################
 
 autoload predict-on predict-off
 my-predict-on()
@@ -120,6 +132,7 @@ bindkey '^X-' my-predict-on
 zle -N my-predict-off
 bindkey '^X=' my-predict-off
 
+######################################################################
 
 my-create-generic-completion()
 {
@@ -142,6 +155,7 @@ my-create-generic-completion()
 zle -N my-create-generic-completion
 bindkey '^X^H' my-create-generic-completion
 
+######################################################################
 
 if (( $+commands[fzf] )); then
     fzf-cd() {
@@ -188,6 +202,7 @@ if (( $+commands[fzf] )); then
     bindkey '\ew' fzf-crawler
 fi
 
+######################################################################
 
 # copied from Valodim's config
 # just type '...' to get '../..'
