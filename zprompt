@@ -35,7 +35,13 @@ zstyle ':vcs_info:*' actionformats "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f %F{
 
 autoload -U add-zsh-hook
 
-add-zsh-hook precmd vcs_info
+# for git annex direct repos
+vcs_info_silent()
+{
+    vcs_info &> /dev/null
+}
+
+add-zsh-hook precmd vcs_info_silent
 
 precmd-bell()
 {
