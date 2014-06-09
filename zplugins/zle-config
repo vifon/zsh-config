@@ -82,6 +82,8 @@ bindkey -s '^Z' 'qbg && disown\n'
 
 bindkey 'j' vi-find-next-char
 
+disable -p '^'
+
 ######################################################################
 
 expand-path()
