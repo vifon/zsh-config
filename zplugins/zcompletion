@@ -24,6 +24,7 @@ zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*:manuals.*'    insert-sections   true
 zstyle ':completion:*:manuals'      separate-sections true
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 compdef '_wanted devices expl devices compadd -- /dev/sd*(%N)' amount
 
