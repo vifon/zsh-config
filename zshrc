@@ -81,6 +81,7 @@ PLUGINS=(
     my-fixes
     logger
     ignore
+    auto-fu
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader

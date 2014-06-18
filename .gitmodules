@@ -4,3 +4,6 @@
 [submodule "zplugins/fasd.d"]
 	path = zplugins/fasd.d
 	url = https://github.com/clvv/fasd
+[submodule "zplugins/auto-fu.d"]
+	path = zplugins/auto-fu.d
+	url = https://github.com/hchbaw/auto-fu.zsh
