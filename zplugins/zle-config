@@ -36,7 +36,14 @@ if [ ! $TERM = "eterm-color" ]; then
     bindkey -s `tput kf1` '^uramclean\n'
     bindkey -s `tput kf2` '^uramrearm\n'
 fi
-bindkey -s 'l' 'qclear\n'
+
+clear-screen-hard()
+{
+    tput reset
+    zle redisplay
+}
+zle -N clear-screen-hard
+bindkey 'l' clear-screen-hard
 
 ######################################################################
 
