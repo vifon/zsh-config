@@ -131,11 +131,14 @@ else    # root
         emacs -nw $1
     }
 fi
+
 remake()
 {
     1=${1:-all}
     make clean "$@"
 }
+compdef remake=make
+
 alias m='getmail --rcfile getmailrc --rcfile official'
 
 # shortcuts
