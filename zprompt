@@ -3,7 +3,6 @@
 
 PSUSER="%(#.%F{red}.%F{green})%n%f"
 PSSEP='@'
-PSHOSTCOLOR='%F{yellow}'
 PSHOST="%F{yellow}%m%f"
 PSDIR="%(#.%F{magenta}.%F{cyan})%B%(4~:../%3~:%~)%b%f"
 
