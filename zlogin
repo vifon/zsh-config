@@ -2,7 +2,7 @@
 
 start()
 {
-    exec startx "$@" &> /dev/null
+    exec startx "$@" > /dev/null
 }
 
 if [ "$TTY" = "/dev/tty1" ]; then
