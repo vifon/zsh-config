@@ -47,7 +47,13 @@ col()
     awk "{print \$$1}"
 }
 
-alias g=' git'
+g()
+{
+    [ -z "$1" ] && 1="ls"
+    git "$@"
+}
+alias g=' g'
+compdef g=git
 gg()
 {
     local HEIGHT=30
