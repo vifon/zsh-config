@@ -5,7 +5,7 @@ alias -s png=sxiv
 alias -s jpg=sxiv
 alias -s jpeg=sxiv
 alias -s gif=sxiv
-alias -s svg=display
+alias -s svg=rsvg-view-3
 
 alias -s pdf=evince
 
