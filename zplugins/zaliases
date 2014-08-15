@@ -60,7 +60,7 @@ gg()
     if [[ $LINES < 33 ]]; then
         HEIGHT=$[$LINES-3]
     fi
-    git g "$@" | head -n $HEIGHT
+    git g "$@" -n $HEIGHT
 }
 alias gg=' gg'
 alias ggg=' git gg'
