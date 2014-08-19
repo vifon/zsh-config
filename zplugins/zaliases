@@ -32,6 +32,7 @@ fi
 alias xo='xsel -o'
 alias xi='xsel -i'
 alias hilight='highlight -O ansi'
+alias bellpipe='sed "s/$/\a/"'
 
 alias -g '^'='2>'               # fish-like stderr redirection
 alias -g '00'='/dev/null'
