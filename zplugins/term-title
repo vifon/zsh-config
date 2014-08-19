@@ -26,12 +26,6 @@ function grml_control_xterm_title () {
             ;;
     esac
 }
-function grml_maintain_name () {
-    # set hostname if not running on host with name 'grml'
-    if [[ -n "$HOSTNAME" ]] && [[ "$HOSTNAME" != $(hostname) ]] ; then
-       NAME="@$HOSTNAME"
-    fi
-}
 function grml_reset_screen_title () {
     # adjust title of xterm
     # see http://www.faqs.org/docs/Linux-mini/Xterm-Title.html
@@ -45,5 +39,4 @@ function grml_reset_screen_title () {
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd grml_reset_screen_title
-add-zsh-hook preexec grml_maintain_name
 add-zsh-hook preexec grml_control_xterm_title
