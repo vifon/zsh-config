@@ -46,6 +46,7 @@ setopt hist_ignore_all_dups     \
     hist_no_store               \
     interactivecomments         \
     auto_cd                     \
+    rc_quotes                   \
     \
     extended_glob               \
     braceccl                    \
