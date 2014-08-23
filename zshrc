@@ -29,7 +29,7 @@ WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\n\ncpu\t%P\ntotal\t%*E'
 
-export EDITOR="emacsclient -c -a vim"
+export EDITOR=e # Emacs wrapper necessary because of the broken word splitting in some programs
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
 export BROWSER="luakit"
