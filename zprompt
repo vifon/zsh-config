@@ -14,6 +14,7 @@ $PSHOST\
 \
 ${AMOUNT_DEVICE:+ %F{green\}%B$AMOUNT_DEVICE%b%f}\
  $PSDIR\
+${LOCAL_HISTFILE:+ %F{magenta\}#%f}\
 ${ZLOCAL:+ $ZLOCAL}\
 %(#. %F{red}%BΩ%b%f. %F{blue}%Bλ%b%f) '
 
