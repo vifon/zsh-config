@@ -10,13 +10,13 @@ PS1='\
 ${PRIV+%F{red\}%B"PRIV"%b%f }\
 $PSUSER\
 $PSSEP\
-$PSHOST\
+$PSHOST \
 \
-${AMOUNT_DEVICE:+ %F{green\}%B$AMOUNT_DEVICE%b%f}\
- $PSDIR\
-${LOCAL_HISTFILE:+ %F{magenta\}#%f}\
-${ZLOCAL:+ $ZLOCAL}\
-%(#. %F{red}%BΩ%b%f. %F{blue}%Bλ%b%f) '
+${AMOUNT_DEVICE:+%F{green\}%B$AMOUNT_DEVICE%b%f }\
+$PSDIR \
+${LOCAL_HISTFILE:+%F{magenta\}#%f }\
+${ZLOCAL:+$ZLOCAL }\
+%(#.%F{red}%BΩ%b%f.%F{blue}%Bλ%b%f) '
 
 RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}'
 
