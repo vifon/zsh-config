@@ -1,0 +1,36 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+localhistory-set()
+{
+    mkdir -p $HOME/.zhistory.d/
+    rm -f $HOME/.zhistory.d/*(NL0)
+    LOCAL_HISTFILE=$HOME/.zhistory.d/${PWD//\//!}
+    fc -p $LOCAL_HISTFILE
+}
+
+localhistory-chpwd()
+{
+    [ -z "$LOCAL_HISTFILE" ] && return
+
+    fc -P
+    localhistory-set
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd localhistory-chpwd
+
+localhistory-toggle()
+{
+    if [ -z "$LOCAL_HISTFILE" ]; then
+        localhistory-set
+    else
+        fc -P
+        rm -f $HOME/.zhistory.d/*(NL0)
+        unset LOCAL_HISTFILE
+    fi
+    if zle; then
+        zle reset-prompt
+    fi
+}
+zle -N localhistory-toggle
+bindkey "\e^H" localhistory-toggle

@@ -83,6 +83,7 @@ PLUGINS=(
     logger
     ignore
     deer
+    localhistory
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
