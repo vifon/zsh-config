@@ -43,7 +43,7 @@ clear-screen-hard()
     zle redisplay
 }
 zle -N clear-screen-hard
-bindkey 'l' clear-screen-hard
+bindkey '^Xl' clear-screen-hard
 
 ######################################################################
 
@@ -108,7 +108,7 @@ zle-insert-line()
     zle redisplay
 }
 zle -N zle-insert-line
-bindkey '^Xl' zle-insert-line
+bindkey '\el' zle-insert-line
 
 ######################################################################
 
