@@ -166,6 +166,11 @@ serve()
 }
 alias exifclear='exiftool -all= -overwrite_original'
 
+rmdirs()
+{
+    find "$@" -type d -empty -delete -print
+}
+
 alias cdp='pushd'
 alias pop='popd'
 
