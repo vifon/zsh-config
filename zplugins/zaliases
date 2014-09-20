@@ -72,7 +72,7 @@ alias 'annex-cleanmeta'='git branch -D `git branch | grep views/`'
 annex-broadcast()
 {
     local REPO
-    for REPO in .git/refs/remotes/*(:t); do
+    for REPO in "$(git rev-parse --show-toplevel)"/.git/refs/remotes/*(:t); do
         git annex copy --to $REPO "$@"
     done
 }
