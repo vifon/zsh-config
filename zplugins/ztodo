@@ -1,22 +1,38 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-ztodo-chpwd()
+ztodo-rescan()
 {
     local GIT_ROOT
-    GIT_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"
-    if [ -f $GIT_ROOT/todo.org ]; then
-        local TODOS FIXMES HACKS
-        TODOS=$(grep -cF '* TODO ' $GIT_ROOT/todo.org)
-        FIXMES=$(grep -cF '* FIXME ' $GIT_ROOT/todo.org)
-        HACKS=$(grep -cF ':HACK:' $GIT_ROOT/todo.org)
+    if GIT_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"; then
+        echo '-*- grep -*-' > $GIT_ROOT/todo.cache
+        ag --ignore todo.org '\bTODO\b|\bFIXME\b|\bXXX\b' >> $GIT_ROOT/todo.cache
+        _ztodo-chpwd
+        head $GIT_ROOT/todo.cachea
+    fi
+}
 
+_ztodo-chpwd()
+{
+    local GIT_ROOT
+    if GIT_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"; then
+        if [ -f $GIT_ROOT/todo.cache ]; then
+            local TODOS FIXMES HACKS
+            TODOS=$(grep -cwF 'TODO' $GIT_ROOT/todo.cache)
+            FIXMES=$(grep -cwF 'FIXME' $GIT_ROOT/todo.cache)
+            HACKS=$(grep -cwF 'XXX' $GIT_ROOT/todo.cache)
+        elif [ -f $GIT_ROOT/todo.org ]; then
+            local TODOS FIXMES HACKS
+            TODOS=$(grep -cF '* TODO ' $GIT_ROOT/todo.org)
+            FIXMES=$(grep -cF '* FIXME ' $GIT_ROOT/todo.org)
+            HACKS=$(grep -cF ':HACK:' $GIT_ROOT/todo.org)
+        fi
         ZTODO_PROMPT="\
-${${TODOS#0}:+ %F{green\}%BTODO: $TODOS%b%f}\
+${${TODOS#0}:+%F{green\}%BTODO: $TODOS%b%f}\
 ${${FIXMES#0}:+ %F{red\}%BFIXME: $FIXMES%f}\
 ${${HACKS#0}:+ %F{blue\}%BHACKS: $HACKS%b%f}"
     fi
 }
 
 autoload -U add-zsh-hook
-add-zsh-hook chpwd ztodo-chpwd
+add-zsh-hook chpwd _ztodo-chpwd
