@@ -18,14 +18,14 @@ ${LOCAL_HISTFILE:+%F{magenta\}#%f }\
 ${ZLOCAL:+$ZLOCAL }\
 %(#.%F{red}%BΩ%b%f.%F{blue}%Bλ%b%f) '
 
-RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}'
+RPS1='%(?..%F{red}%B$?%b%f )${vcs_info_msg_0_:+$vcs_info_msg_0_}${ZTODO_PROMPT:+ %F{black\}%B|%b%f$ZTODO_PROMPT}'
 
 # git stuff
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
 # %u if there are unstaged changes
-zstyle ':vcs_info:*' unstagedstr   "%F{red}"
+zstyle ':vcs_info:*' unstagedstr   "%b%F{red}"
 # %c if there are staged changes
 zstyle ':vcs_info:*' stagedstr     "%F{green}"
                                    #<branch><changes><unstaged>
