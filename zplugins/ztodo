@@ -8,7 +8,7 @@ ztodo-rescan()
         echo '-*- grep -*-' > $GIT_ROOT/todo.cache
         ag --ignore todo.org '\bTODO\b|\bFIXME\b|\bXXX\b' >> $GIT_ROOT/todo.cache
         _ztodo-chpwd
-        head $GIT_ROOT/todo.cachea
+        head $GIT_ROOT/todo.cache
     fi
 }
 
