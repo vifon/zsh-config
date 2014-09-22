@@ -31,6 +31,8 @@ _ztodo-chpwd()
 ${${TODOS#0}:+ %F{green\}%BTODO: $TODOS%b%f}\
 ${${FIXMES#0}:+ %F{red\}%BFIXME: $FIXMES%f}\
 ${${HACKS#0}:+ %F{blue\}%BHACKS: $HACKS%b%f}"
+    else
+        ZTODO_PROMPT=""
     fi
 }
 
