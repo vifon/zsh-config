@@ -28,7 +28,7 @@ _ztodo-chpwd()
             HACKS=$(grep -cF ':HACK:' $GIT_ROOT/todo.org)
         fi
         ZTODO_PROMPT="\
-${${TODOS#0}:+%F{green\}%BTODO: $TODOS%b%f}\
+${${TODOS#0}:+ %F{green\}%BTODO: $TODOS%b%f}\
 ${${FIXMES#0}:+ %F{red\}%BFIXME: $FIXMES%f}\
 ${${HACKS#0}:+ %F{blue\}%BHACKS: $HACKS%b%f}"
     fi
