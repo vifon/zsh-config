@@ -49,7 +49,6 @@ setopt hist_ignore_all_dups     \
     rc_quotes                   \
     \
     extended_glob               \
-    braceccl                    \
     magicequalsubst             \
     longlistjobs                \
     \
