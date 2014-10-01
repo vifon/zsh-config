@@ -18,8 +18,7 @@ shift $[$OPTIND-1]
 link_fun()
 {
     local OUTPUT
-    OUTPUT=$($=LN -sv $1 $2 2>&1)
-    if [ "$?" = "0" ]; then
+    if OUTPUT=$($=LN -sv $1 $2 2>&1); then
         echo "[32;1m$OUTPUT[0m" 1>&2
     else
         echo "[31;1m$OUTPUT[0m" 1>&2
@@ -34,4 +33,9 @@ for f in zlogin zlogout zloader zprompt zshrc zshenv; do
     link_fun $f:A $HOME/.$f
 done
 
-link_fun $HOME/.zplugins/fasd.d/fasd $HOME/.bin
+mkdir -p $HOME/.fpath
+for f in zplugins/deer.d/deer; do
+    link_fun $HOME/.$f $HOME/.fpath/
+done
+
+link_fun $HOME/.zplugins/fasd.d/fasd $HOME/.bin/

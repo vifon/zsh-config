@@ -1,4 +1,6 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-source $HOME/.zplugins/deer.d/deer
+autoload -U deer
+zle -N deer
+bindkey '\ek' deer
