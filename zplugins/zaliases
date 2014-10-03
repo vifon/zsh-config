@@ -8,6 +8,8 @@ hash -d harold=/media/harold
 
 alias cd=' cd'
 
+alias mmv='noglob zmv -W'
+
 if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls=' ls --color=auto --group-directories-first'
