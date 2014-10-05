@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
-if [ "$TERM" = "linux" ]; then
+if ! [[ $TERM =~ rxvt* ]]; then
     return 0;
 fi
 
