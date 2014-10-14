@@ -210,6 +210,9 @@ if (( $+commands[yaourt] )); then
     alias orphan='yaourt -Qqdt'
     alias orphan-clean='yaourt -Rsun `orphan`'
 fi
+if command -v systemctl &> /dev/null; then
+    alias ctl="sudo systemctl"
+fi
 
 # {{{ trolling
 # if [ "$UID" != "0" ]; then  # not root
