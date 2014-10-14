@@ -10,7 +10,7 @@ alias cd=' cd'
 
 alias mmv='noglob zmv -W'
 
-if command -v dircolors &> /dev/null; then
+if (( $+commands[dircolors] )); then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls=' ls --color=auto --group-directories-first'
     alias grep='grep --color=auto'
@@ -18,13 +18,13 @@ fi
 alias lh='ls -lh'
 alias la='ls -A'
 alias l='ls'
-if command -v colout &> /dev/null; then
+if (( $+commands[colout] )); then
     lhc()
     {
         lh --color "$@" | colout '^(.)([-rwx]{3})([-rwx]{3})([-rwx]{3})' blue,red,yellow,green
     }
 fi
-if command -v color-paths &> /dev/null; then
+if (( $+commands[color-paths] )); then
     locate()
     {
         command locate "$@" | color-paths
@@ -108,7 +108,7 @@ done
 # alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
-    if ! command -v e &> /dev/null; then
+    if ! (( $+commands[e] )); then
         e()
         {
             emacsclient -c "$@"
@@ -129,7 +129,7 @@ if [ "$UID" != "0" ]; then  # not root
         if [ -z "$1" ]; then
             1=.
         fi
-        TERM=xterm emacsclient -t $1
+        emacsclient -t $1
     }
     alias sudo='sudo '
     alias root='sudo su'
@@ -169,7 +169,7 @@ serve()
 {
     python3 -m http.server ${1:-30080}
 }
-alias exifclear='exiftool -all= -overwrite_original'
+alias exifclean='exiftool -all= -overwrite_original'
 
 rmdirs()
 {
@@ -201,10 +201,10 @@ seturgent()
     print -Pn "\e]0;xterm\a"
 }
 
-if command -v pacman-color &> /dev/null; then
+if (( $+commands[pacman-color] )); then
     alias pacman=pacman-color
 fi
-if command -v yaourt &> /dev/null; then
+if (( $+commands[yaourt] )); then
     alias y=" yaourt"
     alias yy='y --noconfirm'
     alias orphan='yaourt -Qqdt'
