@@ -100,6 +100,7 @@ fi
 
 if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
+    fc -R $DEF_HISTFILE
     eval "$(dircolors -b)"
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
