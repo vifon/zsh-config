@@ -11,7 +11,7 @@
 #     return 1;
 # fi
 
-if [ "$TERM" = "linux" ]; then
+if [[ "$TERM" != rxvt-* ]]; then
     return 0;
 fi
 
