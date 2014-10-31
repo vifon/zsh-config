@@ -134,6 +134,8 @@ if [ "$UID" != "0" ]; then  # not root
     alias sudo='sudo '
     alias root='sudo su'
     alias exec='exec '
+    alias mv='mv -i'
+    alias cp='cp -i'
 else    # root
     dired()
     {
