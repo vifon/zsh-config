@@ -127,7 +127,7 @@ zranger()
         cd -P /proc/$RANGER_PID/cwd
     fi
 }
-bindkey -s '\ez' "^u zranger\n"
+bindkey -s '\ez' "\eq zranger\n"
 
 ######################################################################
 
