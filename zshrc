@@ -82,6 +82,7 @@ PLUGINS=(
     logger
     ignore
     deer
+    zranger
     localhistory
     ztodo
     )

@@ -109,26 +109,6 @@ bindkey '\el' zle-insert-line
 
 bindkey -s 'r' "^u . ranger\n"
 
-zranger()
-{
-    local RANGER_PID
-
-    if RANGER_PID=$(tmux list-panes -s -F '#{pane_pid}' -t ranger 2> /dev/null); then
-        echo $PWD > /tmp/zranger-cwd
-        kill -SIGUSR1 $RANGER_PID
-        tmux attach -d -t ranger
-    else
-        tmux new-session -s ranger 'exec ranger'
-    fi
-
-    # A second check needed because the process could have been
-    # started or stopped in the meantime.
-    if RANGER_PID=$(tmux list-panes -s -F '#{pane_pid}' -t ranger 2> /dev/null); then
-        cd -P /proc/$RANGER_PID/cwd
-    fi
-}
-bindkey -s '\ez' "\eq zranger\n"
-
 ######################################################################
 
 prepend-space()
