@@ -7,3 +7,6 @@
 [submodule "zplugins/deer.d"]
 	path = zplugins/deer.d
 	url = https://github.com/vifon/deer
+[submodule "zplugins/zranger.d"]
+	path = zplugins/zranger.d
+	url = https://github.com/Vifon/zranger

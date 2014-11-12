@@ -34,7 +34,7 @@ for f in zlogin zlogout zloader zprompt zshrc zshenv; do
 done
 
 mkdir -p $HOME/.fpath
-for f in zplugins/deer.d/deer; do
+for f in zplugins/deer.d/deer zplugins/zranger.d/zranger; do
     link_fun $HOME/.$f $HOME/.fpath/
 done
 
