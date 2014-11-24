@@ -11,9 +11,9 @@ perl-edit () {
    read-from-minibuffer "Perl: "
    (( $? == 1 )) && return
    if [ -n "$REPLY" ]; then
-      NEW="$(echo $CUTBUFFER | perl -pe "$REPLY" 2> /dev/null)"
+      NEW="$(perl -pe "$REPLY" 2> /dev/null <<< $BUFFER)"
       (( $? != 0 )) && return
-      CUTBUFFER=$NEW
+      BUFFER=$NEW
    fi
 }
 zle -N perl-edit
