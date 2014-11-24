@@ -13,6 +13,8 @@ export PATH="$HOME/.perl5/bin:$PATH"
 
 export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
 
+export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+
 # ~/local package paths
 export PATH="$HOME/local/bin:$PATH"
 export C_INCLUDE_PATH="$HOME/local/include:$C_INCLUDE_PATH"
