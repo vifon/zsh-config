@@ -153,14 +153,9 @@ remake()
 }
 compdef remake=make
 
-alias m='getmail --rcfile getmailrc --rcfile official'
-
 # shortcuts
 alias debugterm='clear && sleep 10000000'
 alias zhist=' vim --noplugin ${HISTFILE:-$DEF_HISTFILE}'
-alias synergy1='synergyc 192.168.1.102'
-alias synergy2='synergys --config ~/.synergy/synergy.conf'
-alias cmd='wine cmd 2> /dev/null'
 alias curdate='date +%y.%m.%d'
 alias timestamp='date +%y.%m.%d-%H:%M'
 alias yargs='xargs -d \\n'
