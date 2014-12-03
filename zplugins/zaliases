@@ -4,6 +4,7 @@
 hash -d music=$HOME/music
 hash -d annex=$HOME/annex
 hash -d harold=/media/harold
+hash -d dotfiles=$HOME/projects/configs/dotfiles
 
 
 alias cd=' cd'
