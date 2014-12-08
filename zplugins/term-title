@@ -20,9 +20,11 @@ function info_print () {
     printf '%s' "${esc_end}"
 }
 function grml_control_xterm_title () {
+    local tmp
     case $TERM in
         (xterm*|rxvt*)
-            set_title "${(%):-"${RANGER_LEVEL:+(ranger) }%m: %~:"}" "$1"
+            tmp=(${(f)1})
+            set_title "${(%):-"${RANGER_LEVEL:+(ranger) }%m: %~:"}" $tmp[1]
             ;;
     esac
 }
