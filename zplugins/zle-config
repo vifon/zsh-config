@@ -80,7 +80,13 @@ bindkey '>' last-arg-basename-widget
 
 autoload -U smart-insert-last-word && zle -N smart-insert-last-word insert-last-word
 
-bindkey -s '^Z' 'qbg && disown\n'
+background_n_disown_widget()
+{
+    bg && disown
+    zle reset-prompt
+}
+zle -N background_n_disown_widget
+bindkey '^Z' background_n_disown_widget
 
 bindkey 'j' vi-find-next-char
 
