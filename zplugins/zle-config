@@ -102,6 +102,30 @@ bindkey '^Xp' expand-path
 
 ######################################################################
 
+zle-mkdir()
+{
+    autoload -U modify-current-argument
+    function mkdir-worker() {
+        REPLY=$~1
+        zle -M "Are you sure you want to create directory \"$REPLY\"? [y/n]"
+        zle -R
+        local KEY
+        read -k KEY
+        if [ "$KEY" = y ]; then
+            mkdir -p $REPLY 2> /dev/null
+            zle -M "Directory \"$REPLY\" successfully created."
+            REPLY+=/
+        else
+            zle -M ""
+        fi
+    }
+    modify-current-argument mkdir-worker
+}
+zle -N zle-mkdir
+bindkey '\em' zle-mkdir
+
+######################################################################
+
 zle-insert-line()
 {
     echo -n "\e[0G\e[K"
