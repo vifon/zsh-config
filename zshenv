@@ -4,6 +4,8 @@ export PATH="/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
+export PATH="$HOME/.cask/bin:$PATH"
+
 export PATH="$HOME/.cabal/bin:$PATH"
 
 export PERL_MB_OPT="--install_base $HOME/.perl5"
