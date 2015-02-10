@@ -208,14 +208,6 @@ if (( $+commands[yaourt] )); then
     alias orphan='yaourt -Qqdt'
     alias orphan-clean='yaourt -Rsun `orphan`'
 fi
-if command -v systemctl &> /dev/null; then
+if (( $+commands[systemctl] )); then
     alias ctl="sudo systemctl"
 fi
-
-# {{{ trolling
-# if [ "$UID" != "0" ]; then  # not root
-#     alias mcedit='/home/vifon/.bin/ishygddt "`date +%Y`" "using mcedit"'
-#     alias halt='/home/vifon/.bin/ishygddt "`date +%Y`" "not using init 0"'
-#     alias bash='/home/vifon/.bin/ishygddt "`date +%Y`" "not using zsh"'
-# fi
-# }}}
