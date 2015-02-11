@@ -42,6 +42,3 @@ export RLWRAP_HOME="$HOME/.rlwrap"
 if [ -d ~/.config/ranger ]; then
     export RANGER_LOAD_DEFAULT_RC=FALSE
 fi
-
-
-trap 'exec zsh' USR1
