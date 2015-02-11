@@ -211,3 +211,9 @@ fi
 if (( $+commands[systemctl] )); then
     alias ctl="sudo systemctl"
 fi
+
+if (( $+commands[stow] )); then
+    alias stowadd='stow -v -t ~/local -S'
+    alias stowrm='stow -v -t ~/local -D'
+    alias stowreadd='stow -v -t ~/local -R'
+fi
