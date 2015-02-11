@@ -10,12 +10,19 @@ export PATH="$HOME/.cabal/bin:$PATH"
 
 export PERL_MB_OPT="--install_base $HOME/.perl5"
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
+typeset -T PERL5LIB perl5lib
 export PERL5LIB="$HOME/.perl5/lib/perl5/x86_64-linux-thread-multi:$HOME/.perl5/lib/perl5:$PERL5LIB"
 export PATH="$HOME/.perl5/bin:$PATH"
 
+typeset -T PYTHONPATH pythonpath
 export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
 
 export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+
+typeset -T C_INCLUDE_PATH c_include_path
+typeset -T CPLUS_INCLUDE_PATH cplus_include_path
+typeset -T LIBRARY_PATH library_path
+typeset -T LD_LIBRARY_PATH ld_library_path
 
 # ~/local package paths
 export PATH="$HOME/local/bin:$PATH"
