@@ -1,43 +1,11 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
-man() {
-    if [ -z "$1" ] && command -v dmenu_man &> /dev/null; then
-        env \
-            LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-            LESS_TERMCAP_md=$(printf "\e[1;31m") \
-            LESS_TERMCAP_me=$(printf "\e[0m") \
-            LESS_TERMCAP_se=$(printf "\e[0m") \
-            LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-            LESS_TERMCAP_ue=$(printf "\e[0m") \
-            LESS_TERMCAP_us=$(printf "\e[1;32m") \
-                dmenu_man
-    else
-        env \
-            LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-            LESS_TERMCAP_md=$(printf "\e[1;31m") \
-            LESS_TERMCAP_me=$(printf "\e[0m") \
-            LESS_TERMCAP_se=$(printf "\e[0m") \
-            LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-            LESS_TERMCAP_ue=$(printf "\e[0m") \
-            LESS_TERMCAP_us=$(printf "\e[1;32m") \
-                man "$@"
-    fi
-}
 
 alias man_local='man -M ~/local/share/man'
 
-perldoc() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;31m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-            perldoc "$@"
-}
-pydoc() {
+colorman-generic() {
+    local CMD=$1
+    shift
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
         LESS_TERMCAP_md=$(printf "\e[1;31m") \
@@ -47,20 +15,21 @@ pydoc() {
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
         PYTHONDONTWRITEBYTECODE=1 \
-            pydoc "$@"
+            $CMD "$@"
+}
+
+alias perldoc='colorman-generic perldoc'
+alias pydoc='colorman-generic pydoc'
+alias pydoc3='colorman-generic pydoc3'
+
+man() {
+    if [ -z "$1" ] && command -v dmenu_man &> /dev/null; then
+        colorman-generic dmenu_man
+    else
+        colorman-generic man "$@"
+    fi
 }
 
 if ! (( $+commands[emacs] )); then
     return 0;
 fi
-
-woman() {
-    emacsclient -c -e "(woman-find-file \"$1\")"
-}
-
-womanperl() {
-    if pod2man "$1" -o /tmp/perldoc; then
-        emacsclient -c -e "(woman-find-file \"/tmp/perldoc\")"
-        rm /tmp/perldoc
-    fi
-}
