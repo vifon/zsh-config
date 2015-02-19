@@ -1,0 +1,16 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+# Partially based on scope.sh from the ranger project.
+
+try()
+{
+    output=$(eval '"$@"')
+    dump
+}
+alias try='try '
+
+dump()
+{
+    /bin/echo -E "$output"
+}

@@ -79,7 +79,7 @@ PLUGINS=(
     scratchdir
     zlocalenv
     my-fixes
-    logger
+    zcapture
     ignore
     deer
     zranger
