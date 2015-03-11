@@ -15,8 +15,9 @@ if [[ "$TERM" != rxvt-* ]]; then
     return 0;
 fi
 
+# Use with: https://gist.github.com/Vifon/33630ea812f36152a05a
 cwd_to_urxvt() {
-    local update="\0033]777;cwd-spawn;path;$PWD\0007\0033]777;cwd-spawn;clear;\0007"
+    local update="\0033]777;cwd-spawn;path;$PWD\0007\0033]777;cwd-spawn;hostname;$HOST\0007"
 
     case $TERM in
         screen*)
