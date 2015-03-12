@@ -5,7 +5,8 @@ localhistory-set()
 {
     mkdir -p $HOME/.zhistory.d/
     rm -f $HOME/.zhistory.d/*(NL0)
-    LOCAL_HISTFILE=$HOME/.zhistory.d/${PWD//\//!}
+    local ABS_PWD=$PWD:A
+    LOCAL_HISTFILE=$HOME/.zhistory.d/${ABS_PWD//\//!}
     fc -p $LOCAL_HISTFILE
 }
 
