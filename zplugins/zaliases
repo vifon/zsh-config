@@ -37,6 +37,24 @@ alias xi='xsel -i'
 alias hilight='highlight -O ansi'
 alias bellpipe='sed "s/$/\a/"'
 
+ssh-master()
+{
+    if [ $# = 0 ]; then
+        <<EOF
+Syntax:
+    ssh-master <ssh arguments>
+EOF
+        return 1
+    fi
+
+    while true; do
+        ssh -MNn "$@"
+        if [ $? = 130 ]; then    # SIGINT
+            break
+        fi
+    done
+}
+
 alias -g '^'='2>'               # fish-like stderr redirection
 alias -g '00'='/dev/null'
 alias -g '@'='| sudo tee'
