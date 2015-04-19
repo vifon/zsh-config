@@ -85,6 +85,7 @@ PLUGINS=(
     zranger
     localhistory
     ztodo
+    fzf
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
