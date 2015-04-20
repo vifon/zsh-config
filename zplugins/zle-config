@@ -107,6 +107,7 @@ zle-mkdir()
     autoload -U modify-current-argument
     function mkdir-worker() {
         REPLY=$~1
+        REPLY=$REPLY:Q
         zle -M "Are you sure you want to create directory \"$REPLY\"? [y/n]"
         zle -R
         local KEY
@@ -114,7 +115,7 @@ zle-mkdir()
         if [ "$KEY" = y ]; then
             mkdir -p $REPLY 2> /dev/null
             zle -M "Directory \"$REPLY\" successfully created."
-            REPLY+=/
+            REPLY=${REPLY:q}/
         else
             zle -M ""
         fi
