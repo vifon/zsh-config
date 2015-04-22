@@ -235,3 +235,21 @@ if (( $+commands[stow] )); then
     alias stowrm='stow -v -t ~/local -D'
     alias restow='stow -v -t ~/local -R'
 fi
+
+if (( $+commands[lcov] )); then
+    lcov-dwim()
+    {
+        mkdir -p cov && cd cov
+
+        lcov --zerocounters --directory ..
+        lcov --capture --initial --directory .. --output-file lcov_init.info
+        cd -
+        print -P '%F{red}%BRun your program now...%b%f'
+        $SHELL
+        cd -
+        lcov --capture --directory .. --output-file lcov.info
+        genhtml lcov.info
+        chromium --incognito index.html
+        cd -
+    }
+fi
