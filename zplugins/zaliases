@@ -114,10 +114,6 @@ pdfman()
     zathura =(man -t $* | ps2pdf - -)
 }
 
-diff()         # not an alias to *not* inherit the completion function
-{
-    git diff --no-index "$@"
-}
 alias gdb='gdb -q'
 alias octave='octave -q'
 alias youtube-extract-audio='youtube-dl -x --audio-format mp3 --audio-quality 0'
