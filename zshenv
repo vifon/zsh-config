@@ -8,6 +8,8 @@ export PATH="$HOME/.cask/bin:$PATH"
 
 export PATH="$HOME/.cabal/bin:$PATH"
 
+export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
+
 export PERL_MB_OPT="--install_base $HOME/.perl5"
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
 typeset -T PERL5LIB perl5lib
