@@ -45,3 +45,18 @@ else
 fi
 zle     -N   fzf-file-widget
 bindkey '^T' fzf-file-widget
+
+
+if ! (( $+commands[fasd] )); then
+    return
+fi
+
+fzf-fasd() {
+    local REPLY
+    if REPLY="`fasd -dlR | fzf`"; then
+        cd $REPLY
+    fi
+    zle reset-prompt
+}
+zle -N fzf-fasd
+bindkey '\eC' fzf-fasd
