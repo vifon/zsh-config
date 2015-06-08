@@ -24,6 +24,8 @@ typeset -T CPLUS_INCLUDE_PATH cplus_include_path
 typeset -T LIBRARY_PATH library_path
 typeset -T LD_LIBRARY_PATH ld_library_path
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # ~/local package paths
 export PATH="$HOME/local/bin:$PATH"
 export C_INCLUDE_PATH="$HOME/local/include:$C_INCLUDE_PATH"
