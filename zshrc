@@ -100,6 +100,10 @@ if [ -f ~/$PSFILE ]; then
     . ~/$PSFILE
 fi
 
+if [ -f ~/.sdk.env ]; then
+    . ~/.sdk.env
+fi
+
 if [ $TERM = "eterm-color" ]; then
     unset HISTFILE
     fc -R $DEF_HISTFILE
