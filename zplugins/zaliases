@@ -55,10 +55,10 @@ EOF
     done
 }
 
-alias -g '^'='2>'               # fish-like stderr redirection
-alias -g '00'='/dev/null'
-alias -g '@'='| sudo tee'
-alias -g '@@'='| sudo tee -a'
+# alias -g '^'='2>'               # fish-like stderr redirection
+# alias -g '00'='/dev/null'
+# alias -g '@'='| sudo tee'
+# alias -g '@@'='| sudo tee -a'
 
 alias noglob='noglob '
 alias webrun='webrun '
