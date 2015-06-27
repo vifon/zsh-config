@@ -10,3 +10,6 @@
 [submodule "zplugins/zranger.d"]
 	path = zplugins/zranger.d
 	url = https://github.com/Vifon/zranger
+[submodule "zplugins/texas.d"]
+	path = zplugins/texas.d
+	url = https://github.com/vifon/texas

@@ -86,6 +86,7 @@ PLUGINS=(
     localhistory
     ztodo
     fzf
+    texas
     )
 if [ -f ~/.zloader ]; then
     . ~/.zloader
