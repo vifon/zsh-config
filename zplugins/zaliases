@@ -11,6 +11,8 @@ alias cd=' cd'
 
 alias mmv='noglob zmv -W'
 
+alias ref='cp --reflink=always'
+
 if (( $+commands[dircolors] )); then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls=' ls --color=auto --group-directories-first'
@@ -36,6 +38,8 @@ alias xo='xsel -o'
 alias xi='xsel -i'
 alias hilight='highlight -O ansi'
 alias bellpipe='sed "s/$/\a/"'
+
+alias get='sudo apt-get install'
 
 ssh-master()
 {
@@ -231,6 +235,8 @@ if (( $+commands[stow] )); then
     alias stowrm='stow -v -t ~/local -D'
     alias restow='stow -v -t ~/local -R'
 fi
+
+alias pkgprefix='echo $HOME/pkgs/$PWD:t'
 
 if (( $+commands[lcov] )); then
     lcov-dwim()
