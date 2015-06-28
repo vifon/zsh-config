@@ -130,7 +130,7 @@ bindkey '\em' zle-mkdir
 zle-insert-line()
 {
     echo -n "\e[0G\e[K"
-    perl -Mutf8 -CS -e 'print "\N{U+2500}" x $ARGV[0], \n' $COLUMNS
+    perl -Mutf8 -CS -e 'print "\N{U+2500}" x $ARGV[0], "\n"' $COLUMNS
     zle redisplay
 }
 zle -N zle-insert-line
