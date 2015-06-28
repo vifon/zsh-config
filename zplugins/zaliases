@@ -39,7 +39,7 @@ alias xi='xsel -i'
 alias hilight='highlight -O ansi'
 alias bellpipe='sed "s/$/\a/"'
 
-alias get='sudo apt-get install'
+alias get='sudo apt install'
 
 ssh-master()
 {
