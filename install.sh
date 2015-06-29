@@ -38,4 +38,5 @@ for f in zplugins/deer.d/deer zplugins/zranger.d/zranger zplugins/zranger.d/texa
     link_fun $HOME/.$f $HOME/.fpath/
 done
 
+mkdir -p $HOME/.bin
 link_fun $HOME/.zplugins/fasd.d/fasd $HOME/.bin/
