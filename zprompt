@@ -19,6 +19,8 @@ ${LOCAL_HISTFILE:+%F{magenta\}#%f }\
 ${ZLOCAL:+$ZLOCAL }\
 %(#.%F{red}%BΩ%b%f.%F{blue}%Bλ%b%f) '
 
+PS2='%_ %F{blue}%B>>=%b%f '
+
 RPS1='%(?..%F{red}%B$?%b%f )$vcs_info_msg_0_${ZTODO_PROMPT:+ %F{black\}%B|%b%f$ZTODO_PROMPT}'
 
 # git stuff
