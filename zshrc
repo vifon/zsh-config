@@ -72,7 +72,6 @@ PLUGINS=(
     zpriv
     zXephyr
     zmancolor
-    zCMake
     filehandlers
     functional
     urxvt_cwd-spawn
