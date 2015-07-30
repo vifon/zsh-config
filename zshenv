@@ -48,6 +48,6 @@ typeset -U PATH PYTHONPATH PERL5LIB C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PA
 export ACRONYMDB="$HOME/.resources/acronyms"
 export RLWRAP_HOME="$HOME/.rlwrap"
 
-if [ -d ~/.config/ranger ]; then
+if [ -e ~/.config/ranger/rc.conf ]; then
     export RANGER_LOAD_DEFAULT_RC=FALSE
 fi
