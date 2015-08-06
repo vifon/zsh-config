@@ -3,7 +3,11 @@
 
 PSUSER="%(#.%F{red}.%F{green})%n%f"
 PSSEP='@'
-PSHOST="%F{yellow}%m%f"
+if [ -n "$SSH_CONNECTION" ]; then
+    PSHOST="%F{yellow}%B%m%b%f"
+else
+    PSHOST="%F{yellow}%m%f"
+fi
 PSDIR="%(#.%F{magenta}.%F{cyan})%B%(4~:../%3~:%~)%b%f"
 
 PS1='\
