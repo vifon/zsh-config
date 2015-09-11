@@ -113,8 +113,11 @@ zle-mkdir()
         local KEY
         read -k KEY
         if [ "$KEY" = y ]; then
-            mkdir -p $REPLY 2> /dev/null
-            zle -M "Directory \"$REPLY\" successfully created."
+            if mkdir -p $REPLY 2> /dev/null; then
+                zle -M "Directory \"$REPLY\" successfully created."
+            else
+                zle -M "Directory \"$REPLY\" couldn't be created."
+            fi
             REPLY=${REPLY:q}/
         else
             zle -M ""
