@@ -108,7 +108,7 @@ if [ -f ~/.sdk.env ]; then
     . ~/.sdk.env
 fi
 
-if [ $TERM = "eterm-color" ]; then
+if [ $TERM = "eterm-color" -o -n "$MC_TMPDIR" ]; then
     unset HISTFILE
     fc -R $DEF_HISTFILE
 
