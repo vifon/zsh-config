@@ -51,6 +51,7 @@ export ACRONYMDB="$HOME/.resources/acronyms"
 export RLWRAP_HOME="$HOME/.rlwrap"
 
 export P4CONFIG=".p4config"
+export P4MERGE="m4merge"
 
 if [ -e ~/.config/ranger/rc.conf ]; then
     export RANGER_LOAD_DEFAULT_RC=FALSE
