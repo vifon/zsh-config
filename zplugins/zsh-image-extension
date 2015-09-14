@@ -1,1 +1,4 @@
-/home/vifon/.zsh-image-extension/zsh-image-extension
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+source ~/.zsh-image-extension/zsh-image-extension
