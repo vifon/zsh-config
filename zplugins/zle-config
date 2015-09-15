@@ -155,15 +155,6 @@ bindkey ' ' prepend-space
 
 ######################################################################
 
-exec-emacs-here()
-{
-    exec emacsclient -c -n .
-}
-zle -N exec-emacs-here
-bindkey '^Xd' exec-emacs-here
-
-######################################################################
-
 autoload predict-on predict-off
 my-predict-on()
 {
