@@ -196,6 +196,36 @@ bindkey '^X^H' my-create-generic-completion
 
 ######################################################################
 
+save-as-snippet()
+{
+    local OLD_LBUFFER OLD_RBUFFER COMMAND_LINE SNIPPET_NAME
+
+    OLD_LBUFFER=$LBUFFER
+    OLD_RBUFFER=$RBUFFER
+    COMMAND_LINE="${${BUFFER## #}%% #}"
+
+    PREDISPLAY="Name of the snippet: "
+    BUFFER=""
+    if zle recursive-edit; then
+        SNIPPET_NAME=$BUFFER
+        mkdir -p ~/.snippets
+        > ~/.snippets/$SNIPPET_NAME <<EOF
+#!/bin/zsh
+print -R "> "${(q)COMMAND_LINE}
+$COMMAND_LINE
+EOF
+        chmod +x ~/.snippets/$SNIPPET_NAME
+    fi
+
+    unset PREDISPLAY
+    LBUFFER=$OLD_LBUFFER
+    RBUFFER=$OLD_RBUFFER
+}
+zle -N save-as-snippet
+bindkey '^Xd' save-as-snippet
+
+######################################################################
+
 # copied from Valodim's config
 # just type '...' to get '../..'
 function rationalise-dot() {
