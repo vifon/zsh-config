@@ -111,6 +111,8 @@ alias such=' noglob such'
 alias much=g
 alias so=g
 
+alias ql=' quilt'
+
 alias pd=perldoc
 alias man2='MANPAGER=less man'
 pdfman()
