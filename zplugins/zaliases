@@ -112,6 +112,15 @@ alias much=g
 alias so=g
 
 alias ql=' quilt'
+qcd()
+{
+    if [ -z "$1" ]; then
+        unset QUILT_SERIES
+    else
+        export QUILT_SERIES=$1
+    fi
+    quilt series
+}
 
 alias pd=perldoc
 alias man2='MANPAGER=less man'
