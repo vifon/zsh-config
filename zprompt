@@ -31,13 +31,17 @@ RPS1='%(?..%F{red}%B$?%b%f )$vcs_info_msg_0_${ZTODO_PROMPT:+ %F{black\}%B|%b%f$Z
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-unapplied true
+zstyle ':vcs_info:*' use-quilt true
 # %u if there are unstaged changes
 zstyle ':vcs_info:*' unstagedstr   "%b%F{red}"
 # %c if there are staged changes
 zstyle ':vcs_info:*' stagedstr     "%F{green}"
                                    #<branch><changes><unstaged>
-zstyle ':vcs_info:*' formats       "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f"
-zstyle ':vcs_info:*' actionformats "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f %F{black}%K{yellow}(%a)%%b%f"
+zstyle ':vcs_info:*' formats       "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f%Q"
+zstyle ':vcs_info:*' actionformats "%F{black}%B%s:%%b%f%F{blue}%B%c%u%b%%b%f%Q %F{black}%K{yellow}(%a)%%b%f"
+zstyle ':vcs_info:*' patch-format   ":%p%F{magenta}[%n/%a]%f"
+zstyle ':vcs_info:*' nopatch-format ":%F{cyan}%B[0/%a]%b%f"
 
 
 autoload -U add-zsh-hook
