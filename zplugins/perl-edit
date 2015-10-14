@@ -17,4 +17,4 @@ perl-edit () {
    fi
 }
 zle -N perl-edit
-bindkey "%" perl-edit
+bindkey '\e%' perl-edit

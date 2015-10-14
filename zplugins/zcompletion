@@ -30,9 +30,9 @@ compdef '_wanted devices expl devices compadd -- /dev/sd*(%N)' amount
 # Force file name completion on Shift-TAB.
 zle -C complete-files menu-complete _generic
 zstyle ':completion:complete-files:*' completer _files
-bindkey '[Z' complete-files
+bindkey '\e[Z' complete-files
 zmodload zsh/complist
-bindkey -M menuselect -s '[Z' '^I'
+bindkey -M menuselect -s '\e[Z' '^I'
 
 
 GENERIC_COMPLETED=(stow)

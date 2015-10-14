@@ -1,11 +1,11 @@
 # -*- mode: shell-script -*-
 # vim: ft=zsh fdm=marker :
 
-bindkey '[1;5C' forward-word
-bindkey '[1;5D' backward-word
-bindkey '[7~' beginning-of-line
-bindkey '[8~' end-of-line
-bindkey '[3~' delete-char
+bindkey '\e[1;5C' forward-word
+bindkey '\e[1;5D' backward-word
+bindkey '\e[7~' beginning-of-line
+bindkey '\e[8~' end-of-line
+bindkey '\e[3~' delete-char
 
 ######################################################################
 
@@ -49,7 +49,7 @@ for i in '``' '()' '{}' '[]'; do
         RBUFFER='$i[2]'"'$RBUFFER'"
     }"
     zle -N zle-paired-input-"$i"
-    bindkey "$i[1]" zle-paired-input-"$i"
+    bindkey '\e'"$i[1]" zle-paired-input-"$i"
 done
 for i in \" \'; do
     eval "function zle-paired-input-\\$i()
@@ -58,7 +58,7 @@ for i in \" \'; do
         RBUFFER=\\$i"'$RBUFFER'"
     }"
     zle -N zle-paired-input-"$i"
-    bindkey "$i" zle-paired-input-"$i"
+    bindkey '\e'"$i" zle-paired-input-"$i"
 done
 
 ######################################################################
@@ -74,7 +74,7 @@ last-arg-basename-widget()
     LBUFFER+=$_:t:q
 }
 zle -N last-arg-basename-widget
-bindkey '>' last-arg-basename-widget
+bindkey '\e>' last-arg-basename-widget
 
 ######################################################################
 
@@ -88,7 +88,7 @@ background_n_disown_widget()
 zle -N background_n_disown_widget
 bindkey '^Z' background_n_disown_widget
 
-bindkey 'j' vi-find-next-char
+bindkey '\ej' vi-find-next-char
 
 ######################################################################
 
@@ -151,7 +151,7 @@ prepend-space()
     LBUFFER=" ${LBUFFER## #}"
 }
 zle -N prepend-space
-bindkey ' ' prepend-space
+bindkey '\e ' prepend-space
 
 ######################################################################
 

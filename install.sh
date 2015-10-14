@@ -19,9 +19,9 @@ link_fun()
 {
     local OUTPUT
     if OUTPUT=$($=LN -sv $1 $2 2>&1); then
-        echo "[32;1m$OUTPUT[0m" 1>&2
+        echo "\e[32;1m$OUTPUT\e[0m" 1>&2
     else
-        echo "[31;1m$OUTPUT[0m" 1>&2
+        echo "\e[31;1m$OUTPUT\e[0m" 1>&2
     fi
 }
 
