@@ -1,26 +1,6 @@
 # -*- mode: shell-script -*-
 # vim: set ft=zsh :
 
-# BLACK=$(tput setaf 0)
-# RED=$(tput setaf 1)
-# GREEN=$(tput setaf 2)
-# YELLOW=$(tput setaf 3)
-# BLUE=$(tput setaf 4)
-# MAGENTA=$(tput setaf 5)
-# CYAN=$(tput setaf 6)
-# GREY=$(tput setaf 7)
-# WHITE=$(tput setaf 8)
-# ON_BLACK=$(tput setab 0)
-# ON_RED=$(tput setab 1)
-# ON_GREEN=$(tput setab 2)
-# ON_YELLOW=$(tput setab 3)
-# ON_BLUE=$(tput setab 4)
-# ON_MAGENTA=$(tput setab 5)
-# ON_CYAN=$(tput setab 6)
-# ON_GREY=$(tput setab 7)
-# RESET=$(tput sgr0)
-# BOLD=$(tput bold)
-
 BLACK=$'\e[30m'
 RED=$'\e[31m'
 GREEN=$'\e[32m'
