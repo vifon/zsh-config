@@ -21,7 +21,7 @@ __fsel() {
             -o -type f -print \
             -o -type d -print \
             -o -type l -print 2> /dev/null | sed 1d | cut -b3- | fzf -m | while read item; do
-        printf '%q ' "$item"
+        printf '%s%q ' "$1" "$item"
     done
     echo
 }
@@ -35,16 +35,39 @@ if [ -n "$TMUX_PANE" -a ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ]; then
         else
             height="-l $height"
         fi
-        tmux split-window $height "cd $(printf %q "$PWD");zsh -c 'source ~/.zplugins/fzf; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
+        tmux split-window $height "cd $(printf %q "$PWD");zsh -c 'source ~/.zplugins/fzf; tmux send-keys -t $TMUX_PANE \"\$(__fsel $1)\"'"
     }
 else
     fzf-file-widget() {
-        LBUFFER="${LBUFFER}$(__fsel)"
+        LBUFFER="${LBUFFER}$(__fsel $1)"
         zle redisplay
     }
 fi
-zle     -N   fzf-file-widget
-bindkey '^T' fzf-file-widget
+zle -N fzf-file-widget
+
+fzf-file-widget-wrapper()
+{
+    autoload -U modify-current-argument split-shell-arguments
+    local reply REPLY REPLY2
+    local OLDPWD
+
+    ((--CURSOR))
+    split-shell-arguments
+    ((++CURSOR))
+
+    local ROOTDIR
+    eval "ROOTDIR=(${reply[$REPLY]})"
+    if [ -d "$ROOTDIR"  ]; then
+        cd $ROOTDIR
+        modify-current-argument '${ARG:+}' # remove the argument
+        fzf-file-widget "${(q)ROOTDIR%%/#}/"
+        cd -
+    else
+        fzf-file-widget
+    fi
+}
+zle     -N   fzf-file-widget-wrapper
+bindkey '^T' fzf-file-widget-wrapper
 
 
 if ! (( $+commands[fasd] )); then
