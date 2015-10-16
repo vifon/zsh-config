@@ -69,7 +69,10 @@ col()
 
 g()
 {
-    [ -z "$1" ] && 1="ls"
+    if [ -z "$1" ]; then
+        1="status"
+        2="--short"
+    fi
     git "$@"
 }
 alias g=' g'
