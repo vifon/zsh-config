@@ -37,7 +37,7 @@ mkdir -p $HOME/.fpath
 for f in zplugins/deer.d/deer zplugins/zranger.d/zranger; do
     link_fun $HOME/.$f $HOME/.fpath/
 done
-link_fun $HOME/.zplugins/texas.d/texas.zsh $HOME/.fpath/
+link_fun $HOME/.zplugins/texas.d/texas.zsh $HOME/.fpath/texas
 
 mkdir -p $HOME/.bin
 link_fun $HOME/.zplugins/fasd.d/fasd $HOME/.bin/
