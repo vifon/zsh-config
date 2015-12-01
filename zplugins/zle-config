@@ -3,8 +3,15 @@
 
 bindkey '\e[1;5C' forward-word
 bindkey '\e[1;5D' backward-word
+
+# Home and End for urxvt, xterm and others
 bindkey '\e[7~' beginning-of-line
 bindkey '\e[8~' end-of-line
+
+# Home and End for MobaXterm
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
 bindkey '\e[3~' delete-char
 
 ######################################################################
