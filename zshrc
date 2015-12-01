@@ -4,6 +4,9 @@
 unsetopt autocd beep
 bindkey -e
 
+bindkey '^[[4~' end-of-line        # [End]
+bindkey '^[[1~' beginning-of-line  # [Home]
+
 zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
