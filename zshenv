@@ -2,7 +2,6 @@
 # vim: set fdm=marker :
 export PATH="/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
-export PATH="$HOME/.bin:$PATH"
 
 export PATH="$HOME/.cask/bin:$PATH"
 
@@ -44,6 +43,8 @@ export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
 export PYTHONPATH="$HOME/local-my/lib/python:$PYTHONPATH"
 
 FPATH=$HOME/.fpath:$FPATH
+
+export PATH="$HOME/.bin:$PATH"
 
 typeset -U PATH PYTHONPATH PERL5LIB C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH FPATH
 
