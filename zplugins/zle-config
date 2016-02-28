@@ -218,7 +218,9 @@ save-as-snippet()
         mkdir -p ~/.snippets
         > ~/.snippets/$SNIPPET_NAME <<EOF
 #!/bin/zsh
-print -R "> "${(q)COMMAND_LINE}
+PS4='> '
+set -x
+
 $COMMAND_LINE
 EOF
         chmod +x ~/.snippets/$SNIPPET_NAME
