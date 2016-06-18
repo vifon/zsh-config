@@ -73,10 +73,8 @@ PLUGINS=(
     zXephyr
     zmancolor
     filehandlers
-    functional
     urxvt_cwd-spawn
     term-title
-    zsh-image-extension
     perl-edit
     fasd
     scratchdir
@@ -84,11 +82,11 @@ PLUGINS=(
     my-fixes
     zcapture
     ignore
-    deer
     zranger
     localhistory
     ztodo
     fzf
+    zgen
     texas
     )
 if [ -f ~/.zloader ]; then

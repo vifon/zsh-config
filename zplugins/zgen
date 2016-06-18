@@ -1,0 +1,22 @@
+# -*- mode: shell-script -*-
+# vim: set ft=zsh :
+
+if [ -f ~/.zgen/zgen.zsh ]; then
+    . ~/.zgen/zgen.zsh
+    if ! zgen saved; then
+        unset CLEARONSTART
+
+        zgen load Tarrasch/zsh-functional
+        zgen load mafredri/zsh-async
+        zgen load seletskiy/zsh-fuzzy-search-and-edit
+        zgen load vifon/deer
+        zgen load vifon/zsh-image-extension
+
+        zgen save
+    fi
+
+    bindkey '\ep' fuzzy-search-and-edit
+
+    zle -N deer
+    bindkey '\ek' deer
+fi

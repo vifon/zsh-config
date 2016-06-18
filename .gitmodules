@@ -1,12 +1,6 @@
-[submodule "zplugins/functional.d"]
-	path = zplugins/functional.d
-	url = https://github.com/Tarrasch/zsh-functional
 [submodule "zplugins/fasd.d"]
 	path = zplugins/fasd.d
 	url = https://github.com/vifon/fasd
-[submodule "zplugins/deer.d"]
-	path = zplugins/deer.d
-	url = https://github.com/vifon/deer
 [submodule "zplugins/zranger.d"]
 	path = zplugins/zranger.d
 	url = https://github.com/Vifon/zranger
