@@ -25,6 +25,10 @@ link_fun()
     fi
 }
 
+if [ ! -d ~/.zgen ]; then
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+fi
+
 mkdir -p $HOME/.zplugins
 for f in zplugins/*; do
     link_fun $f:A $HOME/.zplugins
