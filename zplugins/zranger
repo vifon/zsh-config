@@ -1,8 +1,0 @@
-# -*- sh -*-
-
-if ! (( $+commands[ranger] && $+commands[tmux] )); then
-    return 1
-fi
-
-autoload -U zranger
-bindkey -s '\ez' "\eq zranger\n"

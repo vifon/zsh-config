@@ -8,6 +8,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
 
         zgen load Tarrasch/zsh-functional
         zgen load vifon/deer
+        zgen load vifon/zranger
         zgen load vifon/zsh-image-extension
 
         zgen save
@@ -16,4 +17,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
     autoload -U deer
     zle -N deer
     bindkey '\ek' deer
+
+    autoload -U zranger
+    bindkey -s '\ez' "\eq zranger\n"
 fi

@@ -82,7 +82,6 @@ PLUGINS=(
     my-fixes
     zcapture
     ignore
-    zranger
     localhistory
     ztodo
     fzf
