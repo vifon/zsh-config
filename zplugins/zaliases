@@ -4,6 +4,7 @@
 alias cd=' cd'
 
 alias mmv='noglob zmv -W'
+alias ccp='noglob zmv -W -C'
 
 alias ref='cp --reflink=always'
 
