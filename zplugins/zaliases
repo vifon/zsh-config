@@ -130,7 +130,8 @@ pdfman()
 
 gdiff()        # not an alias to *not* inherit the completion function
 {
-    git diff --no-index "$@"
+    # :A used to resolve symlinks as git-diff doesn't do that
+    git diff --no-index "$@:A"
 }
 alias gdb='gdb -q'
 alias octave='octave -q'
