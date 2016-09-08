@@ -7,7 +7,7 @@ scratch()
 {
     local name
     local dir=$HOME/tmp
-    name=scratch-$(date '+%s_%y_%m_%d')${1:+--$1}
+    name=scratch-$(date '+%s_%Y-%m-%d')${1:+--$1}
     mkdir -p $dir/$name
     ln -sfn $dir/$name ~/scratch
     cd $dir/$name
