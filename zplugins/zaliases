@@ -144,9 +144,13 @@ gdiff()        # not an alias to *not* inherit the completion function
 alias gdb='gdb -q'
 alias octave='octave -q'
 alias youtube-extract-audio='youtube-dl -x --audio-format mp3 --audio-quality 0'
-for c in sbcl guile racket; do
-    alias $c="rlwrap $c"
-done
+if (( $+commands[rlwrap] )); then
+    for c in sbcl guile racket; do
+        if (( $+commands[$c] )); then
+            alias $c="rlwrap $c"
+        fi
+    done
+fi
 # alias cal='cal -m'
 if [ "$UID" != "0" ]; then  # not root
     alias init='sudo init'
