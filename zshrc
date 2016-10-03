@@ -1,6 +1,9 @@
 # -*- mode: shell-script -*-
 # vim: set fdm=marker :
+
+# Non-interactive session, do not load the rest.
 [ -z "$PS1" ] && return
+
 unsetopt autocd beep
 bindkey -e
 
