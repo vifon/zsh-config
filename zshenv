@@ -29,17 +29,21 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # ~/local package paths
 export PATH="$HOME/local/bin:$PATH"
-export C_INCLUDE_PATH="$HOME/local/include:$C_INCLUDE_PATH"
-export CPLUS_INCLUDE_PATH="$HOME/local/include:$CPLUS_INCLUDE_PATH"
-export LIBRARY_PATH="$HOME/local/lib:$LIBRARY_PATH"
-export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+
+# Note: The array syntax is used to avoid prepending to an empty list.
+# It would add a trailing colon, which effectively works as ".", which
+# in turn breaks for example Perlbrew.
+c_include_path+=("$HOME/local/include" $c_include_path)
+cplus_include_path+=("$HOME/local/include" $cplus_include_path)
+library_path+=("$HOME/local/lib" $library_path)
+ld_library_path+=("$HOME/local/lib" $ld_library_path)
 export PYTHONPATH="$HOME/local/lib/python3.4/site-packages:$HOME/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 # ~/local-my custom paths
-export C_INCLUDE_PATH="$HOME/local-my/include:$C_INCLUDE_PATH"
-export CPLUS_INCLUDE_PATH="$HOME/local-my/include:$CPLUS_INCLUDE_PATH"
-export LIBRARY_PATH="$HOME/local-my/lib:$LIBRARY_PATH"
-export LD_LIBRARY_PATH="$HOME/local-my/lib:$LD_LIBRARY_PATH"
+c_include_path+=("$HOME/local-my/include" $c_include_path)
+cplus_include_path+=("$HOME/local-my/include" $cplus_include_path)
+library_path+=("$home/local-my/lib" $library_path)
+ld_library_path+=("$HOME/local-my/lib" $ld_library_path)
 export PYTHONPATH="$HOME/local-my/lib/python:$PYTHONPATH"
 
 FPATH=$HOME/.fpath:$FPATH
