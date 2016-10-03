@@ -12,8 +12,10 @@ export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
 export PERL_MB_OPT="--install_base $HOME/.perl5"
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
 typeset -T PERL5LIB perl5lib
-export PERL5LIB="$HOME/.perl5/lib/perl5/x86_64-linux-thread-multi:$HOME/.perl5/lib/perl5:$PERL5LIB"
+export PERL5LIB="$HOME/.perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/.perl5/lib/perl5"
 export PATH="$HOME/.perl5/bin:$PATH"
+
+[ -e ~/perl5/perlbrew/etc/bashrc ] && source ~/perl5/perlbrew/etc/bashrc
 
 typeset -T PYTHONPATH pythonpath
 export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
