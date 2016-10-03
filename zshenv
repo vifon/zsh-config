@@ -52,6 +52,9 @@ FPATH=$HOME/.fpath:$FPATH
 
 export PATH="$HOME/.bin:$PATH"
 
+# Load Nix environment.
+[ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+
 typeset -U PATH PYTHONPATH PERL5LIB C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH FPATH
 
 export MANPATH=":$HOME/local/share/man"
