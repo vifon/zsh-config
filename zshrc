@@ -38,7 +38,7 @@ else
     export EDITOR=vim
 fi
 export ALTERNATE_EDITOR="vim"
-export SUDO_EDITOR="$HOME/local/bin/emacsclient -c -a vim"
+export SUDO_EDITOR="/usr/bin/emacsclient -c -a vim"
 export BROWSER="chromium"
 export PAGER="less"
 export TERMCMD="urxvtcd"
