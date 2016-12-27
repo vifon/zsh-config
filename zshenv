@@ -15,7 +15,7 @@ export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
 typeset -T PYTHONPATH pythonpath
 export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
 
-export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
 typeset -T C_INCLUDE_PATH c_include_path
 typeset -T CPLUS_INCLUDE_PATH cplus_include_path
