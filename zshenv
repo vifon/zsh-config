@@ -7,13 +7,8 @@ export PATH="$HOME/.cask/bin:$PATH"
 
 export PATH="$HOME/.cabal/bin:$PATH"
 
-export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
 
-export PERL_MB_OPT="--install_base $HOME/.perl5"
-export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
-typeset -T PERL5LIB perl5lib
-export PERL5LIB="$HOME/.perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/.perl5/lib/perl5"
-export PATH="$HOME/.perl5/bin:$PATH"
+export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
 
 [ -e ~/perl5/perlbrew/etc/bashrc ] && source ~/perl5/perlbrew/etc/bashrc
 
