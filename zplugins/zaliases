@@ -59,6 +59,8 @@ EOF
 # alias -g '@'='| sudo tee'
 # alias -g '@@'='| sudo tee -a'
 
+alias -g 'GG'='| grep'
+
 alias noglob='noglob '
 alias webrun='webrun '
 
