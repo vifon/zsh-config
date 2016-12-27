@@ -93,15 +93,3 @@ if (( $+commands[journalctl] )); then
         journalctl _SYSTEMD_UNIT="$service.service" "$@"
     }
 fi
-
-function t() {
-    project=$(basename `pwd`);
-    tp=( $(task _projects | grep $project) );
-
-    if [[ -n $tp ]]; then
-        task "$@" project:$project;
-    else
-        task "$@"
-    fi
-}
-alias t=' t'
