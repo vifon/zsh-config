@@ -7,6 +7,7 @@ export PATH="$HOME/.cask/bin:$PATH"
 
 export PATH="$HOME/.cabal/bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/.node_modules/node_modules/.bin:$PATH"
 
