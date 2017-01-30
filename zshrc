@@ -31,6 +31,7 @@ SAVEHIST=10000
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\n\ncpu\t%P\ntotal\t%*E'
+REPORTTIME=10
 
 if (( $+commands[e] )); then
     export EDITOR=e # Emacs wrapper necessary because of the broken word splitting in some programs
