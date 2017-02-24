@@ -4,7 +4,7 @@
 # Non-interactive session, do not load the rest.
 [ -z "$PS1" ] && return
 
-unsetopt autocd beep
+unsetopt beep
 bindkey -e
 
 zstyle :compinstall filename '~/.zshrc'
