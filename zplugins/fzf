@@ -61,6 +61,9 @@ fzf-file-widget-wrapper()
 
     local ROOTDIR
     eval "ROOTDIR=(${reply[$REPLY]})"
+    while [[ ! -d "$ROOTDIR" && "$ROOTDIR" = */* ]]; do
+        ROOTDIR=${ROOTDIR%/*}
+    done
     if [ -d "$ROOTDIR"  ]; then
         cd $ROOTDIR
         modify-current-argument '${ARG:+}' # remove the argument
