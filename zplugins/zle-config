@@ -235,6 +235,24 @@ bindkey '^Xd' save-as-snippet
 
 ######################################################################
 
+# Use the last command's output in the currect command.
+# Press "w" again to use only the first line.
+last-commands-output() {
+    LBUFFER+='`!!`'
+    zle -R
+    local REPLY
+    read -k || return
+    if [ "$REPLY" = "w" ]; then
+        LBUFFER=${LBUFFER%\`}' | head -n1`'
+    else
+        zle -U $REPLY
+    fi
+}
+zle -N last-commands-output
+bindkey '^Xw' last-commands-output
+
+######################################################################
+
 # copied from Valodim's config
 # just type '...' to get '../..'
 function rationalise-dot() {
