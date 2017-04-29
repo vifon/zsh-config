@@ -22,7 +22,7 @@ insert-files()
         else
             str="$str$key"
         fi
-        eval "files=( \${~str}*(N) )"
+        eval "files=( *\${~str}*(N) )"
         if (( $#files )); then
             zle -R "files: ${str}_" "$files[@]"
         else
