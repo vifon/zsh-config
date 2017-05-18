@@ -53,7 +53,7 @@ export PATH="$HOME/.bin:$PATH"
 
 typeset -U PATH PYTHONPATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH FPATH
 
-export MANPATH=":$HOME/local/share/man"
+export MANPATH="$HOME/local/share/man:"
 
 export ACRONYMDB="$HOME/.resources/acronyms"
 export RLWRAP_HOME="$HOME/.rlwrap"
