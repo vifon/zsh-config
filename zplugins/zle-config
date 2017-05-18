@@ -236,17 +236,31 @@ bindkey '^Xd' save-as-snippet
 ######################################################################
 
 # Use the last command's output in the currect command.
-# Press "w" again to use only the first line.
 last-commands-output() {
-    LBUFFER+='`!!`'
-    zle -R
-    local REPLY
-    read -k || return
-    if [ "$REPLY" = "w" ]; then
-        LBUFFER=${LBUFFER%\`}' | head -n1`'
-    else
-        zle -U $REPLY
-    fi
+    local snippets snippet previous REPLY
+
+    snippets=(
+        '`!!`'
+        '`!! | head -n1`'
+        '`!! | tail -n1`'
+        '`xsel -o`'
+        '`xsel -o -b`'
+    )
+
+    for snippet in $snippets; do
+        if [ -n "$previous" ]; then
+            read -k || return
+            if [ "$REPLY" = "w" ]; then
+                LBUFFER=${LBUFFER%$previous}
+            else
+                zle -U $REPLY
+                return
+            fi
+        fi
+        LBUFFER+=$snippet
+        zle -R
+        previous=$snippet
+    done
 }
 zle -N last-commands-output
 bindkey '^Xw' last-commands-output
