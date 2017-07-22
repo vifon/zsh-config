@@ -40,7 +40,6 @@ else
 fi
 export ALTERNATE_EDITOR="vim"
 export SUDO_EDITOR="/usr/bin/emacsclient -c -a vim"
-export BROWSER="chromium"
 export PAGER="less"
 export TERMCMD="urxvtcd"
 OPTIONS=(
