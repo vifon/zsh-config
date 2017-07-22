@@ -63,7 +63,6 @@ OPTIONS=(
 
     prompt_subst
 
-    pushd_to_home
     local_options
 )
 setopt $OPTIONS
