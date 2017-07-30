@@ -47,6 +47,7 @@ export PYTHONPATH="$HOME/local-my/lib/python:$PYTHONPATH"
 FPATH=$HOME/.fpath:$FPATH
 
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.ssh/bin:$PATH"
 
 # Load Nix environment.
 [ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
