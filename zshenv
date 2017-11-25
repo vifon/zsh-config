@@ -49,7 +49,7 @@ export PYTHONPATH="$HOME/local-my/lib/python:$PYTHONPATH"
 FPATH=$HOME/.fpath:$FPATH
 
 export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.ssh/bin:$PATH"
+export PATH="$PATH:$HOME/.ssh/bin"
 
 export MANPATH="$HOME/local/share/man:"
 
