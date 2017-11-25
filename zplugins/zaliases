@@ -60,6 +60,15 @@ EOF
 # alias -g '@@'='| sudo tee -a'
 
 alias -g 'GG'='| grep'
+alias -g 'HH'='| hlgrep'
+hlgrep()
+{
+    local QUERY
+    local OPTIONS
+    OPTIONS=($argv[1,-2])
+    QUERY=$argv[-1]
+    grep $OPTIONS "\\|$QUERY"
+}
 
 alias noglob='noglob '
 alias webrun='webrun '
