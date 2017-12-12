@@ -6,3 +6,30 @@ if ! (( $+commands[fzf] )); then
 fi
 
 source ~/.fzf.zsh
+
+fzf-file-widget-wrapper()
+{
+    autoload -U modify-current-argument split-shell-arguments
+    local reply REPLY REPLY2
+    local OLDPWD
+
+    ((--CURSOR))
+    split-shell-arguments
+    ((++CURSOR))
+
+    local ROOTDIR
+    eval "ROOTDIR=(${reply[$REPLY]})"
+    while [[ ! -d "$ROOTDIR" && "$ROOTDIR" = */* ]]; do
+        ROOTDIR=${ROOTDIR%/*}
+    done
+    if [ -d "$ROOTDIR"  ]; then
+        modify-current-argument '${ARG%%/#}/'
+        pushd -q $ROOTDIR
+        fzf-file-widget
+        popd -q
+    else
+        fzf-file-widget
+    fi
+}
+zle     -N   fzf-file-widget-wrapper
+bindkey '^T' fzf-file-widget-wrapper
