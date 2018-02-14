@@ -5,7 +5,7 @@ for plugin in $PLUGINS; do
         . $PLUGINS_DIR/$plugin
         EXITCODE=$?
         if [ "$EXITCODE" = "0" ]; then
-            if [ -n "$DEBUG" -o "$TTY[6,8]" = "tty" ]; then
+            if [[ "$DEBUG" || "$TTY" =~ "tty[0-9]$" ]]; then
                 echo "$GREEN$BOLD*$RESET $plugin loaded"
             fi
         else
