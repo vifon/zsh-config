@@ -3,6 +3,10 @@
 export PATH="/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
 
+# Load Nix environment.
+[ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+[ -d /usr/share/terminfo ] && export TERMINFO=/usr/share/terminfo
+
 export PATH="$HOME/.cask/bin:$PATH"
 
 export PATH="$HOME/.cabal/bin:$PATH"
@@ -52,9 +56,6 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:$HOME/.ssh/bin"
 
 export MANPATH="$HOME/local/share/man:"
-
-# Load Nix environment.
-[ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 typeset -U PATH PYTHONPATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH FPATH
 
