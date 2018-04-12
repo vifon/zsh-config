@@ -33,7 +33,7 @@ mkdir -p $HOME/.zplugins
 for f in zplugins/*; do
     link_fun $f:A $HOME/.zplugins
 done
-for f in zlogin zlogout zloader zprompt zshrc zshenv; do
+for f in zlogin zloader zprompt zshrc zshenv; do
     link_fun $f:A $HOME/.$f
 done
 
