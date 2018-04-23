@@ -162,26 +162,11 @@ if [ "$UID" != "0" ]; then  # not root
         exit
     }
     alias E='sudoedit'
-    dired()
-    {
-        if [ -z "$1" ]; then
-            1=.
-        fi
-        emacsclient -t $1
-    }
     alias sudo='sudo '
     alias root='sudo su'
     alias exec='exec '
     alias mv='mv -i'
     alias cp='cp -i'
-else    # root
-    dired()
-    {
-        if [ -z "$1" ]; then
-            1=.
-        fi
-        emacs -nw $1
-    }
 fi
 
 remake()
@@ -192,7 +177,6 @@ remake()
 compdef remake=make
 
 # shortcuts
-alias debugterm='clear && sleep 10000000'
 alias zhist=' vim --noplugin ${HISTFILE:-$DEF_HISTFILE}'
 alias curdate='date +%y.%m.%d'
 alias timestamp='date +%s_%F_%H.%M'
@@ -204,28 +188,6 @@ alias json-format='python -mjson.tool'
 serve()
 {
     python3 -m http.server ${1:-30080}
-}
-alias exifclean='exiftool -all= -overwrite_original'
-
-rmdirs()
-{
-    find "$@" -type d -empty -delete -print
-}
-
-alias cdp='pushd'
-alias pop='popd'
-
-winevd()
-{
-    if [ -z "$2" -o -z "$3" ]; then
-        2=1024
-        3=768
-    fi
-    if [ -z "$WTITLE" ]; then
-        WTITLE=Wine
-    fi
-    wine explorer /desktop=$WTITLE,${2}x${3} "$1"
-    unset WTITLE
 }
 
 seturgent()
@@ -257,21 +219,3 @@ if (( $+commands[stow] )); then
 fi
 
 alias pkgprefix='echo $HOME/pkgs/$PWD:t'
-
-if (( $+commands[lcov] )); then
-    lcov-dwim()
-    {
-        mkdir -p cov && cd cov
-
-        lcov --zerocounters --directory ..
-        lcov --capture --initial --directory .. --output-file lcov_init.info
-        cd -
-        print -P '%F{red}%BRun your program now...%b%f'
-        PSINFO="(coverage)" $SHELL
-        cd -
-        lcov --capture --directory .. --output-file lcov.info
-        genhtml lcov.info
-        chromium --incognito index.html
-        cd -
-    }
-fi
