@@ -88,7 +88,6 @@ PLUGINS=(
     perl-edit
     fasd
     scratchdir
-    zlocalenv
     my-fixes
     zcapture
     ignore
