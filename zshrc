@@ -85,7 +85,6 @@ PLUGINS=(
     zscripts
     zpriv
     zXephyr
-    zmancolor
     filehandlers
     urxvt_cwd-spawn
     term-title
