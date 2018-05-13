@@ -34,7 +34,14 @@ alias xi='xsel -i'
 alias hilight='highlight -O ansi'
 alias bellpipe='sed "s/$/\a/"'
 
-alias get='sudo apt install'
+
+if (( $+commands[apt] )); then
+    alias get='sudo apt install'
+elif (( $+commands[emerge] )); then
+    alias get='sudo emerge -avj'
+elif (( $+commands[pacman] )); then
+    alias get='sudo pacman -S'
+fi
 
 ssh-master()
 {
