@@ -112,15 +112,6 @@ alias gr=' cd `git rev-parse --show-toplevel || pwd`'
 
 alias 'annex-cleanmeta'='git branch -D `git branch | grep views/`'
 
-alias wow='g status --short'
-such()
-{
-    g commit -m "$*"
-}
-alias such=' noglob such'
-alias much=g
-alias so=g
-
 alias ql=' quilt'
 qcd()
 {
