@@ -14,3 +14,5 @@ alias -s docx=libreoffice
 alias -s odt=libreoffice
 
 alias -s gba=vbam
+
+alias -s tomb='function () { tomb open $1 -k $1.key -fg }'
