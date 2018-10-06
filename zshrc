@@ -50,6 +50,7 @@ else
 fi
 export PAGER="less"
 export TERMCMD="urxvtcd"
+export DVTM_EDITOR="less"
 OPTIONS=(
     hist_ignore_all_dups
     hist_ignore_space
