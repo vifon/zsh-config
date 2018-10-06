@@ -19,6 +19,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 typeset -T PYTHONPATH pythonpath
 export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
+export PYTHONPATH="$HOME/.local/lib64/python3.6/:$HOME/.local/lib64/python3.6/site-packages:$PYTHONPATH"
 
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
