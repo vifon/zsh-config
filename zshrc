@@ -14,10 +14,12 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
-if (( $+commands[lesspipe.sh] )); then
-    eval `lesspipe.sh`
-elif (( $+commands[lesspipe] )); then
-    eval `lesspipe`
+if [ -z "$LESSOPEN" ]; then
+    if (( $+commands[lesspipe.sh] )); then
+        eval `lesspipe.sh`
+    elif (( $+commands[lesspipe] )); then
+        eval `lesspipe`
+    fi
 fi
 
 autoload zmv zed
