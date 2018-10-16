@@ -160,6 +160,10 @@ bindkey '\er' zle-ranger
 prepend-space()
 {
     LBUFFER=" ${LBUFFER## #}"
+    if ! [ "${BUFFER%% #} " = "${BUFFER} " ]; then
+        # Trim the trailing whitespace unless it's a single space.
+        BUFFER="${BUFFER%% #} "
+    fi
 }
 zle -N prepend-space
 bindkey '\e ' prepend-space
