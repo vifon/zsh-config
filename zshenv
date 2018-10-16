@@ -17,10 +17,6 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 [ -e ~/perl5/perlbrew/etc/bashrc ] && source ~/perl5/perlbrew/etc/bashrc
 
-typeset -T PYTHONPATH pythonpath
-export PYTHONPATH="$HOME/.local/lib/python3:$HOME/.local/lib/python3/site-packages:$PYTHONPATH"
-export PYTHONPATH="$HOME/.local/lib64/python3.6/:$HOME/.local/lib64/python3.6/site-packages:$PYTHONPATH"
-
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
 export PATH="$HOME/.gopath/bin:$PATH"
@@ -29,6 +25,7 @@ typeset -T C_INCLUDE_PATH c_include_path
 typeset -T CPLUS_INCLUDE_PATH cplus_include_path
 typeset -T LIBRARY_PATH library_path
 typeset -T LD_LIBRARY_PATH ld_library_path
+typeset -T PYTHONPATH pythonpath
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -42,7 +39,6 @@ c_include_path+=("$HOME/local/include" $c_include_path)
 cplus_include_path+=("$HOME/local/include" $cplus_include_path)
 library_path+=("$HOME/local/lib" $library_path)
 ld_library_path+=("$HOME/local/lib" $ld_library_path)
-export PYTHONPATH="$HOME/local/lib/python3.5/site-packages:$HOME/local/lib/python3.4/site-packages:$HOME/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 FPATH=$HOME/.fpath:$FPATH
 
