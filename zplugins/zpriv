@@ -6,5 +6,8 @@ alias priv=' PRIV=1 zsh'
 if [ -n "$PRIV" ]; then
     unset HISTFILE
     fc -R $DEF_HISTFILE
-    bindkey -s '\er' "^u ranger -c\n"
+    zle-ranger() {
+        ranger -c < $TTY
+        zle reset-prompt
+    }
 fi

@@ -148,8 +148,12 @@ bindkey '\el' zle-insert-line
 
 ######################################################################
 
-bindkey -s '\er' "^u . ranger\n"
-bindkey -s '\eR' "^u . rover.sh\n"
+zle-ranger() {
+    . ranger < $TTY
+    zle reset-prompt
+}
+zle -N zle-ranger
+bindkey '\er' zle-ranger
 
 ######################################################################
 
