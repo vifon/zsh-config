@@ -1,5 +1,21 @@
-# -*- mode: shell-script -*-
-# vim: set fdm=marker :
+# -*- sh -*-
+
+# If fish is available and we're not explicitly avoiding it...
+if (( $+commands[fish] )) && [ -z "$NOFISH" ]; then
+    # ...use it instead of zsh. A login variant if appropriate.
+    if [[ -o login ]]; then
+        exec fish -l
+    else
+        exec fish
+    fi
+
+    # We're execing from zsh to let a POSIX-like shell (zsh) perform
+    # all the necessary environmental business.  That being said, we
+    # don't need the rest of zshrc, only zshenv was interesting, so
+    # let's exec as soon as possible
+else
+    unset NOFISH
+fi
 
 # Non-interactive session, do not load the rest.
 [ -z "$PS1" ] && return
