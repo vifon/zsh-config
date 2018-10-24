@@ -33,26 +33,13 @@ HISTFILE=~/.zhistory
 DEF_HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
+FPATH=$HOME/.fpath:$FPATH
 
 WORDCHARS='*?_-.[]~!#$%(){}<>'
 
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\n\ncpu\t%P\ntotal\t%*E'
 REPORTTIME=10
 
-if (( $+commands[e] && $+commands[emacsclient] )) ; then
-    export EDITOR=e # Emacs wrapper necessary because of the broken word splitting in some programs
-else
-    export EDITOR=vim
-fi
-export ALTERNATE_EDITOR="vim"
-if [ -x /usr/bin/emacsclient ]; then
-    export SUDO_EDITOR="/usr/bin/emacsclient -c -a vim"
-else
-    export SUDO_EDITOR="vim"
-fi
-export PAGER="less"
-export TERMCMD="urxvtcd"
-export DVTM_EDITOR="less"
 OPTIONS=(
     hist_ignore_all_dups
     hist_ignore_space
