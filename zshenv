@@ -23,6 +23,8 @@ typeset -T LIBRARY_PATH library_path
 typeset -T LD_LIBRARY_PATH ld_library_path
 typeset -T PYTHONPATH pythonpath
 
+export PYTHONPATH
+
 # Note: The array syntax is used to avoid prepending to an empty list.
 # It would add a trailing colon, which effectively works as ".", which
 # in turn breaks for example Perlbrew.
@@ -30,6 +32,7 @@ c_include_path+=("$HOME/local/include" $c_include_path)
 cplus_include_path+=("$HOME/local/include" $cplus_include_path)
 library_path+=("$HOME/local/lib" $library_path)
 ld_library_path+=("$HOME/local/lib" $ld_library_path)
+pythonpath+=($HOME/local/lib{64,}/python*/site-packages(N) $pythonpath)
 
 
 # Personal bin directories.
