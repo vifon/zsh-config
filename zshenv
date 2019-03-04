@@ -79,6 +79,10 @@ if [ -f ~/.sdk.env ]; then
     . ~/.sdk.env
 fi
 
+if [ -n "$SSH_TTY" ]; then
+    export GPG_TTY=$SSH_TTY
+fi
+
 if [ -r ~/.config/ranger/rc.conf ]; then
     export RANGER_LOAD_DEFAULT_RC=FALSE
 fi
