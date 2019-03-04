@@ -74,6 +74,11 @@ export RLWRAP_HOME="$HOME/.rlwrap"
 export P4CONFIG=".p4config"
 export P4MERGE="m4merge"
 
+# SDK-specific settings.
+if [ -f ~/.sdk.env ]; then
+    . ~/.sdk.env
+fi
+
 if [ -r ~/.config/ranger/rc.conf ]; then
     export RANGER_LOAD_DEFAULT_RC=FALSE
 fi
