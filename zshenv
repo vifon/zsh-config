@@ -14,7 +14,10 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 export PATH="$HOME/.gopath/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-[ -e ~/perl5/perlbrew/etc/bashrc ] && source ~/perl5/perlbrew/etc/bashrc
+
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
+export PATH="$HOME/perl5/bin:$PATH"
 
 # A handy array-like access to these variables.
 typeset -T C_INCLUDE_PATH c_include_path
