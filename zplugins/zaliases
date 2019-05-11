@@ -209,9 +209,9 @@ if (( $+commands[systemctl] )); then
 fi
 
 if (( $+commands[stow] )); then
-    alias stowadd='stow -v -t ~/local -S'
-    alias stowrm='stow -v -t ~/local -D'
-    alias restow='stow -v -t ~/local -R'
+    alias stowadd='stow -v -t ~/local --no-folding -S'
+    alias stowrm='stow -v -t ~/local --no-folding -D'
+    alias restow='stow -v -t ~/local --no-folding -R'
 fi
 
 alias pkgprefix='echo $HOME/pkgs/$PWD:t'
