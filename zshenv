@@ -16,7 +16,9 @@ export PATH="$HOME/.gopath/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
+if (( $+commands[plenv] )); then
+    eval "$(plenv init -)"
+fi
 export PATH="$HOME/perl5/bin:$PATH"
 
 # A handy array-like access to these variables.
